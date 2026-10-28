@@ -76,7 +76,7 @@ def main():
         except Exception:
             # Expected slow-drip timeout
             pass
-        print("    [!] REAKSI TERMINAL: Pemindai musuh MACET TOTAL (0 req/s freeze)!")
+        print("    [!] REAKSI TERMINAL: Pemindai musuh MACET (< 0.5 req/s slow-drip timeout)!")
         print("    [!] REAKSI DASHBOARD: Thread Lawan Terkunci bertambah, Signature JA4 tercatat!")
     except Exception as e:
         print(f"    [-] Tarpit phase note: {e}")
@@ -116,7 +116,7 @@ def main():
         )
         urllib.request.urlopen(iso_req)
         print("    [OK] Host 192.168.1.88 Diisolasi.")
-        print("    [!] Koneksi penyerang ke seluruh pangkalan terputus (Destination Unreachable).")
+        print("    [!] Aturan isolasi aktif di kernel firewall, koneksi penyerang ke pangkalan terputus!")
     except Exception as e:
         print(f"    [-] Host Isolation phase note: {e}")
     time.sleep(2)

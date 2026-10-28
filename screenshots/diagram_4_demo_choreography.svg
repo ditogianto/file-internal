@@ -127,7 +127,7 @@
           • Operator menyalakan tombol [AKTIFKAN TARPIT] di Action Console.
         </text>
         <text x="0" y="44" font-family="'Segoe UI', sans-serif" font-size="14" fill="#94a3b8">
-          • Mesin Tarpit mengecilkan TCP Window menjadi 1 byte per 15 detik pada seluruh permintaan musuh.
+          • Mesin Tarpit mengecilkan TCP Window menjadi slow-drip 1 byte per 2-15 detik.
         </text>
         <text x="0" y="68" font-family="'Segoe UI', sans-serif" font-size="14" fill="#94a3b8">
           • Counter metrik: <tspan fill="#38bdf8" font-weight="700">LOCKED THREADS</tspan> melesat dari 0 → 8 thread aktif tertawan.
@@ -222,14 +222,14 @@
         <text x="0" y="0" fill="#94a3b8">===============================================================</text>
         <text x="0" y="16" fill="#cbd5e1">Starting gobuster in directory enumeration mode...</text>
         <text x="0" y="34" fill="#ef4444" font-weight="700">
-          [!] PROGRES MEMBEKU: [====&gt;.....................] 1/8 (SPEED: 0.00 REQ/SEC)
+          [!] PROGRES TERTURUN DRASTIS: [====&gt;.....................] 1/8 (SPEED: &lt; 0.50 REQ/SEC)
         </text>
         <text x="0" y="52" fill="#f87171">
           Error: context deadline exceeded (Client.Timeout while reading body)
         </text>
         <text x="0" y="70" fill="#94a3b8">===============================================================</text>
         <text x="0" y="92" fill="#fca5a5" font-weight="700">
-          [!] TERMINAL PENYERANG HANG &amp; FREEZE TOTAL! Thread terkunci di lem perekat Tarpit!
+          [!] SOKET PENYERANG MENGALAMI STARVASI &amp; TIMEOUT! Thread terkunci di lem perekat Tarpit!
         </text>
       </g>
     </g>

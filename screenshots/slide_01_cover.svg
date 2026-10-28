@@ -68,8 +68,8 @@
     <g transform="translate(0, 0)">
       <rect width="405" height="130" rx="10" fill="url(#card1)" stroke="#10b981" stroke-width="1.5" filter="url(#shadow1)"/>
       <rect x="0" y="0" width="405" height="4" fill="#10b981"/>
-      <text x="24" y="38" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="900" fill="#10b981">0.0% FALSE POSITIVE</text>
-      <text x="24" y="65" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#f8fafc">Akurasi Mutlak Nir-Alarm Palsu</text>
+      <text x="24" y="38" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="900" fill="#10b981">BY-DESIGN ZERO FP</text>
+      <text x="24" y="65" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#f8fafc">Akurasi Deterministik Ranjau</text>
       <text x="24" y="92" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Hanya bereaksi saat ranjau disentuh musuh.</text>
     </g>
 
@@ -78,7 +78,7 @@
       <rect width="405" height="130" rx="10" fill="url(#card1)" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow1)"/>
       <rect x="0" y="0" width="405" height="4" fill="#06b6d4"/>
       <text x="24" y="38" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="900" fill="#06b6d4">ACTIVE TARPIT CRASHER</text>
-      <text x="24" y="65" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#f8fafc">Pembekuan Scanner 0 req/detik</text>
+      <text x="24" y="65" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#f8fafc">Starvasi Scanner &lt; 0.5 req/s</text>
       <text x="24" y="92" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Menahan TCP Window &amp; menguras soket VPN musuh.</text>
     </g>
 

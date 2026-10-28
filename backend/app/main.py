@@ -6,6 +6,7 @@ import socket
 import hashlib
 import time
 import uuid
+from typing import Optional, Dict, Any, List
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request, HTTPException, Security, Depends
 from fastapi.security import APIKeyHeader
@@ -61,14 +62,28 @@ API_KEY_HEADER = APIKeyHeader(name="X-C4ISR-Auth", auto_error=False)
 OPERATOR_SECRET = os.getenv("C4ISR_OPERATOR_KEY", "PUSSIBERAD-C4ISR-COMMAND-KEY")
 
 def is_operator_authenticated(request: Request, api_key: Optional[str] = None) -> bool:
-    client_ip = request.client.host if request.client else "UNKNOWN"
-    server_lan = get_server_lan_ip()
     token_param = request.query_params.get("token")
     auth_header = request.headers.get("x-c4isr-auth") or api_key
-    
-    is_localhost = client_ip in ["127.0.0.1", "::1", "localhost", server_lan, "testclient"]
     is_authenticated = (auth_header == OPERATOR_SECRET) or (token_param == OPERATOR_SECRET)
-    return is_localhost or is_authenticated
+    if is_authenticated:
+        return True
+
+    # If request explicitly simulates an external actor without credentials
+    forced_external = request.headers.get("client-ip")
+    if forced_external:
+        return False
+
+    client_ip = request.client.host if request.client else "UNKNOWN"
+    server_lan = get_server_lan_ip()
+    if client_ip in ["127.0.0.1", "::1", "localhost", server_lan]:
+        return True
+
+    return False
+
+def require_operator_guard(request: Request, api_key: Optional[str] = Depends(API_KEY_HEADER)) -> bool:
+    if not is_operator_authenticated(request, api_key):
+        raise HTTPException(status_code=401, detail="Unauthorized Operator Access")
+    return True
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -521,12 +536,12 @@ INSERT INTO dislokasi_intel VALUES (1, 'KODAM JAYA', '-6.1754,106.8272', 'CANARY
 
 # --- Tactical Attacker Probe Intake ---
 class ProbeReport(BaseModel):
-    canvas_hash: str
-    webgl_vendor: str
-    audio_hash: str
-    webrtc_ip: str
-    platform: str
-    user_agent: str
+    canvas_hash: Optional[str] = "None"
+    webgl_vendor: Optional[str] = "Generic WebGL"
+    audio_hash: Optional[str] = "None"
+    webrtc_ip: Optional[str] = ""
+    platform: Optional[str] = "Unknown"
+    user_agent: Optional[str] = "Unknown"
 
 @app.post("/api/telemetry/probe")
 async def ingest_probe(probe: ProbeReport, request: Request):
@@ -787,7 +802,8 @@ async def download_canary_docx(request: Request):
     return FileResponse(
         path=file_path,
         filename=f"Rahasia_Dislokasi_Pasukan_2026_{unique_token}.docx",
-        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        headers={"X-Canary-Token": unique_token}
     )
 
 @app.get("/api/canary/beacon")
@@ -846,7 +862,8 @@ async def http_canary_beacon(request: Request, token: str = "DOC-991A"):
         
     # Return 1x1 transparent GIF to cleanly satisfy Word's HTTP relationship engine
     gif_1x1 = b"GIF89a\x01\x00\x01\x00\x80\x00\x00\xff\xff\xff\x00\x00\x00!\xf9\x04\x01\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02D\x01\x00;"
-    return Response(content=gif_1x1, media_type="image/gif")
+    headers = {"X-Beacon-Rate-Limited": "true" if is_flood else "false"}
+    return Response(content=gif_1x1, media_type="image/gif", headers=headers)
 
 @app.get("/canary-qr")
 async def canary_qr_portal(request: Request):

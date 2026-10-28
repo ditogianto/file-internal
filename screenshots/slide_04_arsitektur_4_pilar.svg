@@ -119,7 +119,7 @@
         <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="13" fill="#cbd5e1">
           <tspan x="0" dy="0" font-weight="700" fill="#38bdf8">• Algoritma Choking TCP:</tspan>
           <tspan x="0" dy="20">  Mengunci TCP Window Size ke 1 byte.</tspan>
-          <tspan x="0" dy="18">  Hanya kirim 1 byte per 10-15 detik.</tspan>
+          <tspan x="0" dy="18">  Adaptive slow-drip 1 byte per 2-15s.</tspan>
 
           <tspan x="0" dy="32" font-weight="700" fill="#38bdf8">• Stratagem 25 (Reflexive 200 OK):</tspan>
           <tspan x="0" dy="20">  Percobaan sabotase/reset konsol dibalas</tspan>
@@ -223,9 +223,9 @@
           <tspan x="0" dy="20">  Menyusun laporan kronologi taktis</tspan>
           <tspan x="0" dy="18">  siap diserahkan langsung ke Komandan.</tspan>
 
-          <tspan x="0" dy="32" font-weight="700" fill="#38bdf8">• Segel Kriptografis SHA-256:</tspan>
-          <tspan x="0" dy="20">  Integritas rantai bukti (chain of custody)</tspan>
-          <tspan x="0" dy="18">  terjamin tidak dapat dimanipulasi.</tspan>
+          <tspan x="0" dy="32" font-weight="700" fill="#38bdf8">• Rantai Audit Kriptografis SQLite:</tspan>
+          <tspan x="0" dy="20">  Hash-chain SHA-256 + HMAC-SHA256 Node</tspan>
+          <tspan x="0" dy="18">  bukti otentik tak terbantahkan di POMAD.</tspan>
 
           <tspan x="0" dy="32" font-weight="700" fill="#38bdf8">• Ekspor Blacklist Firewall:</tspan>
           <tspan x="0" dy="20">  Menerbitkan aturan blokir iptables &amp; netsh</tspan>
