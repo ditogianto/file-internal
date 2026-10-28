@@ -1,0 +1,414 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a0f"/>
+      <stop offset="50%" stop-color="#0b111a"/>
+      <stop offset="100%" stop-color="#080c14"/>
+    </linearGradient>
+
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#151e2e"/>
+      <stop offset="100%" stop-color="#0d1420"/>
+    </linearGradient>
+
+    <linearGradient id="accent-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+
+    <linearGradient id="accent-amber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <linearGradient id="accent-red" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#b91c1c"/>
+    </linearGradient>
+
+    <linearGradient id="accent-emerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <linearGradient id="accent-purple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+
+    <!-- Glow & Shadow Filters -->
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="glow-red" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="glow-emerald" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1920" height="1080" fill="url(#bg-grad)"/>
+
+  <!-- Tactical Grid Lines Subtle Overlay -->
+  <g opacity="0.07" stroke="#38bdf8" stroke-width="1">
+    <path d="M 0 120 L 1920 120 M 0 240 L 1920 240 M 0 360 L 1920 360 M 0 480 L 1920 480 M 0 600 L 1920 600 M 0 720 L 1920 720 M 0 840 L 1920 840 M 0 960 L 1920 960"/>
+    <path d="M 240 0 L 240 1080 M 480 0 L 480 1080 M 720 0 L 720 1080 M 960 0 L 960 1080 M 1200 0 L 1200 1080 M 1440 0 L 1440 1080 M 1680 0 L 1680 1080"/>
+  </g>
+
+  <!-- HEADER -->
+  <g transform="translate(100, 60)">
+    <!-- Insignia Badge -->
+    <rect x="0" y="0" width="48" height="48" rx="8" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1.5"/>
+    <path d="M 24 10 L 38 16 L 38 27 C 38 35 24 41 24 41 C 24 41 10 35 10 27 L 10 16 Z" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M 18 24 L 22 28 L 30 20" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Title & Subtitle -->
+    <text x="64" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#10b981" letter-spacing="3">
+      PUSSIBERAD TNI AD × KARTIKA CYBER HACKATHON 2026 // DOKTRIN PERTAHANAN AKTIF
+    </text>
+    <text x="64" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="900" fill="#f8fafc" letter-spacing="1">
+      BAGAIMANA NEXUS-TRAP BEKERJA? (ALUR UNTUK ORANG AWAM &amp; PIMPINAN)
+    </text>
+    <text x="64" y="78" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" fill="#94a3b8">
+      Memahami Taktik Pembalikan Serangan Siber Tanpa Istilah Teknis yang Rumit: Dari Penyusupan hingga Pelumpuhan 1-Klik
+    </text>
+  </g>
+
+  <!-- CONNECTING INFOGRAPHIC PIPELINE BAR (Background Track) -->
+  <g transform="translate(100, 260)">
+    <rect x="120" y="30" width="1480" height="8" rx="4" fill="#1e293b"/>
+    <!-- Animated pulse gradient track -->
+    <rect x="120" y="30" width="1480" height="8" rx="4" fill="url(#accent-cyan)" opacity="0.3"/>
+  </g>
+
+  <!-- 5 WORKFLOW CARDS -->
+
+  <!-- ==================== TAHAP 1 ==================== -->
+  <g transform="translate(100, 240)">
+    <!-- Card Container -->
+    <rect x="0" y="0" width="310" height="660" rx="16" fill="url(#card-grad)" stroke="#334155" stroke-width="1.5" filter="url(#card-shadow)"/>
+    <rect x="0" y="0" width="310" height="6" rx="3" fill="url(#accent-red)"/>
+
+    <!-- Step Badge Circle -->
+    <circle cx="155" cy="50" r="32" fill="#1e293b" stroke="#ef4444" stroke-width="3" filter="url(#glow-red)"/>
+    <text x="155" y="58" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="900" fill="#f8fafc" text-anchor="middle">01</text>
+
+    <!-- Metaphor Tag -->
+    <rect x="45" y="100" width="220" height="26" rx="13" fill="#ef4444" fill-opacity="0.15" stroke="#ef4444" stroke-width="1"/>
+    <text x="155" y="117" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#fca5a5" text-anchor="middle" letter-spacing="1">
+      ANALOGI: PENCURI MENYELINAP
+    </text>
+
+    <!-- Card Title -->
+    <text x="155" y="156" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">
+      Pintu Masuk Terbobol
+    </text>
+    <text x="155" y="178" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#ef4444" text-anchor="middle">
+      (Infeksi Trojan di Pangkalan)
+    </text>
+
+    <!-- Illustration / Visual Symbol -->
+    <g transform="translate(85, 205)">
+      <rect x="0" y="0" width="140" height="95" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <!-- Laptop icon -->
+      <path d="M 35 25 L 105 25 L 105 70 L 35 70 Z" fill="#1e293b" stroke="#94a3b8" stroke-width="2"/>
+      <path d="M 20 70 L 120 70 L 125 78 L 15 78 Z" fill="#334155"/>
+      <!-- Red exclamation -->
+      <circle cx="70" cy="45" r="14" fill="#ef4444"/>
+      <text x="70" y="51" font-family="monospace" font-size="16" font-weight="900" fill="#fff" text-anchor="middle">!</text>
+    </g>
+
+    <!-- Non-Tech Explanation (Storytelling) -->
+    <g transform="translate(25, 330)">
+      <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Kisah di Dunia Nyata:</text>
+      <text x="0" y="24" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1" width="260">
+        <tspan x="0" dy="0">Staf kantor di daerah tidak</tspan>
+        <tspan x="0" dy="20">sengaja mengunduh file jahat</tspan>
+        <tspan x="0" dy="20">(misal: APK undangan palsu</tspan>
+        <tspan x="0" dy="20">di WhatsApp).</tspan>
+      </text>
+
+      <text x="0" y="105" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1">
+        <tspan x="0" dy="0">Komputer staf kini dikuasai</tspan>
+        <tspan x="0" dy="20">peretas. Musuh bersiap</tspan>
+        <tspan x="0" dy="20">merayap ke seluruh markas</tspan>
+        <tspan x="0" dy="20">mencari sasaran empuk.</tspan>
+      </text>
+
+      <!-- Bottom Tech Badge -->
+      <rect x="0" y="195" width="260" height="90" rx="8" fill="#0b0f17" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="220" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#94a3b8">REALITAS KEAMANAN:</text>
+      <text x="12" y="240" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f87171">Antivirus biasa tidak tahu</text>
+      <text x="12" y="258" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">karena penyerang memakai</text>
+      <text x="12" y="274" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">kredensial resmi prajurit!</text>
+    </g>
+  </g>
+
+  <!-- ==================== TAHAP 2 ==================== -->
+  <g transform="translate(470, 240)">
+    <!-- Card Container -->
+    <rect x="0" y="0" width="310" height="660" rx="16" fill="url(#card-grad)" stroke="#334155" stroke-width="1.5" filter="url(#card-shadow)"/>
+    <rect x="0" y="0" width="310" height="6" rx="3" fill="url(#accent-amber)"/>
+
+    <!-- Step Badge Circle -->
+    <circle cx="155" cy="50" r="32" fill="#1e293b" stroke="#f59e0b" stroke-width="3" filter="url(#glow-cyan)"/>
+    <text x="155" y="58" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="900" fill="#f8fafc" text-anchor="middle">02</text>
+
+    <!-- Metaphor Tag -->
+    <rect x="45" y="100" width="220" height="26" rx="13" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-width="1"/>
+    <text x="155" y="117" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#fcd34d" text-anchor="middle" letter-spacing="1">
+      ANALOGI: TANK KAYU PALSU
+    </text>
+
+    <!-- Card Title -->
+    <text x="155" y="156" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">
+      Ranjau Umpan Aktif
+    </text>
+    <text x="155" y="178" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#f59e0b" text-anchor="middle">
+      (Decoy Fasilitas OT Pangkalan)
+    </text>
+
+    <!-- Illustration / Visual Symbol -->
+    <g transform="translate(85, 205)">
+      <rect x="0" y="0" width="140" height="95" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+      <!-- Genset / Radar icon -->
+      <circle cx="70" cy="42" r="24" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+      <path d="M 70 28 L 70 42 L 82 48" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+      <rect x="45" y="74" width="50" height="12" rx="4" fill="#f59e0b" fill-opacity="0.3"/>
+      <text x="70" y="83" font-family="monospace" font-size="9" font-weight="700" fill="#fde68a" text-anchor="middle">380V FAKE</text>
+    </g>
+
+    <!-- Non-Tech Explanation (Storytelling) -->
+    <g transform="translate(25, 330)">
+      <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Kisah di Dunia Nyata:</text>
+      <text x="0" y="24" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1">
+        <tspan x="0" dy="0">NEXUS-TRAP memasang</tspan>
+        <tspan x="0" dy="20">"Genset Palsu" dan "Sistem</tspan>
+        <tspan x="0" dy="20">Radar Bohongan" di jaringan.</tspan>
+      </text>
+
+      <text x="0" y="105" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1">
+        <tspan x="0" dy="0">Musuh mengira menemukan</tspan>
+        <tspan x="0" dy="20">alat asli dan memencetnya.</tspan>
+        <tspan x="0" dy="20">Umpan membalas data palsu</tspan>
+        <tspan x="0" dy="20">agar musuh tidak curiga.</tspan>
+      </text>
+
+      <!-- Bottom Tech Badge -->
+      <rect x="0" y="195" width="260" height="90" rx="8" fill="#0b0f17" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="220" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#94a3b8">EFEK TAKTIS MILITER:</text>
+      <text x="12" y="240" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fbbf24">Meja komando seketika</text>
+      <text x="12" y="258" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fbbf24">SIAGA KUNING!</text>
+      <text x="12" y="274" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Nol positif palsu (100% musuh).</text>
+    </g>
+  </g>
+
+  <!-- ==================== TAHAP 3 ==================== -->
+  <g transform="translate(840, 240)">
+    <!-- Card Container -->
+    <rect x="0" y="0" width="310" height="660" rx="16" fill="url(#card-grad)" stroke="#334155" stroke-width="1.5" filter="url(#card-shadow)"/>
+    <rect x="0" y="0" width="310" height="6" rx="3" fill="url(#accent-purple)"/>
+
+    <!-- Step Badge Circle -->
+    <circle cx="155" cy="50" r="32" fill="#1e293b" stroke="#8b5cf6" stroke-width="3" filter="url(#glow-cyan)"/>
+    <text x="155" y="58" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="900" fill="#f8fafc" text-anchor="middle">03</text>
+
+    <!-- Metaphor Tag -->
+    <rect x="45" y="100" width="220" height="26" rx="13" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="155" y="117" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#c4b5fd" text-anchor="middle" letter-spacing="1">
+      ANALOGI: PERANGKAP LEM TIKUS
+    </text>
+
+    <!-- Card Title -->
+    <text x="155" y="156" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">
+      Pembekuan Terminal
+    </text>
+    <text x="155" y="178" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#a78bfa" text-anchor="middle">
+      (Active Sticky Tarpit)
+    </text>
+
+    <!-- Illustration / Visual Symbol -->
+    <g transform="translate(85, 205)">
+      <rect x="0" y="0" width="140" height="95" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+      <!-- Snowflake / Freeze Lock -->
+      <circle cx="70" cy="45" r="22" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+      <path d="M 70 28 L 70 62 M 53 45 L 87 45 M 58 33 L 82 57 M 58 57 L 82 33" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round"/>
+      <rect x="30" y="74" width="80" height="12" rx="4" fill="#8b5cf6" fill-opacity="0.3"/>
+      <text x="70" y="83" font-family="monospace" font-size="9" font-weight="700" fill="#c4b5fd" text-anchor="middle">SPEED: 0 REQ/S</text>
+    </g>
+
+    <!-- Non-Tech Explanation (Storytelling) -->
+    <g transform="translate(25, 330)">
+      <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Kisah di Dunia Nyata:</text>
+      <text x="0" y="24" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1">
+        <tspan x="0" dy="0">Saat musuh menggunakan</tspan>
+        <tspan x="0" dy="20">alat pemindai cepat untuk</tspan>
+        <tspan x="0" dy="20">mencari seluruh data markas,</tspan>
+        <tspan x="0" dy="20">lantai dipasangi lem lengket.</tspan>
+      </text>
+
+      <text x="0" y="105" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1">
+        <tspan x="0" dy="0">NEXUS-TRAP menahan tiap</tspan>
+        <tspan x="0" dy="20">koneksi seberat 1 tetes air.</tspan>
+        <tspan x="0" dy="20">Layar laptop peretas seketika</tspan>
+        <tspan x="0" dy="20">hang dan beku total!</tspan>
+      </text>
+
+      <!-- Bottom Tech Badge -->
+      <rect x="0" y="195" width="260" height="90" rx="8" fill="#0b0f17" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="220" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#94a3b8">KEBAL VPN &amp; PROXY:</text>
+      <text x="12" y="240" font-family="'Segoe UI', sans-serif" font-size="12" fill="#c4b5fd">Sekalipun peretas pakai VPN,</text>
+      <text x="12" y="258" font-family="'Segoe UI', sans-serif" font-size="12" fill="#c4b5fd">tunnel VPN musuh habis</text>
+      <text x="12" y="274" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">tersedot hingga crash!</text>
+    </g>
+  </g>
+
+  <!-- ==================== TAHAP 4 ==================== -->
+  <g transform="translate(1210, 240)">
+    <!-- Card Container -->
+    <rect x="0" y="0" width="310" height="660" rx="16" fill="url(#card-grad)" stroke="#334155" stroke-width="1.5" filter="url(#card-shadow)"/>
+    <rect x="0" y="0" width="310" height="6" rx="3" fill="url(#accent-cyan)"/>
+
+    <!-- Step Badge Circle -->
+    <circle cx="155" cy="50" r="32" fill="#1e293b" stroke="#06b6d4" stroke-width="3" filter="url(#glow-cyan)"/>
+    <text x="155" y="58" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="900" fill="#f8fafc" text-anchor="middle">04</text>
+
+    <!-- Metaphor Tag -->
+    <rect x="45" y="100" width="220" height="26" rx="13" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-width="1"/>
+    <text x="155" y="117" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#67e8f9" text-anchor="middle" letter-spacing="1">
+      ANALOGI: KOPER DENGAN GPS
+    </text>
+
+    <!-- Card Title -->
+    <text x="155" y="156" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">
+      Pelacak GPS Klandestin
+    </text>
+    <text x="155" y="178" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#06b6d4" text-anchor="middle">
+      (Canary Token Biner DOCX)
+    </text>
+
+    <!-- Illustration / Visual Symbol -->
+    <g transform="translate(85, 205)">
+      <rect x="0" y="0" width="140" height="95" rx="8" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5"/>
+      <!-- Document with Radio Beacon -->
+      <path d="M 45 20 L 80 20 L 95 35 L 95 75 L 45 75 Z" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+      <path d="M 80 20 L 80 35 L 95 35" fill="none" stroke="#06b6d4" stroke-width="2"/>
+      <!-- Radio wave arcs -->
+      <path d="M 70 50 A 10 10 0 0 1 70 30" fill="none" stroke="#67e8f9" stroke-width="2"/>
+      <path d="M 70 60 A 20 20 0 0 1 70 20" fill="none" stroke="#67e8f9" stroke-width="2"/>
+      <circle cx="70" cy="40" r="3" fill="#ef4444"/>
+    </g>
+
+    <!-- Non-Tech Explanation (Storytelling) -->
+    <g transform="translate(25, 330)">
+      <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Kisah di Dunia Nyata:</text>
+      <text x="0" y="24" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1">
+        <tspan x="0" dy="0">Musuh berhasil mencuri file</tspan>
+        <tspan x="0" dy="20">"Rahasia Dislokasi Pasukan".</tspan>
+        <tspan x="0" dy="20">Mereka membawanya kabur ke</tspan>
+        <tspan x="0" dy="20">sarang komputer luar.</tspan>
+      </text>
+
+      <text x="0" y="105" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1">
+        <tspan x="0" dy="0">Begitu file dibuka di Word,</tspan>
+        <tspan x="0" dy="20">pelacak tersembunyi meledak!</tspan>
+        <tspan x="0" dy="20">Suar rahasia membocorkan</tspan>
+        <tspan x="0" dy="20">identitas sarang musuh.</tspan>
+      </text>
+
+      <!-- Bottom Tech Badge -->
+      <rect x="0" y="195" width="260" height="90" rx="8" fill="#0b0f17" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="220" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#94a3b8">BOCOR MESKI OFFLINE:</text>
+      <text x="12" y="240" font-family="'Segoe UI', sans-serif" font-size="12" fill="#67e8f9">File bisa tidur berbulan-bulan.</text>
+      <text x="12" y="258" font-family="'Segoe UI', sans-serif" font-size="12" fill="#67e8f9">Saat laptop musuh online,</text>
+      <text x="12" y="274" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">suar seketika menembak!</text>
+    </g>
+  </g>
+
+  <!-- ==================== TAHAP 5 ==================== -->
+  <g transform="translate(1580, 240)">
+    <!-- Card Container -->
+    <rect x="0" y="0" width="310" height="660" rx="16" fill="url(#card-grad)" stroke="#334155" stroke-width="1.5" filter="url(#card-shadow)"/>
+    <rect x="0" y="0" width="310" height="6" rx="3" fill="url(#accent-emerald)"/>
+
+    <!-- Step Badge Circle -->
+    <circle cx="155" cy="50" r="32" fill="#1e293b" stroke="#10b981" stroke-width="3" filter="url(#glow-emerald)"/>
+    <text x="155" y="58" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="900" fill="#f8fafc" text-anchor="middle">05</text>
+
+    <!-- Metaphor Tag -->
+    <rect x="45" y="100" width="220" height="26" rx="13" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1"/>
+    <text x="155" y="117" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#6ee7b7" text-anchor="middle" letter-spacing="1">
+      ANALOGI: PINTU BAJA KEDAP
+    </text>
+
+    <!-- Card Title -->
+    <text x="155" y="156" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">
+      Karantina Kilat &amp; SITREP
+    </text>
+    <text x="155" y="178" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#10b981" text-anchor="middle">
+      (1-Klik Isolasi &amp; Laporan Mabesad)
+    </text>
+
+    <!-- Illustration / Visual Symbol -->
+    <g transform="translate(85, 205)">
+      <rect x="0" y="0" width="140" height="95" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+      <!-- Shield & Checkmark -->
+      <path d="M 70 20 L 105 32 L 105 55 C 105 75 70 85 70 85 C 70 85 35 75 35 55 L 35 32 Z" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+      <path d="M 55 50 L 65 60 L 85 40" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Non-Tech Explanation (Storytelling) -->
+    <g transform="translate(25, 330)">
+      <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Kisah di Dunia Nyata:</text>
+      <text x="0" y="24" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1">
+        <tspan x="0" dy="0">Sirene SIAGA MERAH menyala.</tspan>
+        <tspan x="0" dy="20">Komandan cukup menekan</tspan>
+        <tspan x="0" dy="20">1 tombol di layar proyektor:</tspan>
+        <tspan x="0" dy="20">[ISOLASI WORKSTATION].</tspan>
+      </text>
+
+      <text x="0" y="105" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1">
+        <tspan x="0" dy="0">Pintu kabel komputer korban</tspan>
+        <tspan x="0" dy="20">putus seketika dari markas!</tspan>
+        <tspan x="0" dy="20">Laporan resmi berstempel</tspan>
+        <tspan x="0" dy="20">SHA-256 tercetak dalam 1 detik.</tspan>
+      </text>
+
+      <!-- Bottom Tech Badge -->
+      <rect x="0" y="195" width="260" height="90" rx="8" fill="#0b0f17" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="220" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#94a3b8">HASIL AKHIR OPERASI:</text>
+      <text x="12" y="240" font-family="'Segoe UI', sans-serif" font-size="12" fill="#34d399">Pangkalan 100% selamat.</text>
+      <text x="12" y="258" font-family="'Segoe UI', sans-serif" font-size="12" fill="#34d399">Musuh gigit jari membawa</text>
+      <text x="12" y="274" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">dokumen palsu beracun!</text>
+    </g>
+  </g>
+
+  <!-- FOOTER BAR -->
+  <g transform="translate(100, 940)">
+    <rect x="0" y="0" width="1720" height="80" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+    <!-- Left badge -->
+    <rect x="24" y="20" width="180" height="40" rx="6" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1"/>
+    <text x="114" y="45" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="800" fill="#10b981" text-anchor="middle">
+      KESIMPULAN EKSEKUTIF
+    </text>
+    <!-- Executive Text -->
+    <text x="225" y="36" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#f8fafc">
+      NEXUS-TRAP BUKAN DINDING PASIF, MELAINKAN LADANG RANJAU CERDAS:
+    </text>
+    <text x="225" y="56" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">
+      Musuh dibiarkan merasa berhasil menyusup, namun yang mereka sentuh hanyalah jebakan yang menghabiskan sumber daya mereka dan melacak identitas fisik sarang mereka.
+    </text>
+  </g>
+</svg>

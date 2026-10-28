@@ -1,0 +1,269 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080e"/>
+      <stop offset="50%" stop-color="#09101a"/>
+      <stop offset="100%" stop-color="#060a12"/>
+    </linearGradient>
+    <linearGradient id="card3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <filter id="shadow3" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg3)"/>
+
+  <!-- Tactical Grid -->
+  <g opacity="0.05" stroke="#38bdf8" stroke-width="1">
+    <path d="M 0 120 L 1920 120 M 0 240 L 1920 240 M 0 360 L 1920 360 M 0 480 L 1920 480 M 0 600 L 1920 600 M 0 720 L 1920 720 M 0 840 L 1920 840 M 0 960 L 1920 960"/>
+    <path d="M 240 0 L 240 1080 M 480 0 L 480 1080 M 720 0 L 720 1080 M 960 0 L 960 1080 M 1200 0 L 1200 1080 M 1440 0 L 1440 1080 M 1680 0 L 1680 1080"/>
+  </g>
+
+  <!-- HEADER -->
+  <g transform="translate(100, 60)">
+    <rect x="0" y="0" width="48" height="48" rx="8" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1.5"/>
+    <text x="24" y="32" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="900" fill="#10b981" text-anchor="middle">★</text>
+    <text x="64" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#10b981" letter-spacing="2">
+      DOKTRIN &amp; INOVASI SOLUSI // PUSSIBERAD TNI AD
+    </text>
+    <text x="64" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" fill="#f8fafc" letter-spacing="0.5">
+      Taktik "Lonceng Penyerang" &amp; "Stempel Kriptografis Pengkhianat"
+    </text>
+    <text x="64" y="82" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" fill="#94a3b8">
+      Membalikkan Asimetri Perang Siber: Menjebak Spionase Luar dan Membongkar Oknum Internal yang Berkhianat
+    </text>
+  </g>
+
+  <!-- 3 LARGE HORIZONTAL STRATEGIC PILLARS -->
+
+  <!-- PILAR 1: MEMASANG LONCENG (TRIPWIRE ASIMETRIS) -->
+  <g transform="translate(100, 190)">
+    <rect width="545" height="730" rx="14" fill="url(#card3)" stroke="#10b981" stroke-width="1.5" filter="url(#shadow3)"/>
+    <rect x="0" y="0" width="545" height="6" rx="3" fill="#10b981"/>
+
+    <g transform="translate(30, 35)">
+      <!-- Badge -->
+      <rect x="0" y="0" width="220" height="28" rx="4" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1"/>
+      <text x="110" y="19" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#6ee7b7" text-anchor="middle" letter-spacing="1">
+        KONSEP 1: ASYMMETRIC TRIPWIRE
+      </text>
+
+      <text x="0" y="62" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#f8fafc">
+        Memasang Lonceng pada Lawan
+      </text>
+      <text x="0" y="88" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#10b981">
+        (Belling the Cat - Deteksi Dini Seketika)
+      </text>
+
+      <g transform="translate(0, 120)">
+        <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1" width="485">
+          <tspan x="0" dy="0" font-weight="700" fill="#38bdf8">1. Pembalikan Asimetri Perang:</tspan>
+          <tspan x="0" dy="22">• Sistem lama: Penyerang hanya perlu sukses 1 kali,</tspan>
+          <tspan x="0" dy="20">  sedangkan pertahanan harus siaga 100% tiap hari.</tspan>
+          <tspan x="0" dy="20">• NEXUS-TRAP membalikkan aturan ini: Di pangkalan</tspan>
+          <tspan x="0" dy="20">  terpasang 64 ranjau umpan IT &amp; OT.</tspan>
+          <tspan x="0" dy="20">• Musuh harus menebak benar 100% aset asli.</tspan>
+          <tspan x="0" dy="20">  Sekali saja salah sentuh, LONCENG BERBUNYI!</tspan>
+
+          <tspan x="0" dy="40" font-weight="700" fill="#38bdf8">2. Respon Akustik &amp; Visual Instan:</tspan>
+          <tspan x="0" dy="22">• Begitu probe Modbus menyentuh Port 502 genset palsu,</tspan>
+          <tspan x="0" dy="20">  nada siaga Web Audio API menyalak di meja komando.</tspan>
+          <tspan x="0" dy="20">• Meja komando berpindah ke SIAGA KUNING dalam 0 detik.</tspan>
+
+          <tspan x="0" dy="40" font-weight="700" fill="#38bdf8">3. Akurasi 100% Tanpa Kebisingan:</tspan>
+          <tspan x="0" dy="22">• Aset umpan tidak memiliki fungsi bisnis dinas.</tspan>
+          <tspan x="0" dy="20">• Siapa pun yang menyentuh, 100% dipastikan MUSUH.</tspan>
+          <tspan x="0" dy="20">• Bebas dari krisis Alert Fatigue yang melumpuhkan!</tspan>
+        </text>
+      </g>
+
+      <!-- Tactical Micro-Box: Asymmetric Ratio -->
+      <g transform="translate(0, 480)">
+        <rect width="485" height="175" rx="8" fill="#07130e" stroke="#10b981" stroke-width="1"/>
+        <text x="16" y="24" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="800" fill="#6ee7b7" letter-spacing="1">
+          RASIO ASIMETRI RANJAU PERTAHANAN
+        </text>
+        <g transform="translate(16, 40)">
+          <rect width="215" height="42" rx="4" fill="#0e231b" stroke="#10b981" stroke-width="0.8"/>
+          <text x="107" y="18" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="700" fill="#a7f3d0" text-anchor="middle">64 SIMPUL RANJAU AKTIF</text>
+          <text x="107" y="32" font-family="'Segoe UI', sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">Modbus, SCADA, Web, Sisfopers</text>
+        </g>
+        <g transform="translate(250, 40)">
+          <rect width="215" height="42" rx="4" fill="#1b120c" stroke="#f59e0b" stroke-width="0.8"/>
+          <text x="107" y="18" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">1 SIMPUL PLC FISIK VITAL</text>
+          <text x="107" y="32" font-family="'Segoe UI', sans-serif" font-size="9" fill="#f59e0b" text-anchor="middle">Terlindungi di balik 64 tiruan</text>
+        </g>
+        <text x="16" y="112" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#f8fafc">
+          Peluang Tersandung Ranjau: 98.4%
+        </text>
+        <text x="16" y="132" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">
+          Waktu Respon Sirene Meja Komando: &lt; 0.1 Detik Seketika.
+        </text>
+        <text x="16" y="152" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="600" fill="#38bdf8">
+          "Musuh harus 100% benar; Pertahanan hanya butuh musuh salah 1 kali."
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PILAR 2: MEMBERIKAN STEMPEL (FORENSIC DYE-PACK) -->
+  <g transform="translate(685, 190)">
+    <rect width="545" height="730" rx="14" fill="url(#card3)" stroke="#f59e0b" stroke-width="1.5" filter="url(#shadow3)"/>
+    <rect x="0" y="0" width="545" height="6" rx="3" fill="#f59e0b"/>
+
+    <g transform="translate(30, 35)">
+      <!-- Badge -->
+      <rect x="0" y="0" width="220" height="28" rx="4" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-width="1"/>
+      <text x="110" y="19" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#fde68a" text-anchor="middle" letter-spacing="1">
+        KONSEP 2: DIGITAL DYE-PACK
+      </text>
+
+      <text x="0" y="62" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#f8fafc">
+        Stempel Forensik Pengkhianat
+      </text>
+      <text x="0" y="88" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#f59e0b">
+        (Canary Token Tracking &amp; Atribusi Sarang)
+      </text>
+
+      <g transform="translate(0, 120)">
+        <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1" width="485">
+          <tspan x="0" dy="0" font-weight="700" fill="#38bdf8">1. Melacak Spionase &amp; Orang Dalam:</tspan>
+          <tspan x="0" dy="22">• Bagaimana jika file dicuri oleh pengkhianat internal</tspan>
+          <tspan x="0" dy="20">  lalu dibawa kabur menggunakan flashdisk?</tspan>
+          <tspan x="0" dy="20">• Setiap dokumen rahasia umpan disisipi suar klandestin</tspan>
+          <tspan x="0" dy="20">  (OpenXML DNS &amp; HTTP Web Beacon).</tspan>
+
+          <tspan x="0" dy="40" font-weight="700" fill="#38bdf8">2. Meledak di Luar Jaringan (Sleep-to-Fire):</tspan>
+          <tspan x="0" dy="22">• Berkas bisa tidur berbulan-bulan di laptop offline.</tspan>
+          <tspan x="0" dy="20">• Saat pengkhianat atau peretas membuka berkas di</tspan>
+          <tspan x="0" dy="20">  lingkungan luar yang terhubung internet:</tspan>
+          <tspan x="0" dy="20">  SUAR MELEDAK MEMBOCORKAN IDENTITAS SARANG!</tspan>
+
+          <tspan x="0" dy="40" font-weight="700" fill="#38bdf8">3. Bukti Peradilan Militer (POMAD):</tspan>
+          <tspan x="0" dy="22">• Menangkap: IP Publik, ISP, JA4 Signature, dan</tspan>
+          <tspan x="0" dy="20">  Hardware GPU Silicon Hash perangkat pembuka.</tspan>
+          <tspan x="0" dy="20">• Ditandatangani Segel SHA-256 untuk bukti sidang!</tspan>
+        </text>
+      </g>
+
+      <!-- Tactical Micro-Box: Sleep-to-Fire Flow -->
+      <g transform="translate(0, 480)">
+        <rect width="485" height="175" rx="8" fill="#180e05" stroke="#f59e0b" stroke-width="1"/>
+        <text x="16" y="24" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="800" fill="#fde68a" letter-spacing="1">
+          ALUR DETONASI KLANDESTIN (SLEEP-TO-FIRE)
+        </text>
+        <!-- 4 Step Mini Pipeline -->
+        <g transform="translate(16, 42)">
+          <rect x="0" y="0" width="102" height="40" rx="4" fill="#281708" stroke="#f59e0b" stroke-width="0.8"/>
+          <text x="51" y="16" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#fde68a" text-anchor="middle">1. FILE DICURI</text>
+          <text x="51" y="30" font-family="'Segoe UI', sans-serif" font-size="8" fill="#cbd5e1" text-anchor="middle">USB / Intranet</text>
+
+          <text x="110" y="24" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b" text-anchor="middle">→</text>
+
+          <rect x="118" y="0" width="102" height="40" rx="4" fill="#281708" stroke="#f59e0b" stroke-width="0.8"/>
+          <text x="169" y="16" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#fde68a" text-anchor="middle">2. TIDUR OFFLINE</text>
+          <text x="169" y="30" font-family="'Segoe UI', sans-serif" font-size="8" fill="#cbd5e1" text-anchor="middle">Zero-Detection</text>
+
+          <text x="228" y="24" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b" text-anchor="middle">→</text>
+
+          <rect x="236" y="0" width="102" height="40" rx="4" fill="#281708" stroke="#f59e0b" stroke-width="0.8"/>
+          <text x="287" y="16" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#fde68a" text-anchor="middle">3. BUKA DI LUAR</text>
+          <text x="287" y="30" font-family="'Segoe UI', sans-serif" font-size="8" fill="#cbd5e1" text-anchor="middle">Koneksi Internet</text>
+
+          <text x="346" y="24" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b" text-anchor="middle">→</text>
+
+          <rect x="354" y="0" width="100" height="40" rx="4" fill="#3b0f14" stroke="#ef4444" stroke-width="1"/>
+          <text x="404" y="16" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="900" fill="#fca5a5" text-anchor="middle">4. SUAR MELEDAK</text>
+          <text x="404" y="30" font-family="'Segoe UI', sans-serif" font-size="8" fill="#f87171" text-anchor="middle">Kirim Koordinat</text>
+        </g>
+        <text x="16" y="112" font-family="'Segoe UI', sans-serif" font-size="11.5" font-weight="700" fill="#f8fafc">
+          Data Atribusi Tertangkap Seketika:
+        </text>
+        <text x="16" y="132" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#cbd5e1">
+          • IP Publik &amp; ISP Provider Musuh · Resolusi DNS Out-of-Band (UDP 53)
+        </text>
+        <text x="16" y="152" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#fde68a">
+          • L4/L7 Fingerprint JA4 &amp; Silicon GPU Hash (Bukti Sah Persidangan POMAD)
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PILAR 3: INOVASI BARU (STRATAGEM 25, ANTI-CRAWLER & SENTRAL BLACKLIST) -->
+  <g transform="translate(1270, 190)">
+    <rect width="550" height="730" rx="14" fill="url(#card3)" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow3)"/>
+    <rect x="0" y="0" width="550" height="6" rx="3" fill="#06b6d4"/>
+
+    <g transform="translate(30, 35)">
+      <!-- Badge -->
+      <rect x="0" y="0" width="240" height="28" rx="4" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-width="1"/>
+      <text x="120" y="19" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#67e8f9" text-anchor="middle" letter-spacing="1">
+        STRATAGEM 25 &amp; BLACKLIST
+      </text>
+
+      <text x="0" y="62" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#f8fafc">
+        Reflexive Control &amp; Blacklist
+      </text>
+      <text x="0" y="88" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#06b6d4">
+        (Menukar Besi Kayu Lapuk &amp; Diskriminasi Bot)
+      </text>
+
+      <g transform="translate(0, 120)">
+        <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="13.5" fill="#cbd5e1" width="490">
+          <tspan x="0" dy="0" font-weight="700" fill="#38bdf8">1. Stratagem 25 (Respon 200 OK Palsu):</tspan>
+          <tspan x="0" dy="22">• Jangan beri musuh error 403/404 yang membocorkan</tspan>
+          <tspan x="0" dy="20">  adanya sensor. Saat musuh mencoba reset sistem,</tspan>
+          <tspan x="0" dy="20">  sajikan respons SUKSES PALSU (200 OK)!</tspan>
+          <tspan x="0" dy="20">• Musuh mengira menang, koordinat masuk Blacklist.</tspan>
+
+          <tspan x="0" dy="40" font-weight="700" fill="#38bdf8">2. Diskriminasi Bot &amp; Anti-Spoofing FCrDNS:</tspan>
+          <tspan x="0" dy="22">• Bot legal (Googlebot) dipisahkan via robots.txt &amp;</tspan>
+          <tspan x="0" dy="20">  Reverse DNS sehingga tidak kena false alarm.</tspan>
+          <tspan x="0" dy="20">• Jika peretas memalsukan User-Agent Googlebot,</tspan>
+          <tspan x="0" dy="20">  terdeteksi sebagai MIMICRY ATTACK seketika!</tspan>
+
+          <tspan x="0" dy="40" font-weight="700" fill="#38bdf8">3. Sentral Blacklist &amp; Ekspor Firewall:</tspan>
+          <tspan x="0" dy="22">• Ekspor aturan blokir 1-klik (iptables &amp; netsh).</tspan>
+          <tspan x="0" dy="20">• Sinkronisasi otomatis ke seluruh jajaran Kodam</tspan>
+          <tspan x="0" dy="20">  untuk menutup akses peretas di skala nasional.</tspan>
+        </text>
+      </g>
+
+      <!-- Tactical Micro-Box: Feed Export Sample -->
+      <g transform="translate(0, 480)">
+        <rect width="490" height="175" rx="8" fill="#06161d" stroke="#06b6d4" stroke-width="1"/>
+        <text x="16" y="24" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="800" fill="#67e8f9" letter-spacing="1">
+          OUTPUT FEED ATURAN FIREWALL OTOMATIS (TERSEDIA)
+        </text>
+        <g transform="translate(16, 38)">
+          <rect width="458" height="64" rx="4" fill="#040b0f" stroke="#164e63" stroke-width="0.8"/>
+          <text font-family="'Consolas', monospace" font-size="9.5" fill="#38bdf8">
+            <tspan x="12" y="18"># Format iptables (Linux)</tspan>
+            <tspan x="12" y="34" fill="#67e8f9">iptables -A PUSSIBERAD_DROP -s 192.168.1.88 -j DROP</tspan>
+            <tspan x="12" y="50" fill="#94a3b8"># Format Windows: netsh advfirewall firewall add rule ...</tspan>
+          </text>
+        </g>
+        <text x="16" y="124" font-family="'Segoe UI', sans-serif" font-size="11.5" font-weight="700" fill="#f8fafc">
+          Sinkronisasi Otomatis Seluruh Kodim / Korem
+        </text>
+        <text x="16" y="144" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#cbd5e1">
+          <tspan x="16" dy="0">Sekali peretas tersandung di pangkalan manapun, seluruh rute militer</tspan>
+          <tspan x="16" dy="16">di nusantara langsung menutup pintu gerbang bagi peretas tersebut!</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Slide Footer Navigation Indicator -->
+  <g transform="translate(100, 970)">
+    <text x="0" y="15" font-family="'Segoe UI', sans-serif" font-size="12" fill="#64748b">
+      KCH-2026 // PUSSIBERAD TNI AD × CODEPOLITAN
+    </text>
+    <text x="1720" y="15" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#64748b" text-anchor="end">
+      SLIDE 03 / 07
+    </text>
+  </g>
+</svg>

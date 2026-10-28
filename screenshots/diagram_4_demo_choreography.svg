@@ -1,0 +1,270 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg-grad-4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a0f"/>
+      <stop offset="50%" stop-color="#0b111a"/>
+      <stop offset="100%" stop-color="#080c14"/>
+    </linearGradient>
+
+    <linearGradient id="card-command" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f1f1a"/>
+      <stop offset="100%" stop-color="#0a1412"/>
+    </linearGradient>
+
+    <linearGradient id="card-attacker" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1f1115"/>
+      <stop offset="100%" stop-color="#140a0d"/>
+    </linearGradient>
+
+    <linearGradient id="step-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+
+    <linearGradient id="step-amber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <linearGradient id="step-red" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+
+    <filter id="shadow-4" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Base Background -->
+  <rect width="1920" height="1080" fill="url(#bg-grad-4)"/>
+
+  <!-- Tactical Grid Lines -->
+  <g opacity="0.06" stroke="#38bdf8" stroke-width="1">
+    <path d="M 0 100 L 1920 100 M 0 200 L 1920 200 M 0 300 L 1920 300 M 0 400 L 1920 400 M 0 500 L 1920 500 M 0 600 L 1920 600 M 0 700 L 1920 700 M 0 800 L 1920 800 M 0 900 L 1920 900 M 0 1000 L 1920 1000"/>
+    <path d="M 200 0 L 200 1080 M 400 0 L 400 1080 M 600 0 L 600 1080 M 800 0 L 800 1080 M 1000 0 L 1000 1080 M 1200 0 L 1200 1080 M 1400 0 L 1400 1080 M 1600 0 L 1600 1080 M 1800 0 L 1800 1080"/>
+  </g>
+
+  <!-- HEADER -->
+  <g transform="translate(100, 50)">
+    <rect x="0" y="0" width="44" height="44" rx="8" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1.5"/>
+    <text x="22" y="28" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="900" fill="#10b981" text-anchor="middle">★</text>
+    <text x="58" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#10b981" letter-spacing="2">
+      SKENARIO PANGGUNG 3 MENIT // PUSSIBERAD TNI AD
+    </text>
+    <text x="58" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="900" fill="#f8fafc" letter-spacing="0.5">
+      Koreografi Live Demo: Split-Screen Pembekuan Terminal Lawan
+    </text>
+    <text x="58" y="74" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" fill="#94a3b8">
+      Sinkronisasi Real-Time antara Meja Komando C4ISR (Layar Kiri 60%) dan Terminal Serangan Musuh (Layar Kanan 40%)
+    </text>
+  </g>
+
+  <!-- SPLIT SCREEN LAYOUT -->
+
+  <!-- ==================== SISI KIRI (MEJA KOMANDO) ==================== -->
+  <g transform="translate(100, 160)">
+    <!-- Container Box -->
+    <rect x="0" y="0" width="820" height="780" rx="14" fill="url(#card-command)" stroke="#10b981" stroke-width="2" filter="url(#shadow-4)"/>
+
+    <!-- Window Top Header Bar -->
+    <rect x="0" y="0" width="820" height="52" rx="14" fill="#0d1f18"/>
+    <rect x="0" y="40" width="820" height="12" fill="#0d1f18"/>
+    <line x1="0" y1="52" x2="820" y2="52" stroke="#10b981" stroke-width="1" opacity="0.4"/>
+
+    <!-- Window Controls -->
+    <circle cx="28" cy="26" r="6" fill="#ef4444"/>
+    <circle cx="48" cy="26" r="6" fill="#f59e0b"/>
+    <circle cx="68" cy="26" r="6" fill="#10b981"/>
+
+    <text x="96" y="32" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="800" fill="#10b981" letter-spacing="1">
+      LAYAR KIRI: MEJA KOMANDO PUSSIBERAD (CHROME 1080P)
+    </text>
+    <rect x="680" y="14" width="115" height="24" rx="4" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1"/>
+    <text x="737" y="30" font-family="monospace" font-size="11" font-weight="700" fill="#34d399" text-anchor="middle">LIVE WEBSOCKET</text>
+
+    <!-- CONTENT CARDS (3 MINUTES) -->
+
+    <!-- [MENIT 1] -->
+    <g transform="translate(24, 76)">
+      <rect x="0" y="0" width="772" height="195" rx="10" fill="#0b1713" stroke="#059669" stroke-width="1.2"/>
+      <!-- Time Badge -->
+      <rect x="16" y="16" width="95" height="26" rx="4" fill="url(#step-amber)"/>
+      <text x="63" y="34" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">MENIT 01</text>
+      <text x="124" y="35" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="800" fill="#fde68a">
+        STATUS SIAGA HIJAU → BERUBAH SIAGA KUNING
+      </text>
+
+      <g transform="translate(16, 58)">
+        <text x="0" y="20" font-family="'Segoe UI', sans-serif" font-size="14" fill="#e2e8f0" font-weight="600">
+          • Audio Web Audio API membunyikan nada siaga rendah secara otomatis.
+        </text>
+        <text x="0" y="44" font-family="'Segoe UI', sans-serif" font-size="14" fill="#94a3b8">
+          • Simpul Ranajau Modbus (Port 502/5020) mendeteksi probe Function 0x03 pada fasilitas Genset Markas.
+        </text>
+        <text x="0" y="68" font-family="'Segoe UI', sans-serif" font-size="14" fill="#94a3b8">
+          • Live Radar Feed menampilkan log intervensi:
+          <tspan fill="#fbbf24" font-family="monospace"> [WARN] [OT_DECOY] Scanner IP 192.168.1.88 terintersepsi.</tspan>
+        </text>
+        <text x="0" y="94" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#10b981">
+          ✓ Hasil Taktis: Penyerang yakin genset asli telah ditemukan; posisi musuh terkunci di meja komando!
+        </text>
+      </g>
+    </g>
+
+    <!-- [MENIT 2] -->
+    <g transform="translate(24, 290)">
+      <rect x="0" y="0" width="772" height="195" rx="10" fill="#0b1713" stroke="#059669" stroke-width="1.2"/>
+      <!-- Time Badge -->
+      <rect x="16" y="16" width="95" height="26" rx="4" fill="url(#step-cyan)"/>
+      <text x="63" y="34" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">MENIT 02</text>
+      <text x="124" y="35" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="800" fill="#67e8f9">
+        SAKELAR TARPIT AKTIF: PENYERAPAN SOKET LAWAN
+      </text>
+
+      <g transform="translate(16, 58)">
+        <text x="0" y="20" font-family="'Segoe UI', sans-serif" font-size="14" fill="#e2e8f0" font-weight="600">
+          • Operator menyalakan tombol [AKTIFKAN TARPIT] di Action Console.
+        </text>
+        <text x="0" y="44" font-family="'Segoe UI', sans-serif" font-size="14" fill="#94a3b8">
+          • Mesin Tarpit mengecilkan TCP Window menjadi 1 byte per 15 detik pada seluruh permintaan musuh.
+        </text>
+        <text x="0" y="68" font-family="'Segoe UI', sans-serif" font-size="14" fill="#94a3b8">
+          • Counter metrik: <tspan fill="#38bdf8" font-weight="700">LOCKED THREADS</tspan> melesat dari 0 → 8 thread aktif tertawan.
+        </text>
+        <text x="0" y="94" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#10b981">
+          ✓ Hasil Taktis: Scanner musuh diserap tanpa menghabiskan CPU dan RAM server pertahanan kita.
+        </text>
+      </g>
+    </g>
+
+    <!-- [MENIT 3] -->
+    <g transform="translate(24, 504)">
+      <rect x="0" y="0" width="772" height="235" rx="10" fill="#170c10" stroke="#ef4444" stroke-width="1.5"/>
+      <!-- Time Badge -->
+      <rect x="16" y="16" width="95" height="26" rx="4" fill="url(#step-red)"/>
+      <text x="63" y="34" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">MENIT 03</text>
+      <text x="124" y="35" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="800" fill="#fca5a5">
+        SIAGA 1 MERAH MELEDAK: ATRIBUSI VM &amp; ISOLASI 1-KLIK
+      </text>
+
+      <g transform="translate(16, 58)">
+        <text x="0" y="20" font-family="'Segoe UI', sans-serif" font-size="14" fill="#f87171" font-weight="700">
+          • Sirene Darurat SIAGA 1 MERAH berbunyi! Peta Kodam Jaya berkedip merah terang.
+        </text>
+        <text x="0" y="44" font-family="'Segoe UI', sans-serif" font-size="14" fill="#cbd5e1">
+          • Suar DNS Canary (UDP 5053) menembus keluar isolasi sandbox peretas.
+        </text>
+        <text x="0" y="68" font-family="'Segoe UI', sans-serif" font-size="14" fill="#cbd5e1">
+          • Adversary Dossier terisi: IP <tspan font-family="monospace" fill="#fca5a5">192.168.1.88</tspan>, JA4 CLI Hash, GPU Silicon Hash terkunci.
+        </text>
+        <text x="0" y="92" font-family="'Segoe UI', sans-serif" font-size="14" fill="#e2e8f0" font-weight="600">
+          • Komandan menekan tombol <tspan fill="#ef4444" font-weight="800">[ISOLASI HOST TERINFEKSI]</tspan> → Firewall kernel memutus workstation!
+        </text>
+        <text x="0" y="120" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="800" fill="#34d399">
+          ★ KLIMAKS: Tekan [GENERATE SITREP] → Laporan intelijen berstempel SHA-256 tercetak dalam 1 detik!
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== SISI KANAN (TERMINAL PENYERANG) ==================== -->
+  <g transform="translate(960, 160)">
+    <!-- Container Box -->
+    <rect x="0" y="0" width="860" height="780" rx="14" fill="url(#card-attacker)" stroke="#ef4444" stroke-width="2" filter="url(#shadow-4)"/>
+
+    <!-- Window Top Header Bar -->
+    <rect x="0" y="0" width="860" height="52" rx="14" fill="#1f0a0e"/>
+    <rect x="0" y="40" width="860" height="12" fill="#1f0a0e"/>
+    <line x1="0" y1="52" x2="860" y2="52" stroke="#ef4444" stroke-width="1" opacity="0.4"/>
+
+    <!-- Window Controls -->
+    <circle cx="28" cy="26" r="6" fill="#ef4444"/>
+    <circle cx="48" cy="26" r="6" fill="#f59e0b"/>
+    <circle cx="68" cy="26" r="6" fill="#10b981"/>
+
+    <text x="96" y="32" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="800" fill="#ef4444" letter-spacing="1">
+      LAYAR KANAN: TERMINAL PENYERANG / VM (KALI LINUX &amp; WSL)
+    </text>
+    <rect x="710" y="14" width="125" height="24" rx="4" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" stroke-width="1"/>
+    <text x="772" y="30" font-family="monospace" font-size="11" font-weight="700" fill="#fca5a5" text-anchor="middle">ROOT CONSOLE</text>
+
+    <!-- CONTENT CARDS (3 MINUTES) -->
+
+    <!-- [MENIT 1] -->
+    <g transform="translate(24, 76)">
+      <rect x="0" y="0" width="812" height="195" rx="10" fill="#080305" stroke="#991b1b" stroke-width="1.2"/>
+      <text x="20" y="28" font-family="monospace" font-size="13" font-weight="700" fill="#f59e0b">
+        root@adversary:~# python3 01_recon_modbus.py 192.168.1.9 5020
+      </text>
+
+      <g transform="translate(20, 50)" font-family="monospace" font-size="12">
+        <text x="0" y="0" fill="#94a3b8">[+] Koneksi TCP Handshake ke Port 5020 BERHASIL.</text>
+        <text x="0" y="18" fill="#94a3b8">[>] Mengirim Probe Modbus Read Holding Registers (Function 0x03)...</text>
+        <text x="0" y="36" fill="#38bdf8">[+] Respons Modbus Diterima (Function 0x03, Length: 6 bytes):</text>
+        <text x="20" y="54" fill="#34d399">- Register 40001 (Tegangan Genset) : 380 V</text>
+        <text x="20" y="70" fill="#34d399">- Register 40002 (Frekuensi Daya)  : 50 Hz</text>
+        <text x="20" y="86" fill="#34d399">- Register 40003 (Level Tangki BBM): 85 %</text>
+        <text x="0" y="106" fill="#fde68a" font-weight="700">
+          [!] Target dikonfirmasi sebagai PLC Fasilitas Genset Pangkalan! (PENYERANG TERTIPU)
+        </text>
+      </g>
+    </g>
+
+    <!-- [MENIT 2] -->
+    <g transform="translate(24, 290)">
+      <rect x="0" y="0" width="812" height="195" rx="10" fill="#080305" stroke="#991b1b" stroke-width="1.2"/>
+      <text x="20" y="28" font-family="monospace" font-size="13" font-weight="700" fill="#38bdf8">
+        root@adversary:~# gobuster dir -u http://192.168.1.9:8000/decoy-portal/api -w wordlist.txt -t 4
+      </text>
+
+      <g transform="translate(20, 50)" font-family="monospace" font-size="12">
+        <text x="0" y="0" fill="#94a3b8">===============================================================</text>
+        <text x="0" y="16" fill="#cbd5e1">Starting gobuster in directory enumeration mode...</text>
+        <text x="0" y="34" fill="#ef4444" font-weight="700">
+          [!] PROGRES MEMBEKU: [====&gt;.....................] 1/8 (SPEED: 0.00 REQ/SEC)
+        </text>
+        <text x="0" y="52" fill="#f87171">
+          Error: context deadline exceeded (Client.Timeout while reading body)
+        </text>
+        <text x="0" y="70" fill="#94a3b8">===============================================================</text>
+        <text x="0" y="92" fill="#fca5a5" font-weight="700">
+          [!] TERMINAL PENYERANG HANG &amp; FREEZE TOTAL! Thread terkunci di lem perekat Tarpit!
+        </text>
+      </g>
+    </g>
+
+    <!-- [MENIT 3] -->
+    <g transform="translate(24, 504)">
+      <rect x="0" y="0" width="812" height="235" rx="10" fill="#080305" stroke="#dc2626" stroke-width="1.5"/>
+      <text x="20" y="28" font-family="monospace" font-size="13" font-weight="700" fill="#ef4444">
+        root@adversary:~# ping 192.168.1.9  # [MONITOR DETAK KONEKSI INTRANET]
+      </text>
+
+      <g transform="translate(20, 50)" font-family="monospace" font-size="12">
+        <text x="0" y="0" fill="#34d399">64 bytes from 192.168.1.9: icmp_seq=1 ttl=128 time=0.45 ms  (SEBELUM ISOLASI)</text>
+        <text x="0" y="18" fill="#34d399">64 bytes from 192.168.1.9: icmp_seq=2 ttl=128 time=0.38 ms  (KONEKSI MASIH HIDUP)</text>
+        <text x="0" y="40" fill="#fbbf24" font-weight="700">
+          &gt;&gt; [KOMANDAN MENEKAN TOMBOL ISOLASI DI MEJA KOMANDO...]
+        </text>
+        <text x="0" y="62" fill="#ef4444" font-weight="700">From 192.168.1.88 icmp_seq=3 Destination Host Unreachable</text>
+        <text x="0" y="80" fill="#ef4444" font-weight="700">Request timed out.</text>
+        <text x="0" y="98" fill="#ef4444" font-weight="700">Request timed out.</text>
+        <text x="0" y="122" fill="#f87171" font-weight="800">
+          [-] KONEKSI PENYERANG PUTUS TOTAL! WORKSTATION TERISOLASI SECARA FISIK DARI INTRANET!
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- BOTTOM STRIP FOOTER -->
+  <g transform="translate(100, 960)">
+    <rect x="0" y="0" width="1720" height="60" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+    <text x="24" y="35" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">
+      BUKTI EMPIRIS PADA JURI:
+    </text>
+    <text x="210" y="35" font-family="'Segoe UI', sans-serif" font-size="13" fill="#cbd5e1">
+      Dewan juri melihat langsung di layar kiri reaksi pertahanan C4ISR yang elegan, dan di layar kanan kehancuran instrumen peretas secara sinkron.
+    </text>
+  </g>
+</svg>

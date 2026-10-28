@@ -1,0 +1,23 @@
+================================================================================
+KLASIFIKASI: SANGAT RAHASIA // MILITARY CONFIDENTIAL
+SATUAN     : INFOLAHTA KODAM JAYA / KOREM 051
+DOKUMEN    : DAFTAR SANDI AKSES TELEMETRI GENSET & RADAR PANGKALAN 2026
+================================================================================
+PERINGATAN: Berkas ini hanya diperuntukkan bagi Perwira Piket dan Teknisi Listrik
+Pangkalan. Dilarang menyalin atau mendistribusikan ke luar jaringan intranet markas.
+
+1. GENSET UTAMA MARKAS (KODAM JAYA PLC-01)
+   - IP Target      : 192.168.1.50
+   - Protokol Akses : Modbus TCP (Port 502) / HTTP Web-SCADA (Port 8080)
+   - Akun Pengawas  : adm_genset_komando
+   - Kredensial     : P@ssw0rd_KCH_Jaya2026!
+   - Register Holding: 40001 (Tegangan 380V), 40002 (Frekuensi 50Hz)
+
+2. TANGKI LOGISTIK BBM AVTUR / SOLAR ALUTSISTA
+   - IP Target      : 192.168.1.52
+   - Sensor Telemetri: Level Bahan Bakar (Register 40003)
+   - Ambang Bahaya  : < 25% (Pemicu Alarm Siaga 1 Logistik)
+
+DOKUMEN INI DIAWASI OTOMATIS OLEH PROTOKOL KEAMANAN SIBER PUSSIBERAD
+[CANARY HONEY-TOKEN ID: HNY-CRED-9941B]
+================================================================================

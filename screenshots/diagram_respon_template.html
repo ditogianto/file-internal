@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>PROTOKOL RESPON &amp; NETRALISASI TAKTIS // NEXUS-TRAP</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: radial-gradient(circle at 80% 25%, #064e3b 0%, #080c13 55%, #030508 100%);
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      color: #f1f5f9;
+      padding: 50px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 20px;
+      position: relative;
+      z-index: 10;
+    }
+    .badge-green {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10b981;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      color: #34d399;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    h1 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      color: #ffffff;
+    }
+    h1 span { color: #10b981; }
+    .subtitle {
+      font-size: 15px;
+      color: #94a3b8;
+      margin-top: 4px;
+      font-family: sans-serif;
+    }
+    .defense-status {
+      background: #064e3b;
+      border: 1px solid #10b981;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #34d399;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dot-green { width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981; }
+
+    /* Timeline 5 Steps */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      margin: 35px 0;
+      position: relative;
+      z-index: 10;
+      flex: 1;
+    }
+    .step-card {
+      background: rgba(14, 21, 33, 0.85);
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .step-card::after {
+      content: '➔';
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #10b981;
+      font-weight: bold;
+      z-index: 20;
+    }
+    .step-card:last-child::after { content: ''; }
+
+    .s-tag {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+    .step-card:nth-child(1) .s-tag { color: #f59e0b; }
+    .step-card:nth-child(2) .s-tag { color: #f59e0b; }
+    .step-card:nth-child(3) .s-tag { color: #ef4444; }
+    .step-card:nth-child(4) .s-tag { color: #38bdf8; }
+    .step-card:nth-child(5) .s-tag { color: #10b981; }
+
+    .s-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #f8fafc;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .s-action {
+      font-size: 11px;
+      color: #38bdf8;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .s-desc {
+      font-family: sans-serif;
+      font-size: 12.5px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 12px;
+      border-radius: 6px;
+      border-left: 2px solid #10b981;
+      flex: 1;
+    }
+    .step-card:nth-child(1) .s-desc { border-left-color: #f59e0b; }
+    .step-card:nth-child(2) .s-desc { border-left-color: #f59e0b; }
+    .step-card:nth-child(3) .s-desc { border-left-color: #ef4444; }
+    .step-card:nth-child(4) .s-desc { border-left-color: #38bdf8; }
+    .step-card:nth-child(5) .s-desc { border-left-color: #10b981; }
+
+    .s-meta {
+      font-size: 11px;
+      font-family: monospace;
+      color: #34d399;
+      background: #04070c;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin-top: 12px;
+      border: 1px solid #143525;
+    }
+    .step-card:nth-child(1) .s-meta { color: #f59e0b; border-color: #3a280e; }
+    .step-card:nth-child(2) .s-meta { color: #f59e0b; border-color: #3a280e; }
+    .step-card:nth-child(3) .s-meta { color: #ef4444; border-color: #3f1414; }
+    .step-card:nth-child(4) .s-meta { color: #38bdf8; border-color: #0e2a3a; }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #1e293b;
+      padding-top: 18px;
+      font-size: 12px;
+      color: #64748b;
+      position: relative;
+      z-index: 10;
+    }
+    .footer b { color: #e2e8f0; }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <div class="header">
+    <div>
+      <div class="badge-green">★ PROTOKOL DEFENSIVE RED TEAM // PUSSIBERAD</div>
+      <h1>NEXUS-<span>TRAP</span> : RESPON &amp; NETRALISASI TAKTIS</h1>
+      <p class="subtitle">Membalikkan Beban Serangan: Dari Deteksi 0% False Positive Hingga Otomasi Berita Intelijen Militer</p>
+    </div>
+    <div class="defense-status">
+      <div class="dot-green"></div>
+      <span>STATUS: DOKTRIN AKTIF (NETRALISASI SUKSES)</span>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <!-- Step 1 -->
+    <div class="step-card">
+      <div>
+        <div class="s-tag">RESPON 01 : DECEPTION</div>
+        <div class="s-title">Intersepsi Umpan OT Modbus</div>
+        <div class="s-action">Efek: Siaga Kuning Menyala</div>
+        <div class="s-desc">
+          Ranjau Modbus Port 5020 menyerap probe Nmap penyerang. Menyajikan telemetri tiruan (380V/50Hz/BBM 85%). Musuh terkecoh mengira genset nyata, IP sumber tercatat.
+        </div>
+      </div>
+      <div class="s-meta">AKURASI: 100% (0% False Positives)</div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card">
+      <div>
+        <div class="s-tag">RESPON 02 : INTERDICTION</div>
+        <div class="s-title">Sticky Tarpit Crasher</div>
+        <div class="s-action">Efek: Freeze 0 req/sec</div>
+        <div class="s-desc">
+          Manipulasi TCP Zero-Window &amp; infinite chunk stream mengunci seluruh worker thread Gobuster penyerang. Terminal musuh <b>macet total (hang)</b> tanpa membebani server kita.
+        </div>
+      </div>
+      <div class="s-meta">STATUS: 50+ Threads Musuh Terkunci</div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card">
+      <div>
+        <div class="s-tag">RESPON 03 : ATTRIBUTION</div>
+        <div class="s-title">Suar DNS Canary Tembus VM</div>
+        <div class="s-action">Efek: Siaga 1 Merah Meledak</div>
+        <div class="s-desc">
+          Dokumen DOCX dibuka di VirtualBox penyerang. Suar UDP 5053 menembus isolasi keluar. Peta Kodam Jaya berkedip merah, profil GPU dan signature JA4 musuh terbongkar!
+        </div>
+      </div>
+      <div class="s-meta">BURONAN: GPU Hash &amp; JA4 Terkunci</div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card">
+      <div>
+        <div class="s-tag">RESPON 04 : QUARANTINE</div>
+        <div class="s-title">1-Click Host Isolation</div>
+        <div class="s-action">Efek: Ping Request Timed Out</div>
+        <div class="s-desc">
+          Komandan menekan <code>[ISOLASI HOST TERINFEKSI]</code>. Rute komputer penyusup (192.168.1.88) seketika diputus total via firewall. Subnet pangkalan terlindungi.
+        </div>
+      </div>
+      <div class="s-meta">FIREWALL: Host Quarantined Instan</div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card">
+      <div>
+        <div class="s-tag">RESPON 05 : COMMAND REPORT</div>
+        <div class="s-title">Autonomous AI Sitrep</div>
+        <div class="s-action">Efek: Berita Militer Terbit</div>
+        <div class="s-desc">
+          Model SLM lokal merumuskan Laporan Situasi Militer resmi TNI AD berklasifikasi <b>RAHASIA</b> lengkap dengan kronologi taktis dan segel integritas SHA-256 siap kirim ke Kasad.
+        </div>
+      </div>
+      <div class="s-meta">HASIL: Berita Militer Resmi Terbit</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>KATEGORI: <b>PENANGKALAN</b> | PUSAT SIBER TNI ANGKATAN DARAT &times; CODEPOLITAN</div>
+    <div>KEUNGGULAN KOMPETITIF: <b>DETERRENCE EFFECT &amp; ZERO ATTACK SURFACE</b></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  astra-backend:
+    build:
+      context: ./backend
+      dockerfile: ../docker/Dockerfile.backend
+    container_name: nexus-trap-backend
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "8000:8000"       # FastAPI C4ISR REST & WebSocket
+      - "502:5020"        # OT Modbus TCP Port (Mapped to 502 standard)
+      - "53:5353/udp"     # Canary DNS Listener (Mapped to 53 UDP)
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - MODBUS_HOST=0.0.0.0
+      - MODBUS_PORT=5020
+      - DNS_HOST=0.0.0.0
+      - DNS_PORT=5353
+      - CANARY_DOMAIN=canary.nexustrap.mil.id
+    restart: unless-stopped
+    networks:
+      - astra-network
+
+  astra-frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../docker/Dockerfile.frontend
+    container_name: nexus-trap-frontend
+    ports:
+      - "3000:80"         # C4ISR Executive War-Room UI
+    depends_on:
+      - astra-backend
+    restart: unless-stopped
+    networks:
+      - astra-network
+
+networks:
+  astra-network:
+    driver: bridge
