@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data: screenshots/;">
 <title>NEXUS-TRAP: Penjelasan untuk Semua Orang</title>
 <style>
   :root{
     --bg:#0b0f0e; --surface:#121816; --raised:#18201d; --line:#26322e;
-    --text:#ecf2ef; --muted:#a3b3ad;
+    --text:#f8fafc; --muted:#cbd5e1;
     --brand:#10b981; --brand-soft:rgba(16,185,129,.12);
     --ok:#22c55e; --warn:#f59e0b; --crit:#ef4444; --info:#38bdf8; --ai:#a78bfa;
     --r:16px;
@@ -120,8 +120,18 @@
 </section>
 
 <!-- 6 -->
+<section class="slide" aria-label="Infografis Visual 5 Tahap">
+  <div class="eyebrow">05 · Peta Alur Visual Lengkap</div>
+  <h2>Dari Penyusupan hingga <span class="hl">Pelumpuhan 1-Klik</span></h2>
+  <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1vh;display:flex;align-items:center;justify-content:center;max-height:55vh;overflow:hidden;">
+    <img src="screenshots/workflow_non_tech.png" alt="Infografis Alur 5 Tahap NEXUS-TRAP" style="width:100%;max-height:53vh;object-fit:contain;border-radius:10px;">
+  </div>
+  <div class="analogy" style="margin-top:1.5vh;"><p><b>Alur 5 Langkah:</b> 1. Pencuri Menyelinap ➔ 2. Umpan Tank Kayu ➔ 3. Lem Tikus Tarpit ➔ 4. Koper Ber-GPS ➔ 5. Pintu Baja &amp; Laporan Bersegel.</p></div>
+</section>
+
+<!-- 7 -->
 <section class="slide" aria-label="Lampu status">
-  <div class="eyebrow">05 · Yang dilihat komandan</div>
+  <div class="eyebrow">06 · Yang dilihat komandan</div>
   <h2>Cukup satu layar dan <span class="hl">tiga lampu</span>, seperti lampu lalu lintas</h2>
   <div class="grid g3">
     <div class="card center"><div class="dot" style="background:var(--ok)" aria-hidden="true">✓</div><span class="tag t-ok">Siaga Hijau</span><p>Aman. Semua umpan tidak tersentuh.</p></div>
@@ -131,9 +141,9 @@
   <div class="analogy"><p><b>Tidak perlu ahli komputer.</b> Selain warna, setiap status punya ikon, tulisan, dan bunyi sirene yang berbeda, jadi tetap jelas bagi siapa pun, termasuk yang buta warna.</p></div>
 </section>
 
-<!-- 7 -->
+<!-- 8 -->
 <section class="slide" aria-label="Alur cerita">
-  <div class="eyebrow">06 · Alur cerita demo (3 menit)</div>
+  <div class="eyebrow">07 · Alur cerita demo (3 menit)</div>
   <h2>Satu kisah penyusupan,<br>dari awal sampai <span class="hl">tertangkap</span></h2>
   <div class="grid g4 tl">
     <div class="card" style="--c:var(--ok)"><div class="step">MENIT 0</div><h3>Markas tenang</h3><p>Lampu hijau. Umpan sudah terpasang dan menunggu.</p></div>
@@ -144,9 +154,9 @@
   <div class="analogy"><p><b>Juri bisa mencoba sendiri:</b> pindai kode QR, unduh "dokumen rahasia", buka di HP, lalu lihat namanya muncul di layar komando.</p></div>
 </section>
 
-<!-- 8 -->
+<!-- 9 -->
 <section class="slide" aria-label="Aman untuk kita">
-  <div class="eyebrow">07 · Aman untuk pihak sendiri</div>
+  <div class="eyebrow">08 · Aman untuk pihak sendiri</div>
   <h2>Jebakan ini <span class="hl">tidak akan berbalik</span><br>melukai markas sendiri</h2>
   <div class="grid g3">
     <div class="card"><div class="icon" aria-hidden="true">🎖️</div><h3>Ada daftar kebal</h3><p>Router markas dan komputer komando tidak bisa ikut terblokir. Ibaratnya, kawan sendiri sudah memakai tanda pengenal.</p></div>
@@ -155,9 +165,9 @@
   </div>
 </section>
 
-<!-- 9 -->
+<!-- 10 -->
 <section class="slide" aria-label="Sebelum dan sesudah">
-  <div class="eyebrow">08 · Sebelum vs sesudah</div>
+  <div class="eyebrow">09 · Sebelum vs sesudah</div>
   <h2>Apa yang berubah untuk satuan?</h2>
   <table>
     <thead><tr><th scope="col">Situasi</th><th scope="col">Tanpa NEXUS-TRAP</th><th scope="col">Dengan NEXUS-TRAP</th></tr></thead>
@@ -171,9 +181,9 @@
   </table>
 </section>
 
-<!-- 10 -->
+<!-- 11 -->
 <section class="slide" aria-label="Penutup">
-  <div class="eyebrow">09 · Penutup</div>
+  <div class="eyebrow">10 · Penutup</div>
   <h1 style="max-width:18ch">Kita tidak menunggu diserang.<br><span class="hl">Kita menyiapkan panggungnya.</span></h1>
   <p class="lead" style="margin-top:3vh">NEXUS-TRAP membalik keadaan: penyusup mengira sedang mencuri, padahal setiap langkahnya sedang <strong>direkam, ditahan, dan dilaporkan</strong>.</p>
   <div class="grid g3" style="margin-top:4vh">
@@ -191,6 +201,7 @@
   <button id="prev" aria-label="Slide sebelumnya">←</button>
   <span class="count" id="count"></span>
   <button id="next" aria-label="Slide berikutnya">→</button>
+  <button id="fs" aria-label="Layar penuh (Fullscreen)" title="Layar Penuh (Tekan F)">⛶</button>
 </nav>
 
 <script>
@@ -208,6 +219,13 @@
   };
   document.getElementById('prev').addEventListener('click', () => show(i - 1));
   document.getElementById('next').addEventListener('click', () => show(i + 1));
+  document.getElementById('fs')?.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+  });
   document.addEventListener('keydown', (e) => {
     if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(i + 1); }
     if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
