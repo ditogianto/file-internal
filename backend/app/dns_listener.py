@@ -29,13 +29,14 @@ class CanaryDNSProtocol(asyncio.DatagramProtocol):
             pass
 
     async def handle_canary_hit(self, qname: str, client_ip: str):
-        # Extract doc id and unit from qname
+        # Extract doc id and unit from hierarchical qname (e.g. doc-991a.kodim-0501.canary.mil.id)
         parts = qname.split(".")
         doc_id = parts[0].upper() if parts else "DOC-991A"
-        unit_target = parts[1].upper() if len(parts) > 1 else "KODAM JAYA"
+        raw_unit = parts[1].replace("-", " ").upper() if len(parts) > 1 else "KODAM JAYA"
+        unit_target = raw_unit if raw_unit and "CANARY" not in raw_unit else "KODAM JAYA"
         
         telemetry.metrics["canary_triggers"] += 1
-        telemetry.compromised_unit = "KODAM JAYA"
+        telemetry.compromised_unit = unit_target
         await telemetry.set_status("SIAGA_MERAH")
         
         await telemetry.register_threat_actor(

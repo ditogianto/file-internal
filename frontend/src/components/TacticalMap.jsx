@@ -1,31 +1,52 @@
 import React from 'react';
 import { MapPin, ShieldAlert, Radio } from 'lucide-react';
 
+function isNodeTargeted(nodeId, unitStr) {
+  if (!unitStr) return nodeId === 'KODAM_JAYA';
+  const u = unitStr.toUpperCase().replace(/[-_]/g, ' ');
+  
+  if (nodeId === 'KODAM_IM' && (u.includes('IM') || u.includes('ISKANDAR') || u.includes('ACEH') || u.includes('0101'))) return true;
+  if (nodeId === 'KODAM_I' && (u.includes('KODAM I ') || u.includes('KODAM I/') || u.includes('BUKIT') || u.includes('MEDAN') || u.includes('0201'))) return true;
+  if (nodeId === 'KODAM_II' && (u.includes('KODAM II') || u.includes('SRIWIJAYA') || u.includes('PALEMBANG') || u.includes('0418'))) return true;
+  if (nodeId === 'KODAM_JAYA' && (u.includes('JAYA') || u.includes('JAKARTA') || u.includes('0501') || u.includes('0502') || u.includes('0503') || u.includes('0504') || u.includes('0505') || u.includes('0506') || u.includes('0507') || u.includes('0508') || u.includes('0509') || u.includes('0510'))) return true;
+  if (nodeId === 'KODAM_III' && (u.includes('KODAM III') || u.includes('SILIWANGI') || u.includes('BANDUNG') || u.includes('0618') || u.includes('JABAR'))) return true;
+  if (nodeId === 'KODAM_IV' && (u.includes('KODAM IV') || u.includes('DIPONEGORO') || u.includes('SEMARANG') || u.includes('0733') || u.includes('JATENG'))) return true;
+  if (nodeId === 'KODAM_V' && (u.includes('KODAM V') || u.includes('BRAWIJAYA') || u.includes('SURABAYA') || u.includes('0832') || u.includes('JATIM'))) return true;
+  if (nodeId === 'KODAM_IX' && (u.includes('KODAM IX') || u.includes('UDAYANA') || u.includes('BALI') || u.includes('DENPASAR') || u.includes('1611'))) return true;
+  if (nodeId === 'KODAM_VI' && (u.includes('KODAM VI') || u.includes('MULAWARMAN') || u.includes('BALIKPAPAN') || u.includes('SAMARINDA') || u.includes('IKN') || u.includes('0901'))) return true;
+  if (nodeId === 'KODAM_XIV' && (u.includes('KODAM XIV') || u.includes('HASANUDDIN') || u.includes('MAKASSAR') || u.includes('1408'))) return true;
+  if (nodeId === 'KODAM_XVII' && (u.includes('KODAM XVII') || u.includes('CENDERAWASIH') || u.includes('JAYAPURA') || u.includes('PAPUA') || u.includes('1701'))) return true;
+
+  // Fallback: Default to Kodam Jaya if unit is not mapped to another Kodam
+  return nodeId === 'KODAM_JAYA';
+}
+
 export default function TacticalMap({ systemStatus, compromisedUnit }) {
   const isRedAlert = systemStatus === 'SIAGA_MERAH';
   const isYellowAlert = systemStatus === 'SIAGA_KUNING';
 
   // 11 Kodam Sensor Nodes anchored accurately onto Indonesian provinces
-  const nodes = [
-    { id: 'KODAM_IM', name: 'Kodam IM (Aceh)', x: 55, y: 55, labelDy: -16, status: 'NORMAL' },
-    { id: 'KODAM_I', name: 'Kodam I/BB (Medan)', x: 92, y: 82, labelDy: -15, status: 'NORMAL' },
-    { id: 'KODAM_II', name: 'Kodam II/Swj (Plg)', x: 178, y: 158, labelDy: -15, status: 'NORMAL' },
-    { 
-      id: 'KODAM_JAYA', 
-      name: 'Kodam Jaya (Jakarta)', 
-      x: 242, 
-      y: 198, 
-      labelDy: -18,
-      status: isRedAlert ? 'BREACHED' : isYellowAlert ? 'WARNING' : 'NORMAL' 
-    },
-    { id: 'KODAM_III', name: 'Kodam III/Slw (Bdg)', x: 262, y: 216, labelDy: 18, status: 'NORMAL' },
-    { id: 'KODAM_IV', name: 'Kodam IV/Dip (Smg)', x: 318, y: 205, labelDy: -16, status: 'NORMAL' },
-    { id: 'KODAM_V', name: 'Kodam V/Brw (Sby)', x: 378, y: 212, labelDy: 18, status: 'NORMAL' },
-    { id: 'KODAM_IX', name: 'Kodam IX/Udy (Dps)', x: 436, y: 223, labelDy: 18, status: 'NORMAL' },
-    { id: 'KODAM_VI', name: 'Kodam VI/Mlw (IKN)', x: 408, y: 138, labelDy: -18, status: 'NORMAL' },
-    { id: 'KODAM_XIV', name: 'Kodam XIV/Hsn (Mks)', x: 448, y: 178, labelDy: 18, status: 'NORMAL' },
-    { id: 'KODAM_XVII', name: 'Kodam XVII/Cen (Jyp)', x: 742, y: 142, labelDy: -18, status: 'NORMAL' }
+  const baseNodes = [
+    { id: 'KODAM_IM', name: 'Kodam IM (Aceh)', x: 55, y: 55, labelDy: -16 },
+    { id: 'KODAM_I', name: 'Kodam I/BB (Medan)', x: 92, y: 82, labelDy: -15 },
+    { id: 'KODAM_II', name: 'Kodam II/Swj (Plg)', x: 178, y: 158, labelDy: -15 },
+    { id: 'KODAM_JAYA', name: 'Kodam Jaya (Jakarta)', x: 242, y: 198, labelDy: -18 },
+    { id: 'KODAM_III', name: 'Kodam III/Slw (Bdg)', x: 262, y: 216, labelDy: 18 },
+    { id: 'KODAM_IV', name: 'Kodam IV/Dip (Smg)', x: 318, y: 205, labelDy: -16 },
+    { id: 'KODAM_V', name: 'Kodam V/Brw (Sby)', x: 378, y: 212, labelDy: 18 },
+    { id: 'KODAM_IX', name: 'Kodam IX/Udy (Dps)', x: 436, y: 223, labelDy: 18 },
+    { id: 'KODAM_VI', name: 'Kodam VI/Mlw (IKN)', x: 408, y: 138, labelDy: -18 },
+    { id: 'KODAM_XIV', name: 'Kodam XIV/Hsn (Mks)', x: 448, y: 178, labelDy: 18 },
+    { id: 'KODAM_XVII', name: 'Kodam XVII/Cen (Jyp)', x: 742, y: 142, labelDy: -18 }
   ];
+
+  const nodes = baseNodes.map(n => {
+    const isTarget = isNodeTargeted(n.id, compromisedUnit);
+    return {
+      ...n,
+      status: (isRedAlert && isTarget) ? 'BREACHED' : (isYellowAlert && isTarget) ? 'WARNING' : 'NORMAL'
+    };
+  });
 
   return (
     <div className="rounded bg-tactical-card border border-tactical-border p-3 flex flex-col h-full">
@@ -301,7 +322,7 @@ export default function TacticalMap({ systemStatus, compromisedUnit }) {
         {isRedAlert && (
           <div className="absolute top-2 left-2 bg-red-950/90 border border-red-500 text-red-200 text-[10px] px-2.5 py-1 rounded flex items-center gap-1.5 animate-bounce shadow-lg shadow-red-950/50">
             <ShieldAlert className="w-3.5 h-3.5 text-red-400" />
-            <span className="font-bold tracking-wider">INTERSEPSI AKTIF: KODAM JAYA / KOREM 051</span>
+            <span className="font-bold tracking-wider">INTERSEPSI AKTIF: {compromisedUnit || 'KODAM JAYA / KOREM 051'}</span>
           </div>
         )}
       </div>
