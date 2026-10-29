@@ -7,14 +7,13 @@
 <title>NEXUS-TRAP // Presentasi Doktrin Pertahanan Siber Aktif TNI AD</title>
 <style>
   :root {
-    --bg: #070a0f;
-    --surface: #0f1622;
-    --raised: #162030;
-    --line: #223247;
-    --line-active: #059669;
+    --bg: #06090e;
+    --surface: #0e1522;
+    --raised: #141f30;
+    --line: #202f44;
     --text: #f8fafc;
     --muted: #cbd5e1;
-    --dim: #64748b;
+    --dim: #718096;
     --brand: #10b981;
     --brand-soft: rgba(16, 185, 129, 0.12);
     --ok: #10b981;
@@ -36,26 +35,26 @@
   .slide {
     position: absolute;
     inset: 0;
-    padding: 6vh 7vw 9vh;
+    padding: 5vh 6vw 8vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(20px);
-    transition: opacity .3s cubic-bezier(0.16, 1, 0.3, 1), transform .3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(16px);
+    transition: opacity .25s ease-out, transform .25s ease-out;
   }
   .slide.active { opacity: 1; visibility: visible; transform: none; }
   
   /* Typography Scale */
   .eyebrow {
     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: clamp(11px, 1vw, 13px);
-    letter-spacing: .2em;
+    font-size: clamp(11px, 0.95vw, 13px);
+    letter-spacing: .18em;
     text-transform: uppercase;
     color: var(--brand);
     font-weight: 700;
-    margin-bottom: 1.2vh;
+    margin-bottom: 1vh;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -69,32 +68,32 @@
     border-radius: 50%;
   }
   h1 {
-    font-size: clamp(34px, 4.8vw, 68px);
+    font-size: clamp(32px, 4.2vw, 62px);
     line-height: 1.1;
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--text);
   }
   h2 {
-    font-size: clamp(24px, 3vw, 42px);
+    font-size: clamp(22px, 2.6vw, 36px);
     line-height: 1.2;
     font-weight: 800;
-    margin-bottom: 2.8vh;
+    margin-bottom: 2vh;
     letter-spacing: -0.01em;
   }
   h3 {
-    font-size: clamp(16px, 1.4vw, 20px);
+    font-size: clamp(15px, 1.25vw, 18px);
     font-weight: 700;
-    margin-bottom: 0.8vh;
+    margin-bottom: 0.5vh;
     color: var(--text);
   }
   p, li {
-    font-size: clamp(14px, 1.2vw, 18px);
+    font-size: clamp(13px, 1.05vw, 16px);
     color: var(--muted);
-    line-height: 1.55;
+    line-height: 1.5;
   }
   .lead {
-    font-size: clamp(18px, 1.7vw, 24px);
+    font-size: clamp(17px, 1.5vw, 22px);
     color: var(--muted);
     max-width: 65ch;
     line-height: 1.5;
@@ -105,43 +104,64 @@
   .hl-warn { color: var(--warn); }
   
   /* Grid Systems */
-  .grid { display: grid; gap: 1.4vw; }
+  .grid { display: grid; gap: 1.2vw; }
   .g2 { grid-template-columns: repeat(2, 1fr); }
   .g3 { grid-template-columns: repeat(3, 1fr); }
   .g4 { grid-template-columns: repeat(4, 1fr); }
   .g5 { grid-template-columns: repeat(5, 1fr); }
 
-  /* Cards */
+  /* Cards with Visual Illustration Containers */
   .card {
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--r);
-    padding: 2.6vh 1.6vw;
+    padding: 1.8vh 1.2vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     position: relative;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   }
+  
+  /* Visual Scene Container (For custom illustrative vectors) */
+  .scene-box {
+    width: 100%;
+    height: 100px;
+    background: #090e17;
+    border: 1px solid #1a283c;
+    border-radius: 8px;
+    margin-bottom: 1.2vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .scene-box svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
   .card-header-tag {
     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: clamp(10px, 0.85vw, 12px);
+    font-size: clamp(9px, 0.8vw, 11px);
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--dim);
-    margin-bottom: 1.2vh;
+    margin-bottom: 0.6vh;
   }
+  
   .tag {
     display: inline-block;
     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: clamp(10px, 0.85vw, 12px);
+    font-size: clamp(9px, 0.8vw, 11px);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 0.25em 0.8em;
+    padding: 0.2em 0.6em;
     border-radius: 4px;
-    margin-bottom: 1.2vh;
+    margin-bottom: 0.8vh;
     width: fit-content;
   }
   .t-ok { background: rgba(16, 185, 129, 0.15); color: var(--ok); border: 1px solid rgba(16, 185, 129, 0.4); }
@@ -154,37 +174,42 @@
   .analogy {
     border-left: 4px solid var(--brand);
     background: var(--brand-soft);
-    padding: 1.8vh 1.6vw;
+    padding: 1.4vh 1.4vw;
     border-radius: 0 var(--r) var(--r) 0;
-    margin-top: 2.6vh;
+    margin-top: 1.8vh;
   }
-  .analogy p { color: var(--text); font-size: clamp(14px, 1.15vw, 18px); }
+  .analogy p { color: var(--text); font-size: clamp(13px, 1.05vw, 16px); }
   .analogy b { color: var(--brand); }
 
   .big-stat {
-    font-size: clamp(38px, 4.5vw, 64px);
+    font-size: clamp(34px, 3.8vw, 56px);
     font-weight: 800;
     line-height: 1;
-    margin-bottom: 0.8vh;
+    margin-bottom: 0.6vh;
     font-variant-numeric: tabular-nums;
   }
   
-  /* Pipeline Stepper (Large & Legible) */
+  /* Pipeline Stepper */
   .pipeline-card {
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--r);
-    padding: 2.2vh 1.2vw;
+    padding: 1.8vh 1vw;
     position: relative;
     border-top: 4px solid var(--step-color, var(--brand));
   }
+  .pipeline-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+  }
   .pipeline-step-num {
     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: clamp(20px, 2vw, 32px);
+    font-size: clamp(16px, 1.6vw, 24px);
     font-weight: 900;
     color: var(--step-color, var(--brand));
     line-height: 1;
-    margin-bottom: 0.8vh;
   }
 
   /* Comparison Table */
@@ -195,12 +220,12 @@
     border: 1px solid var(--line);
     border-radius: var(--r);
     overflow: hidden;
-    margin-top: 1vh;
+    margin-top: 0.8vh;
   }
   th, td {
-    padding: 1.8vh 1.6vw;
+    padding: 1.4vh 1.4vw;
     text-align: left;
-    font-size: clamp(14px, 1.15vw, 18px);
+    font-size: clamp(13px, 1.05vw, 16px);
     border-bottom: 1px solid var(--line);
   }
   th { background: var(--raised); color: var(--text); font-weight: 700; }
@@ -209,28 +234,12 @@
   td.yes { color: var(--ok); font-weight: 700; }
   td.no { color: var(--crit); font-weight: 700; }
 
-  /* Traffic Light Command Dots */
-  .dot-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    font-size: 20px;
-    font-weight: 900;
-    margin-bottom: 1.4vh;
-  }
-  .dot-green { background: rgba(16, 185, 129, 0.2); border: 2px solid var(--ok); color: var(--ok); }
-  .dot-amber { background: rgba(245, 158, 11, 0.2); border: 2px solid var(--warn); color: var(--warn); }
-  .dot-red { background: rgba(239, 68, 68, 0.2); border: 2px solid var(--crit); color: var(--crit); }
-
   /* Controls & Nav */
   .bar { position: fixed; left: 0; bottom: 0; height: 4px; background: var(--brand); transition: width .3s ease; z-index: 50; }
   .nav {
     position: fixed;
     right: 2vw;
-    bottom: 2vh;
+    bottom: 1.8vh;
     display: flex;
     align-items: center;
     gap: 0.6vw;
@@ -242,8 +251,8 @@
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 0 14px;
-    height: 40px;
-    font-size: 13px;
+    height: 38px;
+    font-size: 12px;
     font-weight: 700;
     cursor: pointer;
     display: flex;
@@ -263,7 +272,7 @@
   .foot {
     position: fixed;
     left: 2vw;
-    bottom: 2.2vh;
+    bottom: 2vh;
     color: var(--dim);
     font-family: ui-monospace, monospace;
     font-size: 12px;
@@ -280,177 +289,507 @@
 <body>
 <main class="deck" id="deck">
 
-<!-- SLIDE 1: COVER -->
+<!-- ========================================================================= -->
+<!-- SLIDE 1: COVER                                                            -->
+<!-- ========================================================================= -->
 <section class="slide active" aria-label="Sampul Presentasi">
   <div class="eyebrow">PUSSIBERAD TNI AD × KARTIKA CYBER HACKATHON 2026 // KATEGORI PENANGKALAN</div>
   <h1>NEXUS-TRAP<br><span class="hl">Ranjau Umpan Digital</span><br>Penjaga Rahasia Markas</h1>
-  <p class="lead" style="margin-top:2.6vh">
-    Penyusup boleh saja berhasil masuk ke jaringan satuan kita.<br>
-    Tetapi yang dia temukan hanyalah <strong>fasilitas tipuan</strong>, dan saat itu juga <strong>posisinya terbongkar</strong>.
+  <p class="lead" style="margin-top:2.4vh">
+    Penyusup boleh saja berhasil menembus perimeter jaringan satuan kita.<br>
+    Namun yang ia sentuh hanyalah <strong>sarana tipuan</strong>, dan saat itu juga <strong>sarang musuh terbongkar</strong>.
   </p>
+  <div style="margin-top: 3vh; display: flex; gap: 15px;">
+    <div style="background: var(--surface); border: 1px solid var(--line); padding: 10px 18px; border-radius: 8px; font-family: ui-monospace, monospace; font-size: 12px; color: var(--brand);">
+      ★ DOKTRIN PERTAHANAN SIBER AKTIF
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--line); padding: 10px 18px; border-radius: 8px; font-family: ui-monospace, monospace; font-size: 12px; color: #38bdf8;">
+      ★ 100% AIR-GAPPED ON-PREMISE
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--line); padding: 10px 18px; border-radius: 8px; font-family: ui-monospace, monospace; font-size: 12px; color: #f59e0b;">
+      ★ ZERO FALSE POSITIVE BY DESIGN
+    </div>
+  </div>
 </section>
 
-<!-- SLIDE 2: MASALAH UTAMA (BEBAS DARI EMOJI RUSAK) -->
+<!-- ========================================================================= -->
+<!-- SLIDE 2: MASALAH UTAMA DENGAN ILUSTRASI GRAFIS                            -->
+<!-- ========================================================================= -->
 <section class="slide" aria-label="Masalah Utama Satuan">
-  <div class="eyebrow">01 // LATAR BELAKANG ANCAMAN</div>
-  <h2>Penyusup sudah berada di dalam jaringan,<br>memakai <span class="hl">hak akses dan seragam yang sah</span>.</h2>
+  <div class="eyebrow">01 // LATAR BELAKANG ANCAMAN NYATA</div>
+  <h2>Penyusup sudah berada di dalam jaringan,<br>memakai <span class="hl">hak akses dan seragam dinas yang sah</span>.</h2>
   <div class="grid g3">
+    <!-- Card 1 -->
     <div class="card">
+      <div class="scene-box">
+        <!-- SVG Graphic: Infected Laptop & Malicious APK Trojan -->
+        <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="100" fill="#090e17"/>
+          <!-- Grid Lines -->
+          <line x1="0" y1="50" x2="240" y2="50" stroke="#162234" stroke-width="1"/>
+          <line x1="120" y1="0" x2="120" y2="100" stroke="#162234" stroke-width="1"/>
+          <!-- Phone Sending Trojan Signal -->
+          <rect x="25" y="22" width="30" height="56" rx="4" fill="#141f32" stroke="#ef4444" stroke-width="1.5"/>
+          <circle cx="40" cy="71" r="2" fill="#ef4444"/>
+          <rect x="30" y="30" width="20" height="34" rx="2" fill="#0b0f19"/>
+          <text x="40" y="52" fill="#ef4444" font-size="11" font-weight="900" text-anchor="middle" font-family="monospace">APK</text>
+          <!-- Wireless Threat Waves -->
+          <path d="M 62 42 A 16 16 0 0 1 62 58" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3,3"/>
+          <path d="M 70 36 A 26 26 0 0 1 70 64" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Staff Workstation Breached -->
+          <rect x="95" y="24" width="80" height="50" rx="3" fill="#141f32" stroke="#ef4444" stroke-width="1.5"/>
+          <rect x="100" y="29" width="70" height="38" rx="2" fill="#070a10"/>
+          <polygon points="90,78 180,78 174,84 96,84" fill="#1f2c42" stroke="#334155" stroke-width="1"/>
+          <!-- Bug/Malware Skull on Laptop -->
+          <circle cx="135" cy="48" r="9" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" stroke-width="1.5"/>
+          <text x="135" y="52" fill="#ef4444" font-size="10" font-weight="900" text-anchor="middle" font-family="monospace">RAT</text>
+          <!-- Status Banner -->
+          <rect x="185" y="40" width="45" height="18" rx="3" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" stroke-width="1"/>
+          <text x="207" y="52" fill="#fca5a5" font-size="8" font-weight="800" text-anchor="middle" font-family="monospace">INFEKSI</text>
+        </svg>
+      </div>
       <div class="card-header-tag">[ TITIK INFEKSI HULU ]</div>
       <h3>1. Satu Klik yang Keliru</h3>
-      <p>Staf administrasi di satuan daerah tidak sengaja mengunduh APK palsu (tautan pinjol/undangan dinas). Komputer kantor dinas diam-diam dikendalikan malware Trojan.</p>
+      <p>Staf administrasi satuan tidak sengaja mengunduh file jahat (APK pinjol/undangan palsu). Laptop dinas dikuasai malware Trojan secara klandestin.</p>
     </div>
+
+    <!-- Card 2 -->
     <div class="card">
+      <div class="scene-box">
+        <!-- SVG Graphic: Intruder with Legal Stolen ID Badge Passing Firewall -->
+        <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="100" fill="#090e17"/>
+          <!-- Perimeter Firewall Gate -->
+          <rect x="110" y="10" width="8" height="80" fill="#1e293b"/>
+          <line x1="114" y1="10" x2="114" y2="90" stroke="#059669" stroke-width="2" stroke-dasharray="4,4"/>
+          <text x="114" y="8" fill="#10b981" font-size="7" font-weight="800" text-anchor="middle" font-family="monospace">FIREWALL GERBANG</text>
+          <!-- Intruder Silhouette -->
+          <circle cx="45" cy="38" r="10" fill="#334155" stroke="#ef4444" stroke-width="1.5"/>
+          <path d="M 32 68 C 32 52 58 52 58 68 Z" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+          <!-- Holding Legal Military Card -->
+          <line x1="52" y1="56" x2="75" y2="48" stroke="#38bdf8" stroke-width="2"/>
+          <rect x="75" y="38" width="24" height="18" rx="2" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="78" y1="44" x2="88" y2="44" stroke="#10b981" stroke-width="1.5"/>
+          <circle cx="93" cy="47" r="3" fill="#10b981"/>
+          <!-- Scanner Laser Green Verification -->
+          <path d="M 110 35 L 90 44 L 110 55" fill="none" stroke="#10b981" stroke-width="1" stroke-dasharray="2,2"/>
+          <!-- Access Granted Result -->
+          <rect x="135" y="38" width="90" height="24" rx="4" fill="#064e3b" fill-opacity="0.3" stroke="#10b981" stroke-width="1.5"/>
+          <text x="180" y="53" fill="#10b981" font-size="9" font-weight="800" text-anchor="middle" font-family="monospace">AKSES SAH 100%</text>
+          <text x="180" y="75" fill="#64748b" font-size="7" text-anchor="middle" font-family="sans-serif">Living off the Land</text>
+        </svg>
+      </div>
       <div class="card-header-tag">[ PERGERAKAN LATERAL ]</div>
       <h3>2. Kredensial Resmi Dicuri</h3>
-      <p>Peretas menggunakan akun dan token sesi intranet staf yang sah. Sistem firewall gerbang luar tidak dapat membedakan mana klik prajurit dinas dan mana perintah peretas.</p>
+      <p>Peretas menggunakan akun dan token sesi intranet staf yang sah. Sistem keamanan gerbang luar tertipu karena hak aksesnya sah.</p>
     </div>
+
+    <!-- Card 3 -->
     <div class="card">
+      <div class="scene-box">
+        <!-- SVG Graphic: Unencrypted Modbus Generator & Classified Docs -->
+        <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="100" fill="#090e17"/>
+          <!-- Genset Industrial Box -->
+          <rect x="25" y="25" width="85" height="55" rx="5" fill="#162234" stroke="#f59e0b" stroke-width="1.5"/>
+          <!-- Vent Slits -->
+          <line x1="33" y1="40" x2="55" y2="40" stroke="#334155" stroke-width="2"/>
+          <line x1="33" y1="46" x2="55" y2="46" stroke="#334155" stroke-width="2"/>
+          <line x1="33" y1="52" x2="55" y2="52" stroke="#334155" stroke-width="2"/>
+          <!-- Meter Gauge -->
+          <circle cx="85" cy="46" r="14" fill="#0d1522" stroke="#f59e0b" stroke-width="1"/>
+          <line x1="85" y1="46" x2="92" y2="40" stroke="#ef4444" stroke-width="1.5"/>
+          <!-- Port 502 Label -->
+          <rect x="25" y="68" width="85" height="12" fill="#0b1019"/>
+          <text x="67" y="77" fill="#f59e0b" font-size="8" font-weight="800" text-anchor="middle" font-family="monospace">MODBUS TCP: 502</text>
+          <!-- Classified Folder Target -->
+          <rect x="135" y="30" width="55" height="42" rx="3" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+          <polygon points="135,35 155,35 160,40 190,40 190,72 135,72" fill="#991b1b"/>
+          <text x="162" y="56" fill="#fef2f2" font-size="7" font-weight="900" text-anchor="middle" font-family="monospace">RAHASIA</text>
+          <text x="162" y="65" fill="#fca5a5" font-size="6" text-anchor="middle" font-family="monospace">PASUKAN</text>
+          <!-- Crosshair Red Sniper -->
+          <circle cx="162" cy="51" r="18" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="162" y1="28" x2="162" y2="74" stroke="#ef4444" stroke-width="1"/>
+          <line x1="139" y1="51" x2="185" y2="51" stroke="#ef4444" stroke-width="1"/>
+        </svg>
+      </div>
       <div class="card-header-tag">[ SASARAN STRATEGIS ]</div>
       <h3>3. Incaran Fasilitas Fisik</h3>
-      <p>Peretas mencari dokumen rahasia dislokasi pasukan dan <strong>panel genset pangkalan (Port 502 Modbus)</strong> yang tidak memiliki sandi atau enkripsi.</p>
+      <p>Peretas mengincar dokumen mutasi pasukan dan <strong>panel genset markas (Port 502 Modbus)</strong> yang tidak memiliki sandi untuk memadamkan daya markas.</p>
     </div>
   </div>
   <div class="analogy">
-    <p><b>Analogi Lapangan:</b> Seperti orang luar yang menyelinap ke dalam markas komando karena mengenakan <b>seragam dan kartu tanda pengenal dinas yang dicuri</b>. Petugas pos jaga gerbang luar tertipu karena seragamnya asli.</p>
+    <p><b>Analogi Lapangan:</b> Seperti penyusup yang berhasil masuk ke markas militer karena mengenakan <b>seragam dinas dan membawa tanda pengenal asli yang dicuri</b>. Penjaga gerbang luar tidak bisa membedakannya dari prajurit sah.</p>
   </div>
 </section>
 
-<!-- SLIDE 3: KEGAGALAN SISTEM LAMA -->
-<section class="slide" aria-label="Kenapa Pertahanan Lama Gagal">
+<!-- ========================================================================= -->
+<!-- SLIDE 3: KEGAGALAN ALARM KONVENSIONAL                                      -->
+<!-- ========================================================================= -->
+<section class="slide" aria-label="Kelemahan Sistem Konvensional">
   <div class="eyebrow">02 // KELEMAHAN SISTEM KONVENSIONAL</div>
-  <h2>Alarm yang terus-menerus berbunyi<br>akhirnya <span class="hl-crit">diabaikan oleh personel</span>.</h2>
+  <h2>Alarm yang berbunyi ribuan kali setiap hari<br>akhirnya <span class="hl-crit">diabaikan oleh personel</span>.</h2>
   <div class="grid g2">
     <div class="card" style="border-top: 4px solid var(--crit);">
-      <span class="tag t-crit">✕ SISTEM SIEM &amp; FIREWALL LAMA</span>
+      <span class="tag t-crit">✕ SISTEM SIEM &amp; FIREWALL BIASA</span>
       <p class="big-stat hl-crit">±14.000</p>
-      <p>Peringatan per jam membanjiri ruang piket di satuan yang sibuk. Sebagian besar adalah <strong>alarm palsu (false positive)</strong>. Personel Infolahta kewalahan (*Alert Fatigue*) dan ancaman nyata lolos tanpa terdeteksi.</p>
+      <p>Peringatan per jam membanjiri ruang piket satuan. Sebagian besar adalah <strong>alarm palsu (*false positives*)</strong>. Personel piket kewalahan (*Alert Fatigue*), dan tanda bahaya yang sesungguhnya justru tenggelam.</p>
     </div>
     <div class="card" style="border-top: 4px solid var(--ok);">
       <span class="tag t-ok">✓ PARADIGMA NEXUS-TRAP</span>
       <p class="big-stat hl">0% Palsu</p>
-      <p>Alarm hanya berbunyi bila ada entitas yang menyentuh aset umpan. Karena aset umpan tidak memiliki fungsi dinas legal, <strong>siapa pun yang menyentuhnya 100% dipastikan penyusup</strong>.</p>
+      <p>Sistem ini tidak memantau lalu lintas biasa. Alarm hanya berbunyi saat ada yang menyentuh aset umpan. Karena aset umpan tidak memiliki fungsi dinas, <strong>siapa pun yang menyentuhnya 100% adalah penyusup</strong>.</p>
     </div>
   </div>
   <div class="analogy">
-    <p><b>Analogi Lapangan:</b> Alarm mobil di parkiran markas yang berbunyi setiap ada hembusan angin lama-kelamaan dimatikan oleh petugas. NEXUS-TRAP adalah alarm yang <b>hanya menyalak jika brankas besi palsu benar-benar dibuka</b>.</p>
+    <p><b>Analogi Lapangan:</b> Alarm mobil di parkiran yang berbunyi tiap ada angin lewat, lama-lama tidak dipedulikan orang. NEXUS-TRAP adalah alarm yang <b>hanya menyalak jika brankas besi palsu benar-benar dibuka secara paksa</b>.</p>
   </div>
 </section>
 
-<!-- SLIDE 4: DOKTRIN PERANG SIBER AKTIF -->
+<!-- ========================================================================= -->
+<!-- SLIDE 4: DOKTRIN PERANG SIBER AKTIF                                       -->
+<!-- ========================================================================= -->
 <section class="slide" aria-label="Ide Besar Pertahanan Aktif">
-  <div class="eyebrow">03 // DOKTRIN PERANG AKTIF</div>
+  <div class="eyebrow">03 // STRATEGI DAN DOKTRIN PERANG AKTIF</div>
   <h2>Jangan lelah mengejar musuh.<br>Biarkan <span class="hl">musuh yang datang ke ladang ranjau</span>.</h2>
   <div class="grid g3">
+    <!-- Card 1 -->
     <div class="card">
-      <div class="card-header-tag">[ TAKTIK 01: PASANG RANJAU ]</div>
+      <div class="scene-box">
+        <!-- SVG Graphic: Wooden Decoy Tank / Honeypot Grid -->
+        <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="100" fill="#090e17"/>
+          <!-- Network Grid Points -->
+          <circle cx="30" cy="30" r="3" fill="#1e293b"/>
+          <circle cx="30" cy="70" r="3" fill="#1e293b"/>
+          <circle cx="210" cy="30" r="3" fill="#1e293b"/>
+          <circle cx="210" cy="70" r="3" fill="#1e293b"/>
+          <line x1="30" y1="30" x2="120" y2="50" stroke="#1e293b" stroke-width="1"/>
+          <line x1="30" y1="70" x2="120" y2="50" stroke="#1e293b" stroke-width="1"/>
+          <line x1="210" y1="30" x2="120" y2="50" stroke="#1e293b" stroke-width="1"/>
+          <line x1="210" y1="70" x2="120" y2="50" stroke="#1e293b" stroke-width="1"/>
+          <!-- Camouflage Decoy Node Center -->
+          <rect x="80" y="25" width="80" height="50" rx="8" fill="#13231e" stroke="#10b981" stroke-width="1.5"/>
+          <circle cx="120" cy="50" r="16" fill="#047857" fill-opacity="0.3" stroke="#10b981" stroke-width="1.5"/>
+          <path d="M 120 40 L 120 60 M 110 50 L 130 50" stroke="#10b981" stroke-width="2"/>
+          <text x="120" y="86" fill="#10b981" font-size="8" font-weight="800" text-anchor="middle" font-family="monospace">RANJAU AKTIF</text>
+        </svg>
+      </div>
+      <div class="card-header-tag">[ LANGKAH 01: PASANG RANJAU ]</div>
       <h3>Umpan Presisi di Intranet</h3>
-      <p>Memasang genset palsu, dokumen dinas rahasia bertabur pelacak, dan portal login tiruan yang tampak 100% nyata bagi perkakas pemindai musuh.</p>
+      <p>Memasang genset tiruan, file rahasia bertabur pelacak, dan portal dinas palsu yang tampak 100% nyata bagi perkakas pemindai musuh.</p>
     </div>
+
+    <!-- Card 2 -->
     <div class="card">
-      <div class="card-header-tag">[ TAKTIK 02: KUNCI &amp; CEKIK ]</div>
+      <div class="scene-box">
+        <!-- SVG Graphic: Tactical Sonar Radar Ping Tripped -->
+        <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="100" fill="#090e17"/>
+          <!-- Sonar concentric circles -->
+          <circle cx="120" cy="50" r="40" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.2"/>
+          <circle cx="120" cy="50" r="28" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.4"/>
+          <circle cx="120" cy="50" r="16" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.8"/>
+          <!-- Radar Sweep Line -->
+          <line x1="120" y1="50" x2="152" y2="24" stroke="#f59e0b" stroke-width="2"/>
+          <!-- Target Locked Dot -->
+          <circle cx="145" cy="30" r="5" fill="#ef4444"/>
+          <circle cx="145" cy="30" r="9" stroke="#ef4444" stroke-width="1.5"/>
+          <!-- Alert Box -->
+          <rect x="15" y="15" width="60" height="20" rx="3" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="1"/>
+          <text x="45" y="28" fill="#fcd34d" font-size="8" font-weight="900" text-anchor="middle" font-family="monospace">TERDETEKSI</text>
+        </svg>
+      </div>
+      <div class="card-header-tag">[ LANGKAH 02: KUNCI &amp; CEKIK ]</div>
       <h3>Pelumpuhan Otomatis</h3>
-      <p>Saat pemindai musuh masuk, koneksi jaringannya dicekik perlahan (1 byte per detik). Alat musuh macet total kehabisan soket tanpa mereka sadari.</p>
+      <p>Saat pemindai musuh masuk, koneksinya dicekik perlahan (1 byte per detik). Alat pemindai musuh macet total kehabisan soket.</p>
     </div>
+
+    <!-- Card 3 -->
     <div class="card">
-      <div class="card-header-tag">[ TAKTIK 03: PENINDAKAN ]</div>
+      <div class="scene-box">
+        <!-- SVG Graphic: Commander Master Lever & Automated Report -->
+        <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="100" fill="#090e17"/>
+          <!-- Commander Switch Console -->
+          <rect x="25" y="20" width="80" height="60" rx="6" fill="#162234" stroke="#38bdf8" stroke-width="1.5"/>
+          <!-- Emergency Big Button -->
+          <circle cx="65" cy="50" r="18" fill="#7f1d1d" stroke="#ef4444" stroke-width="2"/>
+          <circle cx="65" cy="50" r="13" fill="#ef4444"/>
+          <text x="65" y="53" fill="#ffffff" font-size="7" font-weight="900" text-anchor="middle" font-family="monospace">ISOLASI</text>
+          <!-- Data Lightning Cable Severed -->
+          <path d="M 115 50 L 135 50" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3"/>
+          <polygon points="135,46 142,50 135,54" fill="#ef4444"/>
+          <!-- Output Formal Document -->
+          <rect x="150" y="20" width="65" height="60" rx="4" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="158" y1="30" x2="200" y2="30" stroke="#10b981" stroke-width="2"/>
+          <line x1="158" y1="38" x2="195" y2="38" stroke="#94a3b8" stroke-width="1"/>
+          <line x1="158" y1="44" x2="190" y2="44" stroke="#94a3b8" stroke-width="1"/>
+          <!-- Stamp SHA-256 -->
+          <circle cx="192" cy="62" r="9" fill="#065f46" stroke="#10b981" stroke-width="1"/>
+          <text x="192" y="65" fill="#a7f3d0" font-size="6" font-weight="800" text-anchor="middle" font-family="monospace">SHA</text>
+        </svg>
+      </div>
+      <div class="card-header-tag">[ LANGKAH 03: PENINDAKAN ]</div>
       <h3>Komando Bertindak 1-Klik</h3>
       <p>Satu tombol dari Meja Komandan mengisolasi komputer korban seketika, dan Laporan Situasi Militer berstempel SHA-256 tercetak dalam 1 detik.</p>
     </div>
   </div>
   <div class="analogy">
-    <p><b>Doktrin Perang Stratagem:</b> Seperti strategi <b>"Tank Kayu"</b> dalam perang gerilya. Musuh menghabiskan seluruh amunisinya untuk menyerang sasaran tiruan, sementara posisi dan koordinat sarang musuh terbongkar sempurna.</p>
+    <p><b>Doktrin Perang Stratagem:</b> Seperti strategi <b>"Tank Kayu"</b> dalam perang gerilya. Musuh menghabiskan energinya menyerang sasaran tiruan, sementara koordinat sarang musuh terbongkar sempurna.</p>
   </div>
 </section>
 
-<!-- SLIDE 5: LIMA ALAT DALAM SATU SISTEM -->
+<!-- ========================================================================= -->
+<!-- SLIDE 5: LIMA ALAT DENGAN ILUSTRASI LENGKAP                                -->
+<!-- ========================================================================= -->
 <section class="slide" aria-label="Lima Alat Pertahanan">
   <div class="eyebrow">04 // INSTRUMEN PERTAHANAN TERPADU</div>
   <h2>Setiap modul teknis memiliki <span class="hl">padanan nyata di lapangan</span>.</h2>
   <div class="grid g5">
+    <!-- Tool 1: Tank Kayu -->
     <div class="card">
+      <div class="scene-box" style="height: 80px;">
+        <svg viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="80" fill="#090e17"/>
+          <rect x="25" y="16" width="110" height="48" rx="4" fill="#1a2536" stroke="#f59e0b" stroke-width="1.5"/>
+          <circle cx="55" cy="40" r="14" fill="#0b111a" stroke="#f59e0b" stroke-width="1"/>
+          <line x1="55" y1="40" x2="62" y2="34" stroke="#ef4444" stroke-width="1.5"/>
+          <rect x="80" y="26" width="45" height="12" rx="2" fill="#f59e0b" fill-opacity="0.2"/>
+          <text x="102" y="35" fill="#fcd34d" font-size="8" font-weight="900" text-anchor="middle" font-family="monospace">380V OK</text>
+          <text x="102" y="52" fill="#94a3b8" font-size="7" font-weight="700" text-anchor="middle" font-family="monospace">PORT 502</text>
+        </svg>
+      </div>
       <span class="tag t-warn">OT DECOY</span>
       <h3>Tank Kayu</h3>
-      <p>Genset &amp; radar tiruan yang membalas pemindai musuh dengan tegangan palsu 380V yang stabil.</p>
+      <p>Genset &amp; radar tiruan yang membalas pemindai musuh dengan tegangan palsu 380V.</p>
     </div>
+
+    <!-- Tool 2: Lem Tikus -->
     <div class="card">
+      <div class="scene-box" style="height: 80px;">
+        <svg viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="80" fill="#090e17"/>
+          <!-- Sticky Liquid Pool -->
+          <path d="M 20 54 C 50 48 110 48 140 54 C 145 68 15 68 20 54 Z" fill="#78350f" stroke="#f59e0b" stroke-width="1.5"/>
+          <!-- Scanner Gear Trapped in Glue -->
+          <circle cx="80" cy="36" r="16" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+          <line x1="80" y1="20" x2="80" y2="52" stroke="#f59e0b" stroke-width="2"/>
+          <line x1="64" y1="36" x2="96" y2="36" stroke="#f59e0b" stroke-width="2"/>
+          <!-- Dripping Glue -->
+          <path d="M 75 48 C 75 58 85 58 85 48" fill="#f59e0b"/>
+          <text x="80" y="70" fill="#fde68a" font-size="8" font-weight="900" text-anchor="middle" font-family="monospace">0.0 req/s</text>
+        </svg>
+      </div>
       <span class="tag t-warn">TCP TARPIT</span>
       <h3>Lem Tikus</h3>
-      <p>Mesin penahan koneksi yang membuat perkakas otomatis musuh macet dan membeku (0 req/s).</p>
+      <p>Mesin penahan koneksi yang membuat alat pemindai musuh macet total (0 req/s).</p>
     </div>
+
+    <!-- Tool 3: Koper GPS -->
     <div class="card">
+      <div class="scene-box" style="height: 80px;">
+        <svg viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="80" fill="#090e17"/>
+          <!-- VM Sandbox Box Outside -->
+          <rect x="20" y="15" width="60" height="50" rx="4" fill="#111827" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <text x="50" y="26" fill="#ef4444" font-size="7" font-weight="800" text-anchor="middle" font-family="monospace">VM ASING</text>
+          <!-- Document File -->
+          <rect x="35" y="32" width="30" height="26" rx="2" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+          <!-- Radio Waves Bursting Out of VM Box -->
+          <path d="M 75 40 Q 100 20 135 25" fill="none" stroke="#ef4444" stroke-width="2"/>
+          <polygon points="135,22 142,26 135,30" fill="#ef4444"/>
+          <!-- Satellite / Pussiberad Receiver -->
+          <circle cx="140" cy="50" r="12" fill="#141f32" stroke="#38bdf8" stroke-width="1.5"/>
+          <circle cx="140" cy="50" r="5" fill="#38bdf8"/>
+          <text x="140" y="72" fill="#38bdf8" font-size="7" font-weight="800" text-anchor="middle" font-family="monospace">HQ RADAR</text>
+        </svg>
+      </div>
       <span class="tag t-crit">CANARY OOB</span>
       <h3>Koper Ber-GPS</h3>
-      <p>Dokumen umpan yang meledakkan suar pelacak saat dibuka di lingkungan mesin virtual penyerang.</p>
+      <p>Dokumen umpan yang meledakkan suar pelacak saat dibuka di VM penyerang.</p>
     </div>
+
+    <!-- Tool 4: Pintu Baja -->
     <div class="card">
+      <div class="scene-box" style="height: 80px;">
+        <svg viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="80" fill="#090e17"/>
+          <!-- Blast Steel Door Closing -->
+          <rect x="35" y="10" width="90" height="58" rx="3" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+          <!-- Hazard Stripes -->
+          <line x1="45" y1="20" x2="60" y2="35" stroke="#f59e0b" stroke-width="3"/>
+          <line x1="70" y1="20" x2="85" y2="35" stroke="#f59e0b" stroke-width="3"/>
+          <line x1="95" y1="20" x2="110" y2="35" stroke="#f59e0b" stroke-width="3"/>
+          <!-- Padlock -->
+          <circle cx="80" cy="46" r="8" fill="#0b111a" stroke="#38bdf8" stroke-width="1.5"/>
+          <path d="M 75 46 A 5 5 0 0 1 85 46" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+          <text x="80" y="74" fill="#38bdf8" font-size="7" font-weight="900" text-anchor="middle" font-family="monospace">ISOLASI 1 DETIK</text>
+        </svg>
+      </div>
       <span class="tag t-info">QUARANTINE</span>
       <h3>Pintu Baja</h3>
-      <p>Perintah 1-klik yang memutus total rute penyerang di firewall dan router markas dalam 1 detik.</p>
+      <p>Perintah 1-klik yang memutus total rute penyerang di firewall pangkalan.</p>
     </div>
+
+    <!-- Tool 5: Buku Bersegel -->
     <div class="card">
+      <div class="scene-box" style="height: 80px;">
+        <svg viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="80" fill="#090e17"/>
+          <!-- Bound Military Ledger -->
+          <rect x="40" y="14" width="75" height="52" rx="3" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="50" y1="14" x2="50" y2="66" stroke="#10b981" stroke-width="2"/>
+          <line x1="60" y1="24" x2="105" y2="24" stroke="#64748b" stroke-width="1.5"/>
+          <line x1="60" y1="32" x2="98" y2="32" stroke="#64748b" stroke-width="1.5"/>
+          <!-- Red Wax Seal Ribbon -->
+          <circle cx="95" cy="50" r="12" fill="#991b1b" stroke="#ef4444" stroke-width="1.5"/>
+          <text x="95" y="53" fill="#fef2f2" font-size="6" font-weight="900" text-anchor="middle" font-family="monospace">HMAC</text>
+          <!-- Chain link -->
+          <ellipse cx="25" cy="40" rx="8" ry="4" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+          <ellipse cx="32" cy="40" rx="8" ry="4" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
       <span class="tag t-brand">AUDIT POMAD</span>
       <h3>Buku Bersegel</h3>
-      <p>Rantai bukti kriptografis HMAC-SHA256 yang sah dan anti-manipulasi di hadapan Oditur Militer.</p>
+      <p>Rantai audit SHA-256 yang sah dan anti-rusak untuk persidangan Oditur Militer.</p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 6: ALUR 5 TAHAP PROSES (PENGGANTI GAMBAR KECIL YANG TIDAK TERBACA!) -->
+<!-- ========================================================================= -->
+<!-- SLIDE 6: ALUR 5 LANGKAH OPERASIONAL (ILUSTRASI JELAS, BEBAS TEKS KECIL)   -->
+<!-- ========================================================================= -->
 <section class="slide" aria-label="Alur Operasi 5 Tahap">
-  <div class="eyebrow">05 // ALUR OPERASIONAL PENINDAKAN (DARI INFEKSI SAMPAI SELESAI)</div>
-  <h2>Bagaimana NEXUS-TRAP Bekerja? <span class="hl">Alur 5 Langkah Presisi</span></h2>
+  <div class="eyebrow">05 // ALUR OPERASIONAL PENINDAKAN (DARI INFEKSI HINGGA SELESAI)</div>
+  <h2>Bagaimana NEXUS-TRAP Bekerja? <span class="hl">Alur 5 Langkah Terpadu</span></h2>
   <div class="grid g5" style="margin-top: 1.5vh;">
+    <!-- Step 1 -->
     <div class="pipeline-card" style="--step-color: var(--crit);">
-      <div class="pipeline-step-num">01</div>
+      <div class="pipeline-header">
+        <span class="pipeline-step-num">01</span>
+        <span class="tag t-crit" style="margin: 0;">INFEKSI</span>
+      </div>
+      <div class="scene-box" style="height: 65px; margin-bottom: 0.8vh;">
+        <svg viewBox="0 0 140 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="140" height="65" fill="#090e17"/>
+          <rect x="40" y="12" width="60" height="36" rx="3" fill="#162234" stroke="#ef4444" stroke-width="1"/>
+          <text x="70" y="32" fill="#ef4444" font-size="8" font-weight="900" text-anchor="middle" font-family="monospace">TROJAN</text>
+          <line x1="30" y1="48" x2="110" y2="48" stroke="#334155" stroke-width="2"/>
+        </svg>
+      </div>
       <h3>Penyusup Masuk</h3>
-      <p>Staf terinfeksi malware. Peretas mulai memindai jaringan lokal markas menggunakan akun resmi.</p>
+      <p>Staf terinfeksi APK palsu. Peretas mulai merayap di subnet lokal memakai akun staf dinas.</p>
     </div>
+
+    <!-- Step 2 -->
     <div class="pipeline-card" style="--step-color: var(--warn);">
-      <div class="pipeline-step-num">02</div>
+      <div class="pipeline-header">
+        <span class="pipeline-step-num">02</span>
+        <span class="tag t-warn" style="margin: 0;">UMPAN OT</span>
+      </div>
+      <div class="scene-box" style="height: 65px; margin-bottom: 0.8vh;">
+        <svg viewBox="0 0 140 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="140" height="65" fill="#090e17"/>
+          <rect x="35" y="12" width="70" height="38" rx="4" fill="#162234" stroke="#f59e0b" stroke-width="1"/>
+          <circle cx="55" cy="31" r="10" stroke="#f59e0b" stroke-width="1"/>
+          <text x="88" y="34" fill="#fcd34d" font-size="8" font-weight="900" text-anchor="middle" font-family="monospace">380V</text>
+        </svg>
+      </div>
       <h3>Sentuh Umpan OT</h3>
-      <p>Peretas menemukan Port 502 Modbus. Genset tiruan membalas normal. Meja komando membunyikan <strong>Siaga Kuning</strong>.</p>
+      <p>Peretas menemukan Port 502 Modbus. Genset tiruan membalas 380V. Meja komando membunyikan <strong>Siaga Kuning</strong>.</p>
     </div>
+
+    <!-- Step 3 -->
     <div class="pipeline-card" style="--step-color: var(--warn);">
-      <div class="pipeline-step-num">03</div>
+      <div class="pipeline-header">
+        <span class="pipeline-step-num">03</span>
+        <span class="tag t-warn" style="margin: 0;">TARPIT</span>
+      </div>
+      <div class="scene-box" style="height: 65px; margin-bottom: 0.8vh;">
+        <svg viewBox="0 0 140 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="140" height="65" fill="#090e17"/>
+          <circle cx="70" cy="30" r="16" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <text x="70" y="34" fill="#fde68a" font-size="9" font-weight="900" text-anchor="middle" font-family="monospace">0 req/s</text>
+          <path d="M 45 48 C 65 44 75 44 95 48" stroke="#f59e0b" stroke-width="2"/>
+        </svg>
+      </div>
       <h3>Koneksi Dicekik</h3>
-      <p>Peretas melancarkan scanner cepat. Tarpit mencekik soket TCP (1 byte/detik). Kecepatan scanner anjlok ke <strong>0 req/s</strong>.</p>
+      <p>Peretas melancarkan scanner cepat. Tarpit menahan TCP 1 byte/detik. Kecepatan scanner anjlok ke <strong>0 req/s</strong>.</p>
     </div>
+
+    <!-- Step 4 -->
     <div class="pipeline-card" style="--step-color: var(--crit);">
-      <div class="pipeline-step-num">04</div>
+      <div class="pipeline-header">
+        <span class="pipeline-step-num">04</span>
+        <span class="tag t-crit" style="margin: 0;">CANARY</span>
+      </div>
+      <div class="scene-box" style="height: 65px; margin-bottom: 0.8vh;">
+        <svg viewBox="0 0 140 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="140" height="65" fill="#090e17"/>
+          <rect x="45" y="16" width="30" height="34" rx="2" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+          <path d="M 80 25 A 15 15 0 0 1 105 45" stroke="#ef4444" stroke-width="2"/>
+          <path d="M 85 18 A 25 25 0 0 1 120 48" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="2,2"/>
+        </svg>
+      </div>
       <h3>Suar Meledak</h3>
       <p>Dokumen umpan dibuka di VM penyerang. Suar DNS Canary membongkar IP sarang musuh. Meja komando meledak <strong>Siaga 1 Merah</strong>.</p>
     </div>
+
+    <!-- Step 5 -->
     <div class="pipeline-card" style="--step-color: var(--ok);">
-      <div class="pipeline-step-num">05</div>
+      <div class="pipeline-header">
+        <span class="pipeline-step-num">05</span>
+        <span class="tag t-ok" style="margin: 0;">ISOLASI</span>
+      </div>
+      <div class="scene-box" style="height: 65px; margin-bottom: 0.8vh;">
+        <svg viewBox="0 0 140 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="140" height="65" fill="#090e17"/>
+          <circle cx="45" cy="32" r="14" fill="#065f46" stroke="#10b981" stroke-width="1.5"/>
+          <path d="M 39 32 L 43 36 L 51 28" stroke="#ffffff" stroke-width="2" fill="none"/>
+          <rect x="75" y="16" width="45" height="34" rx="2" fill="#141f32" stroke="#10b981" stroke-width="1"/>
+          <text x="97" y="35" fill="#a7f3d0" font-size="7" font-weight="900" text-anchor="middle" font-family="monospace">SITREP</text>
+        </svg>
+      </div>
       <h3>Isolasi &amp; SITREP</h3>
       <p>Komandan menekan tombol <strong>[ISOLASI]</strong>. Komputer korban diputus total, dan Laporan Militer resmi tercetak otomatis.</p>
     </div>
   </div>
-  <div class="analogy" style="margin-top: 2.2vh;">
-    <p><b>Jaminan Keterbacaan:</b> Seluruh proses berjalan secara otomatis. Komandan tidak perlu membaca baris kode terminal—cukup memantau perubahan status dan mengambil keputusan taktis.</p>
+  <div class="analogy" style="margin-top: 1.8vh;">
+    <p><b>Jaminan Keterbacaan Panggung:</b> Seluruh proses divisualisasikan dengan diagram terarah. Komandan tidak perlu membaca log teknis mentah—cukup melihat tahapan yang sedang aktif dan mengambil keputusan taktis.</p>
   </div>
 </section>
 
-<!-- SLIDE 7: TIGA LAMPU KENDALI KOMANDAN -->
+<!-- ========================================================================= -->
+<!-- SLIDE 7: TIGA LAMPU STATUS                                                -->
+<!-- ========================================================================= -->
 <section class="slide" aria-label="Tiga Lampu Meja Komandan">
-  <div class="eyebrow">06 // ANTARMUKA MEJA KOMANDO</div>
+  <div class="eyebrow">06 // PUSAT KOMANDO 1-LAYAR</div>
   <h2>Kendali operasional dirancang sesederhana <span class="hl">lampu lalu lintas</span>.</h2>
   <div class="grid g3">
+    <!-- Green -->
     <div class="card" style="align-items: center; text-align: center;">
-      <div class="dot-badge dot-green">✓</div>
+      <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); border: 2px solid var(--ok); display: flex; align-items: center; justify-content: center; margin-bottom: 1.4vh;">
+        <span style="font-size: 32px; color: var(--ok); font-weight: 900;">✓</span>
+      </div>
       <span class="tag t-ok">SIAGA 3 (HIJAU)</span>
       <h3>Perimeter Aman</h3>
       <p>64 sensor aktif memantau pangkalan. Tidak ada umpan yang tersentuh. Situasi terkendali normal.</p>
     </div>
+    <!-- Amber -->
     <div class="card" style="align-items: center; text-align: center;">
-      <div class="dot-badge dot-amber">!</div>
+      <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(245, 158, 11, 0.15); border: 2px solid var(--warn); display: flex; align-items: center; justify-content: center; margin-bottom: 1.4vh;">
+        <span style="font-size: 32px; color: var(--warn); font-weight: 900;">!</span>
+      </div>
       <span class="tag t-warn">SIAGA 2 (KUNING)</span>
       <h3>Pengintaian Terdeteksi</h3>
       <p>Ada entitas yang mulai memindai port genset atau portal login umpan. Nada blip radar taktis berbunyi.</p>
     </div>
+    <!-- Red -->
     <div class="card" style="align-items: center; text-align: center;">
-      <div class="dot-badge dot-red">✕</div>
+      <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); border: 2px solid var(--crit); display: flex; align-items: center; justify-content: center; margin-bottom: 1.4vh;">
+        <span style="font-size: 32px; color: var(--crit); font-weight: 900;">✕</span>
+      </div>
       <span class="tag t-crit">SIAGA 1 (MERAH)</span>
       <h3>Intrusi Terkonfirmasi</h3>
       <p>Dokumen umpan dibuka di luar markas. Profil hardware musuh terkunci di Dossier, siap isolasi 1-klik.</p>
@@ -461,7 +800,9 @@
   </div>
 </section>
 
-<!-- SLIDE 8: KOREOGRAFI DEMO 3 MENIT -->
+<!-- ========================================================================= -->
+<!-- SLIDE 8: KOREOGRAFI DEMO 3 MENIT                                          -->
+<!-- ========================================================================= -->
 <section class="slide" aria-label="Koreografi Demo Panggung">
   <div class="eyebrow">07 // KOREOGRAFI LIVE DEMO PANGGUNG</div>
   <h2>Babak Pembuktian Langsung: <span class="hl">Split-Screen 3 Menit</span></h2>
@@ -488,34 +829,83 @@
     </div>
   </div>
   <div class="analogy">
-    <p><b>Fitur Khusus Dewan Juri:</b> Dewan Juri di panggung dapat memindai <b>QR Code Taktis</b> dengan kamera HP masing-masing untuk mengunduh dokumen umpan dan membuktikan kebocoran secara langsung di layar proyektor!</p>
+    <p><b>Fitur Interaktif Khusus Dewan Juri:</b> Dewan Juri di panggung dapat memindai <b>QR Code Taktis</b> dengan kamera HP masing-masing untuk mengunduh dokumen umpan dan membuktikan kebocoran secara langsung di layar proyektor!</p>
   </div>
 </section>
 
-<!-- SLIDE 9: KEAMANAN PIHAK SENDIRI -->
+<!-- ========================================================================= -->
+<!-- SLIDE 9: KEAMANAN PIHAK SENDIRI                                           -->
+<!-- ========================================================================= -->
 <section class="slide" aria-label="Aman untuk Markas Sendiri">
   <div class="eyebrow">08 // KEAMANAN &amp; INTEGRITAS INTERNAL</div>
   <h2>Jebakan ini dirancang <span class="hl">tidak akan berbalik</span> melukai markas.</h2>
   <div class="grid g3">
     <div class="card">
+      <div class="scene-box">
+        <!-- SVG Graphic: Shield around Gateway / Command PC -->
+        <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="100" fill="#090e17"/>
+          <rect x="40" y="30" width="70" height="45" rx="4" fill="#141f32" stroke="#10b981" stroke-width="1.5"/>
+          <text x="75" y="55" fill="#a7f3d0" font-size="8" font-weight="800" text-anchor="middle" font-family="monospace">GATEWAY AD</text>
+          <!-- Glowing Shield Deflecting Block -->
+          <path d="M 150 25 L 180 35 L 180 60 C 180 75 150 85 150 85 C 150 85 120 75 120 60 L 120 35 Z" fill="#064e3b" fill-opacity="0.3" stroke="#10b981" stroke-width="2"/>
+          <path d="M 140 50 L 148 58 L 162 44" stroke="#10b981" stroke-width="2" fill="none"/>
+          <text x="150" y="94" fill="#10b981" font-size="7" font-weight="900" text-anchor="middle" font-family="monospace">KEBAL ISOLASI</text>
+        </svg>
+      </div>
       <div class="card-header-tag">[ ANTI-FRIENDLY-FIRE ]</div>
       <h3>Daftar Putih Kebal</h3>
-      <p>Alamat IP Gateway markas, server induk, dan laptop komando dilindungi oleh modul pengecualian otomatis (*Immune Whitelist*), sehingga mustahil terisolasi secara tidak sengaja.</p>
+      <p>IP Gateway markas, server induk, dan laptop komando dilindungi oleh modul pengecualian otomatis (*Immune Whitelist*), sehingga mustahil terisolasi secara tidak sengaja.</p>
     </div>
+
     <div class="card">
+      <div class="scene-box">
+        <!-- SVG Graphic: 3-Way Handshake Verified Lock -->
+        <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="100" fill="#090e17"/>
+          <circle cx="60" cy="50" r="18" fill="#162234" stroke="#38bdf8" stroke-width="1.5"/>
+          <text x="60" y="54" fill="#38bdf8" font-size="8" font-weight="800" text-anchor="middle" font-family="monospace">TCP</text>
+          <line x1="80" y1="42" x2="140" y2="42" stroke="#38bdf8" stroke-width="1.5"/>
+          <line x1="140" y1="58" x2="80" y2="58" stroke="#38bdf8" stroke-width="1.5"/>
+          <text x="110" y="38" fill="#64748b" font-size="6" text-anchor="middle" font-family="monospace">SYN-ACK</text>
+          <circle cx="160" cy="50" r="18" fill="#162234" stroke="#10b981" stroke-width="1.5"/>
+          <text x="160" y="54" fill="#10b981" font-size="7" font-weight="900" text-anchor="middle" font-family="monospace">SOKET SAH</text>
+        </svg>
+      </div>
       <div class="card-header-tag">[ ANTI-ADU DOMBA ]</div>
       <h3>Verifikasi Soket TCP Asli</h3>
       <p>Peretas tidak bisa memalsukan identitas untuk menjebak rekan prajurit lain. Perintah isolasi firewall hanya menerima alamat IP soket fisik yang terverifikasi melalui *3-way handshake*.</p>
     </div>
+
     <div class="card">
+      <div class="scene-box">
+        <!-- SVG Graphic: Sovereign On-Premise Box Disconnecting Foreign Cloud -->
+        <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="100" fill="#090e17"/>
+          <!-- On-Premise Military Bunker Server -->
+          <rect x="35" y="25" width="70" height="50" rx="4" fill="#13231e" stroke="#10b981" stroke-width="1.5"/>
+          <rect x="45" y="35" width="50" height="6" rx="2" fill="#10b981"/>
+          <rect x="45" y="45" width="50" height="6" rx="2" fill="#10b981"/>
+          <text x="70" y="66" fill="#a7f3d0" font-size="7" font-weight="900" text-anchor="middle" font-family="monospace">AIR-GAP SERVER</text>
+          <!-- Cut Cable Red Cross to Cloud -->
+          <path d="M 105 50 L 140 50" stroke="#ef4444" stroke-width="2" stroke-dasharray="2,2"/>
+          <line x1="120" y1="42" x2="130" y2="58" stroke="#ef4444" stroke-width="2"/>
+          <line x1="130" y1="42" x2="120" y2="58" stroke="#ef4444" stroke-width="2"/>
+          <!-- Cloud Crossed Out -->
+          <path d="M 160 55 C 155 55 150 50 152 45 C 153 38 160 36 165 38 C 168 32 178 32 182 36 C 188 36 192 40 190 46 C 195 48 194 55 188 55 Z" stroke="#64748b" stroke-width="1.5" fill="none"/>
+          <text x="172" y="72" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="sans-serif">Nir-Cloud Asing</text>
+        </svg>
+      </div>
       <div class="card-header-tag">[ KEDAULATAN NIR-CLOUD ]</div>
       <h3>100% On-Premise Air-Gapped</h3>
-      <p>Tidak bergantung pada server cloud asing, API pihak ketiga, atau internet publik. Seluruh data taktis dan rekaman intelijen tetap berada di bawah kendali penuh pangkalan TNI AD.</p>
+      <p>Tidak bergantung pada server cloud asing atau API pihak ketiga. Seluruh data taktis dan rekaman intelijen tetap berada di bawah kendali penuh pangkalan TNI AD.</p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 10: SEBELUM VS SESUDAH -->
+<!-- ========================================================================= -->
+<!-- SLIDE 10: SEBELUM VS SESUDAH                                              -->
+<!-- ========================================================================= -->
 <section class="slide" aria-label="Perbandingan Sebelum dan Sesudah">
   <div class="eyebrow">09 // DAMPAK OPERASIONAL BAGI SATUAN</div>
   <h2>Apa yang berubah secara nyata bagi satuan teritorial?</h2>
@@ -557,15 +947,17 @@
   </table>
 </section>
 
-<!-- SLIDE 11: PENUTUP -->
+<!-- ========================================================================= -->
+<!-- SLIDE 11: PENUTUP                                                         -->
+<!-- ========================================================================= -->
 <section class="slide" aria-label="Kesimpulan dan Penutup">
   <div class="eyebrow">10 // KESIMPULAN DOKTRIN</div>
   <h1 style="max-width:20ch">Kita tidak menunggu diserang.<br><span class="hl">Kita yang menyiapkan panggungnya.</span></h1>
-  <p class="lead" style="margin-top:2.6vh">
+  <p class="lead" style="margin-top:2.4vh">
     NEXUS-TRAP membalikkan keadaan asimetris: Musuh mengira sedang meretas fasilitas pangkalan,<br>
     padahal setiap langkah mereka sedang <strong>ditahan, dicatat, dan dilaporkan ke meja komando</strong>.
   </p>
-  <div class="grid g3" style="margin-top:4vh">
+  <div class="grid g3" style="margin-top:3.6vh">
     <div class="card" style="border-top: 3px solid var(--brand);">
       <span class="tag t-brand">EFISIENSI ANGGARAN</span>
       <p>Berjalan lancar di komputer pangkalan biasa tanpa lisensi vendor asing yang mahal.</p>
