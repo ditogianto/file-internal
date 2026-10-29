@@ -51,7 +51,7 @@ export default function AdversaryDossier({ dossier }) {
               <Cpu className="w-3 h-3 text-cyan-400" /> SIGNATURE CLI / SCANNER (JA4)
             </div>
             <div className="text-[10px] font-mono text-cyan-300 truncate">
-              {dossier?.cli_signature || 'Menunggu pemindaian scanner...'}
+              {dossier?.cli_signature && dossier.cli_signature !== '-' ? dossier.cli_signature : 'Menunggu pemindaian scanner...'}
             </div>
           </div>
 
@@ -60,7 +60,7 @@ export default function AdversaryDossier({ dossier }) {
               <Fingerprint className="w-3 h-3 text-emerald-400" /> SIDIK JARI HARDWARE (GPU / CANVAS)
             </div>
             <div className="text-[10px] font-mono text-emerald-300 truncate">
-              {dossier?.hardware_hash !== '-' ? `${dossier?.hardware_hash} [${dossier?.gpu_vendor}]` : '-'}
+              {dossier?.hardware_hash && dossier.hardware_hash !== '-' ? `${dossier.hardware_hash} [${dossier.gpu_vendor || 'UNKNOWN'}]` : '-'}
             </div>
           </div>
         </div>

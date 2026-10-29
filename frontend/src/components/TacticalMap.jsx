@@ -1,30 +1,30 @@
 import React from 'react';
-import { MapPin, AlertCircle, ShieldAlert } from 'lucide-react';
+import { MapPin, ShieldAlert, Radio } from 'lucide-react';
 
 export default function TacticalMap({ systemStatus, compromisedUnit }) {
   const isRedAlert = systemStatus === 'SIAGA_MERAH';
   const isYellowAlert = systemStatus === 'SIAGA_KUNING';
 
-  // Strategically distributed nodes with alternating label offsets to eliminate text collisions
+  // 11 Kodam Sensor Nodes anchored accurately onto Indonesian provinces
   const nodes = [
-    { id: 'KODAM_IM', name: 'Kodam IM (Aceh)', x: 65, y: 65, labelDy: -12, status: 'NORMAL' },
-    { id: 'KODAM_I', name: 'Kodam I/BB (Medan)', x: 125, y: 95, labelDy: -12, status: 'NORMAL' },
-    { id: 'KODAM_II', name: 'Kodam II/Swj (Plg)', x: 195, y: 155, labelDy: -12, status: 'NORMAL' },
+    { id: 'KODAM_IM', name: 'Kodam IM (Aceh)', x: 55, y: 55, labelDy: -16, status: 'NORMAL' },
+    { id: 'KODAM_I', name: 'Kodam I/BB (Medan)', x: 92, y: 82, labelDy: -15, status: 'NORMAL' },
+    { id: 'KODAM_II', name: 'Kodam II/Swj (Plg)', x: 178, y: 158, labelDy: -15, status: 'NORMAL' },
     { 
       id: 'KODAM_JAYA', 
       name: 'Kodam Jaya (Jakarta)', 
-      x: 245, 
-      y: 200, 
-      labelDy: -14,
+      x: 242, 
+      y: 198, 
+      labelDy: -18,
       status: isRedAlert ? 'BREACHED' : isYellowAlert ? 'WARNING' : 'NORMAL' 
     },
-    { id: 'KODAM_III', name: 'Kodam III/Slw (Bdg)', x: 280, y: 228, labelDy: 16, status: 'NORMAL' },
-    { id: 'KODAM_IV', name: 'Kodam IV/Dip (Smg)', x: 335, y: 202, labelDy: -13, status: 'NORMAL' },
-    { id: 'KODAM_V', name: 'Kodam V/Brw (Sby)', x: 395, y: 228, labelDy: 16, status: 'NORMAL' },
-    { id: 'KODAM_IX', name: 'Kodam IX/Udy (Dps)', x: 460, y: 236, labelDy: 16, status: 'NORMAL' },
-    { id: 'KODAM_VI', name: 'Kodam VI/Mlw (IKN)', x: 380, y: 125, labelDy: -12, status: 'NORMAL' },
-    { id: 'KODAM_XIV', name: 'Kodam XIV/Hsn (Mks)', x: 480, y: 160, labelDy: -12, status: 'NORMAL' },
-    { id: 'KODAM_XVII', name: 'Kodam XVII/Cen (Jyp)', x: 645, y: 155, labelDy: -12, status: 'NORMAL' }
+    { id: 'KODAM_III', name: 'Kodam III/Slw (Bdg)', x: 262, y: 216, labelDy: 18, status: 'NORMAL' },
+    { id: 'KODAM_IV', name: 'Kodam IV/Dip (Smg)', x: 318, y: 205, labelDy: -16, status: 'NORMAL' },
+    { id: 'KODAM_V', name: 'Kodam V/Brw (Sby)', x: 378, y: 212, labelDy: 18, status: 'NORMAL' },
+    { id: 'KODAM_IX', name: 'Kodam IX/Udy (Dps)', x: 436, y: 223, labelDy: 18, status: 'NORMAL' },
+    { id: 'KODAM_VI', name: 'Kodam VI/Mlw (IKN)', x: 408, y: 138, labelDy: -18, status: 'NORMAL' },
+    { id: 'KODAM_XIV', name: 'Kodam XIV/Hsn (Mks)', x: 448, y: 178, labelDy: 18, status: 'NORMAL' },
+    { id: 'KODAM_XVII', name: 'Kodam XVII/Cen (Jyp)', x: 742, y: 142, labelDy: -18, status: 'NORMAL' }
   ];
 
   return (
@@ -32,91 +32,253 @@ export default function TacticalMap({ systemStatus, compromisedUnit }) {
       <div className="flex items-center justify-between border-b border-tactical-border pb-2 mb-2">
         <div className="flex items-center gap-2">
           <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-          <span className="text-[11px] font-bold tracking-wider text-slate-200">SEBARAN SENSOR DECEPTION KODAM</span>
+          <span className="text-[11px] font-bold tracking-wider text-slate-200">
+            SEBARAN SENSOR DECEPTION KODAM // PETA OPERASI NKRI
+          </span>
         </div>
-        <div className="text-[10px] text-slate-400">
-          Target Utama: <span className="text-amber-400 font-semibold">{compromisedUnit || 'JARINGAN TERITORIAL'}</span>
+        <div className="flex items-center gap-3 text-[10px]">
+          <span className="text-slate-400 flex items-center gap-1">
+            <Radio className="w-3 h-3 text-emerald-400 animate-pulse" /> 11 KODAM AKTIF
+          </span>
+          <span className="text-slate-400">
+            Target Utama: <span className="text-amber-400 font-semibold">{compromisedUnit || 'JARINGAN TERITORIAL'}</span>
+          </span>
         </div>
       </div>
 
-      {/* SVG Canvas Map Display */}
-      <div className="relative flex-1 bg-tactical-dark/90 rounded border border-slate-900/80 overflow-hidden flex items-center justify-center">
-        {/* Radar concentric tactical rings */}
+      {/* SVG Canvas Tactical Map Display */}
+      <div className="relative flex-1 bg-tactical-dark/95 rounded border border-slate-900/80 overflow-hidden flex items-center justify-center">
+        {/* Radar concentric tactical rings centered around central Archipelago */}
         <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
-          <div className="w-[320px] h-[320px] rounded-full border border-emerald-500/40 animate-ping" style={{ animationDuration: '7s' }} />
-          <div className="w-[220px] h-[220px] rounded-full border border-emerald-500/30 absolute" />
-          <div className="w-[120px] h-[120px] rounded-full border border-emerald-500/40 absolute" />
+          <div className="w-[340px] h-[340px] rounded-full border border-emerald-500/40 animate-ping" style={{ animationDuration: '8s' }} />
+          <div className="w-[240px] h-[240px] rounded-full border border-emerald-500/30 absolute" />
+          <div className="w-[140px] h-[140px] rounded-full border border-emerald-500/40 absolute" />
         </div>
 
-        <svg viewBox="0 0 740 270" className="w-full h-full max-h-[220px]">
-          {/* Stylized Archipelago Landmass Silhouettes (Sumatera, Jawa, Kalimantan, Sulawesi, Papua) */}
-          <g fill="#13202e" stroke="#1e3a4c" strokeWidth="1" opacity="0.65">
-            {/* Sumatera */}
-            <polygon points="50,45 85,35 155,115 220,185 185,190 120,110 50,45" />
-            {/* Jawa */}
-            <polygon points="225,200 425,215 420,230 220,220" />
-            {/* Kalimantan */}
-            <polygon points="310,75 390,65 415,120 385,160 325,150 300,105" />
-            {/* Sulawesi */}
-            <polygon points="450,110 495,100 485,140 505,170 465,195 455,145" />
-            {/* Nusa Tenggara */}
-            <polygon points="440,230 520,235 520,242 440,238" />
-            {/* Maluku */}
-            <polygon points="530,120 560,115 550,165 525,160" />
-            {/* Papua */}
-            <polygon points="585,140 685,130 705,210 655,205 605,175" />
+        <svg viewBox="0 0 800 280" className="w-full h-full max-h-[240px] select-none">
+          <defs>
+            {/* Tactical Landmass Gradient */}
+            <linearGradient id="tacticalLandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#14263b" />
+              <stop offset="100%" stopColor="#091421" />
+            </linearGradient>
+          </defs>
+
+          {/* Tactical Grid & Meridian Navigation Lines */}
+          <g stroke="#142638" strokeWidth="0.8" strokeDasharray="3 4">
+            {/* Equator / Katulistiwa */}
+            <line x1="15" y1="135" x2="785" y2="135" stroke="#1c3e5e" strokeWidth="1.2" />
+            {/* Meridians */}
+            <line x1="105" y1="15" x2="105" y2="265" />
+            <line x1="290" y1="15" x2="290" y2="265" />
+            <line x1="465" y1="15" x2="465" y2="265" />
+            <line x1="615" y1="15" x2="615" y2="265" />
+            <line x1="755" y1="15" x2="755" y2="265" />
           </g>
 
-          {/* Grid coordinates and range circles */}
-          <line x1="20" y1="135" x2="720" y2="135" stroke="#162231" strokeWidth="0.8" strokeDasharray="4 4" />
-          <line x1="370" y1="20" x2="370" y2="250" stroke="#162231" strokeWidth="0.8" strokeDasharray="4 4" />
+          {/* Coordinates & Tactical Navigation Markings */}
+          <g fill="#477aa3" fontSize="7" fontFamily="monospace" fontWeight="bold">
+            <text x="24" y="131" fontSize="6.5">[0° KATULISTIWA / EQUATOR]</text>
+            <text x="108" y="28">100°BT</text>
+            <text x="293" y="28">110°BT</text>
+            <text x="468" y="28">120°BT</text>
+            <text x="618" y="28">130°BT</text>
+            <text x="758" y="28">140°BT</text>
+          </g>
 
-          {/* Node Render */}
+          {/* ALKI Maritime Corridors (Archipelagic Sea Lanes of Indonesia) */}
+          <g stroke="#0f4559" strokeWidth="1" strokeDasharray="2 4" fill="none" opacity="0.65">
+            {/* ALKI I */}
+            <path d="M 215 260 L 212 195 L 230 115 L 245 25" />
+            <text x="248" y="45" fill="#14b8a6" fontSize="6" fontFamily="monospace" fontWeight="bold">ALKI I</text>
+            {/* ALKI II */}
+            <path d="M 445 260 L 442 220 L 428 140 L 436 25" />
+            <text x="440" y="45" fill="#14b8a6" fontSize="6" fontFamily="monospace" fontWeight="bold">ALKI II</text>
+            {/* ALKI III */}
+            <path d="M 580 260 L 565 185 L 535 115 L 540 25" />
+            <text x="544" y="45" fill="#14b8a6" fontSize="6" fontFamily="monospace" fontWeight="bold">ALKI III</text>
+          </g>
+
+          {/* ========================================================================= */}
+          {/* REALISTIC ARCHIPELAGO OF INDONESIA (NKRI) ACCURATE CARTOGRAPHY            */}
+          {/* ========================================================================= */}
+          <g fill="url(#tacticalLandGrad)" stroke="#326792" strokeWidth="1.3" strokeLinejoin="round">
+            
+            {/* 1. SUMATERA & SURROUNDING ISLANDS */}
+            <circle cx="48" cy="42" r="2.8" /> {/* Sabang */}
+            <path d="
+              M 48 48 
+              C 56 46, 68 58, 86 78 
+              C 102 92, 118 108, 134 122 
+              C 152 136, 172 152, 188 164
+              C 202 174, 214 182, 216 190
+              C 214 195, 206 195, 198 188
+              C 186 180, 172 168, 156 156
+              C 142 166, 126 162, 114 148
+              C 100 134, 88 116, 76 96
+              C 64 80, 52 64, 44 54
+              Z
+            " />
+            <ellipse cx="72" cy="112" rx="4.5" ry="9" transform="rotate(-30 72 112)" /> {/* Nias */}
+            <path d="M 104 148 C 112 158, 118 174, 116 178 C 112 178, 106 164, 104 148 Z" /> {/* Mentawai */}
+            <path d="M 194 135 C 204 132, 208 144, 205 152 C 198 156, 192 146, 194 135 Z" /> {/* Bangka */}
+            <circle cx="225" cy="154" r="5" /> {/* Belitung */}
+            <circle cx="152" cy="102" r="3" /> {/* Batam */}
+            <circle cx="160" cy="106" r="3.5" /> {/* Bintan */}
+            <ellipse cx="236" cy="48" rx="4" ry="6" /> {/* Natuna */}
+
+            {/* 2. JAWA, MADURA */}
+            <path d="
+              M 215 196
+              C 225 194, 238 196, 248 198
+              C 268 200, 290 201, 315 203
+              C 340 205, 365 208, 388 210
+              C 406 212, 418 214, 422 216
+              C 420 220, 412 222, 396 221
+              C 376 220, 352 222, 326 223
+              C 298 222, 272 221, 248 215
+              C 232 212, 218 206, 215 196
+              Z
+            " />
+            <ellipse cx="396" cy="204" rx="15" ry="4.5" transform="rotate(-5 396 204)" /> {/* Madura */}
+
+            {/* 3. KALIMANTAN (BORNEO - INDONESIAN TERRITORY) */}
+            <path d="
+              M 272 98
+              C 285 88, 315 82, 345 74
+              C 370 70, 395 64, 414 58
+              C 418 68, 416 85, 422 96
+              C 428 104, 424 116, 416 128
+              C 412 142, 404 154, 392 164
+              C 382 172, 368 180, 350 180
+              C 330 182, 305 180, 290 172
+              C 276 162, 268 145, 270 125
+              C 270 110, 268 102, 272 98
+              Z
+            " />
+            <ellipse cx="388" cy="172" rx="4" ry="7" /> {/* Pulau Laut */}
+            <circle cx="418" cy="54" r="3" /> {/* Tarakan */}
+
+            {/* 4. SULAWESI (THE FAMOUS 4-ARMED K-SHAPE) */}
+            <path d="
+              M 452 128
+              C 455 115, 470 105, 492 98
+              C 512 92, 528 84, 534 88
+              C 525 96, 505 105, 488 112
+              C 475 118, 468 126, 466 132
+              C 478 132, 498 136, 510 142
+              C 505 146, 485 146, 470 142
+              C 468 148, 475 160, 485 170
+              C 492 178, 488 192, 482 188
+              C 475 180, 468 165, 460 152
+              C 456 160, 452 175, 448 188
+              C 442 190, 440 180, 444 162
+              C 446 148, 448 136, 452 128
+              Z
+            " />
+            <ellipse cx="488" cy="192" rx="4" ry="7" /> {/* Buton */}
+            <circle cx="480" cy="186" r="3" /> {/* Muna */}
+
+            {/* 5. KEPULAUAN NUSA TENGGARA (LESSER SUNDA) */}
+            <path d="M 430 219 C 438 217, 444 220, 442 226 C 436 228, 428 224, 430 219 Z" /> {/* Bali */}
+            <ellipse cx="456" cy="223" rx="6" ry="5" /> {/* Lombok */}
+            <path d="M 472 221 C 490 220, 506 222, 512 226 C 500 230, 480 228, 472 221 Z" /> {/* Sumbawa */}
+            <path d="M 522 221 C 545 220, 566 222, 578 224 C 565 228, 535 228, 522 221 Z" /> {/* Flores */}
+            <ellipse cx="538" cy="242" rx="12" ry="5" transform="rotate(-10 538 242)" /> {/* Sumba */}
+            <path d="M 586 242 C 598 238, 614 232, 624 228 C 618 236, 602 245, 586 242 Z" /> {/* West Timor */}
+            <circle cx="580" cy="250" r="3" /> {/* Rote */}
+
+            {/* 6. KEPULAUAN MALUKU */}
+            <path d="
+              M 548 95
+              C 552 86, 560 90, 558 98
+              C 564 102, 572 104, 570 108
+              C 562 110, 556 108, 554 114
+              C 556 122, 552 126, 548 122
+              C 546 114, 544 104, 548 95
+              Z
+            " /> {/* Halmahera */}
+            <circle cx="558" cy="80" r="3" /> {/* Morotai */}
+            <ellipse cx="535" cy="158" rx="8" ry="6" /> {/* Buru */}
+            <path d="M 558 152 C 580 150, 602 154, 610 158 C 595 162, 570 160, 558 152 Z" /> {/* Seram */}
+            <circle cx="568" cy="164" r="2.8" /> {/* Ambon */}
+            <ellipse cx="625" cy="195" rx="4" ry="8" /> {/* Aru */}
+            <ellipse cx="638" cy="205" rx="5" ry="10" /> {/* Kei */}
+
+            {/* 7. TANAH PAPUA (IRIAN JAYA) */}
+            <path d="
+              M 626 126
+              C 635 118, 650 116, 662 120
+              C 672 126, 668 136, 664 142
+              C 678 140, 698 138, 718 136
+              C 738 135, 752 136, 755 138
+              L 755 232
+              C 744 236, 732 238, 720 232
+              C 705 220, 692 200, 678 185
+              C 660 178, 642 165, 634 152
+              C 630 142, 622 135, 626 126
+              Z
+            " />
+            <ellipse cx="678" cy="114" rx="7" ry="4" transform="rotate(-15 678 114)" /> {/* Biak */}
+            <ellipse cx="682" cy="128" rx="10" ry="3" /> {/* Yapen */}
+            <ellipse cx="734" cy="236" rx="8" ry="7" /> {/* Pulau Dolok */}
+          </g>
+
+          {/* Satellite Radar Range Sweep Background */}
+          <g opacity="0.25">
+            <circle cx="408" cy="138" r="175" fill="none" stroke="#10b981" strokeWidth="1" strokeDasharray="4 6" />
+            <circle cx="408" cy="138" r="95" fill="none" stroke="#10b981" strokeWidth="0.8" />
+            <circle cx="408" cy="138" r="35" fill="none" stroke="#10b981" strokeWidth="0.6" />
+          </g>
+
+          {/* ========================================================================= */}
+          {/* 11 KODAM SENSOR NODES RENDERING                                            */}
+          {/* ========================================================================= */}
           {nodes.map((node) => {
             const isBreached = node.status === 'BREACHED';
             const isWarn = node.status === 'WARNING';
             return (
               <g key={node.id} className="cursor-pointer group">
-                {/* Outer ring */}
+                {/* Node Target Rings */}
                 {isBreached ? (
                   <>
-                    <circle cx={node.x} cy={node.y} r="16" fill="none" stroke="#ef4444" strokeWidth="2" className="animate-ping" />
-                    <circle cx={node.x} cy={node.y} r="9" fill="#ef4444" fillOpacity="0.4" />
-                    <circle cx={node.x} cy={node.y} r="4.5" fill="#ef4444" />
+                    <circle cx={node.x} cy={node.y} r="18" fill="none" stroke="#ef4444" strokeWidth="2.2" className="animate-ping" />
+                    <circle cx={node.x} cy={node.y} r="10" fill="#ef4444" fillOpacity="0.4" />
+                    <circle cx={node.x} cy={node.y} r="5" fill="#ef4444" />
                   </>
                 ) : isWarn ? (
                   <>
-                    <circle cx={node.x} cy={node.y} r="13" fill="none" stroke="#f59e0b" strokeWidth="2" className="animate-ping" />
+                    <circle cx={node.x} cy={node.y} r="14" fill="none" stroke="#f59e0b" strokeWidth="2" className="animate-ping" />
                     <circle cx={node.x} cy={node.y} r="8" fill="#f59e0b" fillOpacity="0.3" />
                     <circle cx={node.x} cy={node.y} r="4" fill="#f59e0b" />
                   </>
                 ) : (
                   <>
-                    <circle cx={node.x} cy={node.y} r="3.5" fill="#10b981" />
-                    <circle cx={node.x} cy={node.y} r="7" fill="none" stroke="#059669" strokeWidth="0.8" opacity="0.5" />
+                    <circle cx={node.x} cy={node.y} r="4" fill="#10b981" />
+                    <circle cx={node.x} cy={node.y} r="8" fill="none" stroke="#059669" strokeWidth="0.9" opacity="0.6" />
                   </>
                 )}
 
-                {/* Leader line connecting node to label */}
+                {/* Leader line connecting node to tactical label */}
                 <line
                   x1={node.x}
                   y1={node.y}
                   x2={node.x}
-                  y2={node.y + (node.labelDy > 0 ? 8 : -8)}
+                  y2={node.y + (node.labelDy > 0 ? 10 : -10)}
                   stroke={isBreached ? '#ef4444' : isWarn ? '#f59e0b' : '#334155'}
-                  strokeWidth="0.8"
+                  strokeWidth="0.9"
                 />
 
-                {/* Label text with dark backdrop badge */}
+                {/* Tactical Label Badge Box */}
                 <rect
                   x={node.x - 42}
                   y={node.y + node.labelDy - 6}
                   width="84"
                   height="12"
                   fill="#080c13"
-                  fillOpacity="0.9"
+                  fillOpacity="0.95"
                   stroke={isBreached ? '#ef4444' : isWarn ? '#f59e0b' : '#1e293b'}
-                  strokeWidth="0.6"
+                  strokeWidth={isBreached || isWarn ? '1' : '0.6'}
                   rx="2"
                 />
                 <text
@@ -137,9 +299,9 @@ export default function TacticalMap({ systemStatus, compromisedUnit }) {
 
         {/* Breach Alert Pill Overlay */}
         {isRedAlert && (
-          <div className="absolute top-2 left-2 bg-red-950/90 border border-red-500 text-red-200 text-[10px] px-2 py-1 rounded flex items-center gap-1.5 animate-bounce">
+          <div className="absolute top-2 left-2 bg-red-950/90 border border-red-500 text-red-200 text-[10px] px-2.5 py-1 rounded flex items-center gap-1.5 animate-bounce shadow-lg shadow-red-950/50">
             <ShieldAlert className="w-3.5 h-3.5 text-red-400" />
-            <span>INTERSEPSI AKTIF: KODAM JAYA / KOREM 051</span>
+            <span className="font-bold tracking-wider">INTERSEPSI AKTIF: KODAM JAYA / KOREM 051</span>
           </div>
         )}
       </div>
