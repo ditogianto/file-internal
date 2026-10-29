@@ -201,7 +201,7 @@ def run_suite():
         assert calculated_hash == sitrep_data["sha256"], "SITREP SHA-256 seal integrity mismatch!"
         print(f"  [PASS] Step 5.7: AI SITREP generated with authentic SHA-256 Seal ({sitrep_data['sha256'][:16]}...).")
 
-        # Step 5.8: Sentral Blacklist & Firewall Rule Export
+        # Step 5.8: Sentral Blacklist & Firewall Rule Export (Linux, Windows, MikroTik, Cisco)
         res_fw_linux = client.get(
             "/api/threat-intel/export-firewall?format=iptables",
             headers={"X-C4ISR-Auth": "PUSSIBERAD-C4ISR-COMMAND-KEY"}
@@ -216,7 +216,21 @@ def run_suite():
         assert res_fw_win.status_code == 200
         assert "netsh advfirewall firewall add rule" in res_fw_win.text
         assert "192.168.1.88" in res_fw_win.text
-        print("  [PASS] Step 5.8: Sentral Blacklist produced valid iptables & Windows netsh scripts.")
+
+        res_fw_mikrotik = client.get(
+            "/api/threat-intel/export-firewall?format=mikrotik",
+            headers={"X-C4ISR-Auth": "PUSSIBERAD-C4ISR-COMMAND-KEY"}
+        )
+        assert res_fw_mikrotik.status_code == 200
+        assert "add list=PUSSIBERAD_BLACKLIST address=192.168.1.88" in res_fw_mikrotik.text
+
+        res_fw_cisco = client.get(
+            "/api/threat-intel/export-firewall?format=cisco",
+            headers={"X-C4ISR-Auth": "PUSSIBERAD-C4ISR-COMMAND-KEY"}
+        )
+        assert res_fw_cisco.status_code == 200
+        assert "deny ip host 192.168.1.88 any" in res_fw_cisco.text
+        print("  [PASS] Step 5.8: Sentral Blacklist produced valid iptables, Windows netsh, MikroTik & Cisco ACL rules.")
     except Exception as e:
         print(f"  [FAIL] Test 5 (Accident Scenario): {e}")
         failures.append(f"Test 5: {e}")
@@ -302,9 +316,17 @@ def run_suite():
             json={"ip": "10.0.0.99"},
             headers={"client-ip": "198.51.100.77"}
         )
-        # When called via TestClient where client.host is 'testclient', is_operator_authenticated checks client_ip header if mocked
-        # main.py checks request.client.host which in TestClient is 'testclient'
         print("  [PASS] Step 7.5: Fortified security checks completed.")
+
+        # 7.6 AI Sitrep Health Check Endpoint
+        res_ai_status = client.get(
+            "/api/ai/status",
+            headers={"X-C4ISR-Auth": "PUSSIBERAD-C4ISR-COMMAND-KEY"}
+        )
+        assert res_ai_status.status_code == 200
+        ai_meta = res_ai_status.json()
+        assert "engine" in ai_meta and "status" in ai_meta
+        print(f"  [PASS] Step 7.6: AI Military Engine status verified: {ai_meta['engine']} ({ai_meta['status']}).")
     except Exception as e:
         import traceback
         traceback.print_exc()

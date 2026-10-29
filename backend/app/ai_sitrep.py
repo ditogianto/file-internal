@@ -112,6 +112,33 @@ PERIHAL       : LAPORAN PENINDAKAN & INTERSEPSI AKTIF NEXUS-TRAP
 ================================================================================"""
     return final_report
 
+async def check_ai_health() -> dict:
+    """Verifies local SLM / Ollama endpoint availability."""
+    try:
+        async with httpx.AsyncClient(timeout=1.0) as client:
+            resp = await client.get(settings.OLLAMA_URL.replace("/api/generate", "/api/tags"))
+            if resp.status_code == 200:
+                models = [m.get("name") for m in resp.json().get("models", [])]
+                return {
+                    "engine": "LOCAL_SLM_OLLAMA",
+                    "status": "ONLINE",
+                    "endpoint": settings.OLLAMA_URL,
+                    "target_model": settings.OLLAMA_MODEL,
+                    "available_models": models,
+                    "mode": "Autonomous Neural Military Intelligence"
+                }
+    except Exception:
+        pass
+
+    return {
+        "engine": "DETERMINISTIC_MILITARY_CORE",
+        "status": "ACTIVE_OFFLINE",
+        "endpoint": "IN_MEMORY_MILITARY_RULESET",
+        "target_model": "PUSSIBERAD-SITREP-RULESET-V2",
+        "mode": "100% On-Premise Air-Gapped Fallback (Zero Cloud)",
+        "security_rating": "Tamper-Proof Deterministic"
+    }
+
 async def generate_sitrep() -> str:
     """Attempts local LLM generation; falls back seamlessly to deterministic military report."""
     try:
@@ -126,11 +153,13 @@ Thread Terkunci: {telemetry.locked_threads}
 Korelasikan data di atas ke format Laporan Intelijen Sitrep Militer Resmi TNI AD.""",
             "stream": False
         }
-        async with httpx.AsyncClient(timeout=0.3) as client:
+        async with httpx.AsyncClient(timeout=2.0) as client:
             resp = await client.post(settings.OLLAMA_URL, json=context_payload)
             if resp.status_code == 200:
                 result = resp.json()
-                return result.get("response", generate_deterministic_sitrep())
+                llm_response = result.get("response", "").strip()
+                if llm_response and len(llm_response) > 100:
+                    return llm_response
     except Exception:
         pass
     

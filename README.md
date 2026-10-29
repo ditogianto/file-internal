@@ -108,11 +108,22 @@ Pertahanan siber modern tidak boleh bersifat pasif seperti tembok batu yang hany
    * **Pemisahan Mesin Pencari Legal:** Mesin pencari legal (Googlebot, Bingbot, Applebot, Baiduspider) dipandu melalui `/robots.txt` standar militer. Akses sah pada rute publik tidak akan pernah memicu alarm palsu (*False-Positive Elimination by Design*).
    * **Verifikasi FCrDNS (*Forward-Confirmed reverse DNS*):** Jika penyerang memalsukan *User-Agent* menjadi Googlebot untuk mengelabui honeypot, sistem secara otomatis mengeksekusi pemeriksaan reverse DNS ganda. Jika hostname bukan berasal dari domain resmi (`*.googlebot.com` atau `*.search.msn.com`), aksi tersebut seketika diklasifikasikan sebagai **MIMICRY ATTACK (MITRE ATT&CK T1036 Masquerading)** dan langsung dimasukkan ke Sentral Blacklist!
 
-4. **Sentral Blacklist & Ekspor Aturan Firewall 1-Klik:**
+4. **Sentral Blacklist & Ekspor Multi-Format Router L3 Teritorial:**
    * Setiap pelaku ancaman yang teridentifikasi secara otomatis dikatalogkan ke dalam feed intelijen IOC pangkalan.
-   * Operator komando dapat mengunduh script blokir siap eksekusi dalam format **Linux `iptables`** atau **Windows `netsh advfirewall`** hanya dengan satu klik tombol di dashboard untuk disebarluaskan ke seluruh Kodim/Korem jajaran TNI AD.
+   * Operator komando dapat mengunduh script blokir siap eksekusi dalam 4 format industri pertahanan:
+     1. **Linux `iptables` script (`.sh`)** untuk server & gateway Linux Kodam.
+     2. **Windows Advanced Firewall batch script (`.bat`)** untuk workstation dinas.
+     3. **MikroTik RouterOS script (`.rsc`)** untuk router teritorial Kodim/Korem (`/ip firewall address-list`).
+     4. **Cisco IOS Access Control List (`.cfg`)** untuk core switch kampus militer (`access-list extended`).
 
-5. **Rantai Audit Kriptografis SQLite (Bukti Sah Peradilan Militer POMAD):**
+5. **Pintasan Keyboard Taktis Panggung (Hotkeys untuk Presenter):**
+   * Tekan `[R]` : Reset status purwarupa ke Siaga Hijau (0 detik).
+   * Tekan `[T]` : Nyalakan / matikan mesin Tarpit Crasher.
+   * Tekan `[K]` : Eksekusi 1-Klik Karantina Host Terinfeksi.
+   * Tekan `[S]` : Buka & generate AI Military SITREP berstempel SHA-256.
+   * Tekan `[Q]` : Buka portal taktis QR Demo Juri untuk ponsel panggung.
+
+6. **Rantai Audit Kriptografis SQLite (Bukti Sah Peradilan Militer POMAD):**
    * Setiap insiden dicatat dalam penyimpanan *append-only* SQLite (`nexus_audit.db`).
    * Menggunakan *sequential hash-chaining* (SHA-256) di mana setiap entri mengikat hash rekaman sebelumnya, diperkuat dengan tanda tangan digital **HMAC-SHA256 Node Pangkalan**.
    * Menjamin keabsahan barang bukti (*Chain-of-Custody*) yang tidak dapat dimanipulasi oleh pihak mana pun di persidangan Oditur Militer (dapat diverifikasi via `/api/audit/verify`).
@@ -317,9 +328,16 @@ nexus-trap/
 │   └── run_full_accident_scenario.py # Rehearsal Otomatis Seluruh Skenario Insiden
 ├── screenshots/                 # Galeri Infografis & Tangkapan Layar 1080p Widescreen
 ├── presentation_deck.html       # Visual Presentasi Vektor Interaktif (Full HD 1080p SVG)
+├── presentasi_awam.html         # Presentasi Responsif Animatif untuk Pemangku Kepentingan Awam
 ├── PPT_NEXUS_TRAP_RESMI_KCH2026.pptx # Pitch Deck 16:9 Bebas Overflow
 ├── PANDUAN_PRESENTASI_DAN_DEMO_JUARA.md # Skrip Verbatim & Buku Saku Pertanyaan Juri
-└── PANDUAN_WORKFLOW_DEMO_DAN_STUDI_KASUS_NYATA.md # Prosedur Gladi Bersih Lapangan
+├── PANDUAN_REKAMAN_VIDEO_YOUTUBE_10_MENIT.md # Storyboard & Teleprompter Video YouTube 10 Menit
+├── PROPOSAL_TEKNIS_DAN_ARSITEKTUR_KCH2026.md # Proposal & Whitepaper Resmi Hackathon (Kualitas Dokumentasi)
+├── PANDUAN_WORKFLOW_DEMO_DAN_STUDI_KASUS_NYATA.md # Prosedur Gladi Bersih Lapangan
+├── setup_remote_and_push.ps1    # Otomasi Publikasi Repositori ke GitHub (Windows PowerShell)
+├── setup_remote_and_push.sh     # Otomasi Publikasi Repositori ke GitHub (Linux / Bash)
+├── LICENSE                      # Lisensi Permisif Open Source Militer Mandiri
+└── CONTRIBUTING.md              # Standar Kualitas & Panduan Pengembangan Lanjutan
 ```
 
 ---

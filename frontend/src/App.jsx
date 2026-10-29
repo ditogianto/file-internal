@@ -197,7 +197,11 @@ PERIHAL      : LAPORAN PENINDAKAN NEXUS-TRAP (NETWORK DECEPTION & ACTIVE TARPIT)
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = format === 'iptables' ? 'pussiberad_firewall_rules.sh' : 'pussiberad_firewall_rules.bat';
+        let filename = 'pussiberad_firewall_rules.sh';
+        if (format === 'windows_netsh') filename = 'pussiberad_firewall_rules.bat';
+        else if (format === 'mikrotik') filename = 'pussiberad_firewall_rules.rsc';
+        else if (format === 'cisco') filename = 'pussiberad_cisco_acl.cfg';
+        a.download = filename;
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -207,6 +211,34 @@ PERIHAL      : LAPORAN PENINDAKAN NEXUS-TRAP (NETWORK DECEPTION & ACTIVE TARPIT)
       console.error('Export failed:', err);
     }
   };
+
+  // Keyboard Shortcuts for High-Tempo Stage Presentation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+
+      const key = e.key.toLowerCase();
+      if (key === 'r') {
+        e.preventDefault();
+        handleReset();
+      } else if (key === 't') {
+        e.preventDefault();
+        handleToggleTarpit(!tarpitActive);
+      } else if (key === 'k') {
+        e.preventDefault();
+        handleIsolateHost(adversaryDossier?.attacker_ip || '192.168.1.88');
+      } else if (key === 's') {
+        e.preventDefault();
+        handleOpenSitrep();
+      } else if (key === 'q') {
+        e.preventDefault();
+        window.open(`http://${HOSTNAME}:8000/canary-qr`, '_blank');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [tarpitActive, adversaryDossier, operatorKey]);
 
   return (
     <div className="h-screen w-screen flex flex-col bg-tactical-dark text-slate-100 overflow-hidden">
