@@ -21,7 +21,7 @@ function isNodeTargeted(nodeId, unitStr) {
   return nodeId === 'KODAM_JAYA';
 }
 
-export default function TacticalMap({ systemStatus, compromisedUnit }) {
+export default function TacticalMap({ systemStatus, compromisedUnit, registeredUnits = [] }) {
   const isRedAlert = systemStatus === 'SIAGA_MERAH';
   const isYellowAlert = systemStatus === 'SIAGA_KUNING';
 
@@ -59,7 +59,7 @@ export default function TacticalMap({ systemStatus, compromisedUnit }) {
         </div>
         <div className="flex items-center gap-3 text-[10px]">
           <span className="text-slate-400 flex items-center gap-1">
-            <Radio className="w-3 h-3 text-emerald-400 animate-pulse" /> 11 KODAM AKTIF
+            <Radio className="w-3 h-3 text-emerald-400 animate-pulse" /> 11 KODAM // {registeredUnits.length || 6} KODIM TERHUBUNG
           </span>
           <span className="text-slate-400">
             Target Utama: <span className="text-amber-400 font-semibold">{compromisedUnit || 'JARINGAN TERITORIAL'}</span>
@@ -250,6 +250,36 @@ export default function TacticalMap({ systemStatus, compromisedUnit }) {
             <circle cx="408" cy="138" r="175" fill="none" stroke="#10b981" strokeWidth="1" strokeDasharray="4 6" />
             <circle cx="408" cy="138" r="95" fill="none" stroke="#10b981" strokeWidth="0.8" />
             <circle cx="408" cy="138" r="35" fill="none" stroke="#10b981" strokeWidth="0.6" />
+          </g>
+
+          {/* ========================================================================= */}
+          {/* DYNAMIC KODIM SENSOR SATELLITE PINS (HOT-PLUG ZERO-RECOMPILE)            */}
+          {/* ========================================================================= */}
+          <g id="dynamic-kodim-pins">
+            {registeredUnits.map((unit) => {
+              const isTargetedUnit = isRedAlert && (
+                (compromisedUnit && (compromisedUnit.includes(unit.kodim_id) || compromisedUnit.includes(unit.nama))) ||
+                isNodeTargeted(unit.kodam_id, compromisedUnit)
+              );
+              const ux = unit.x || 242;
+              const uy = unit.y || 198;
+              return (
+                <g key={unit.kodim_id} className="cursor-pointer group">
+                  <title>{unit.nama} ({unit.kodam_name})&#10;Wilayah: {unit.wilayah}&#10;Token: {unit.canary_domain}&#10;Status: {isTargetedUnit ? 'TERKOMPROMI (SIAGA MERAH)' : 'NORMAL AKTIF'}</title>
+                  {isTargetedUnit ? (
+                    <>
+                      <circle cx={ux} cy={uy} r="9" fill="none" stroke="#ef4444" strokeWidth="1.6" className="animate-ping" />
+                      <circle cx={ux} cy={uy} r="3.5" fill="#ef4444" />
+                    </>
+                  ) : (
+                    <>
+                      <circle cx={ux} cy={uy} r="2.2" fill="#38bdf8" />
+                      <circle cx={ux} cy={uy} r="4.5" fill="none" stroke="#0284c7" strokeWidth="0.7" strokeDasharray="1 1" opacity="0.8" />
+                    </>
+                  )}
+                </g>
+              );
+            })}
           </g>
 
           {/* ========================================================================= */}

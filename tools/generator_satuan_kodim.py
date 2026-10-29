@@ -120,7 +120,29 @@ def generate_canary_docx(output_path: Path, doc_id: str, unit_name: str, kodam_n
         docx.writestr("word/document.xml", document_xml)
         docx.writestr("word/_rels/document.xml.rels", document_rels)
 
-def update_registry(kodim_id: str, unit_name: str, kodam_id: str, kodam_name: str, wilayah: str, canary_domain: str):
+KODAM_DICT = {
+    "KODAM_IM": {"x": 55, "y": 55},
+    "KODAM_I": {"x": 92, "y": 82},
+    "KODAM_II": {"x": 178, "y": 158},
+    "KODAM_JAYA": {"x": 242, "y": 198},
+    "KODAM_III": {"x": 262, "y": 216},
+    "KODAM_IV": {"x": 318, "y": 205},
+    "KODAM_V": {"x": 378, "y": 212},
+    "KODAM_IX": {"x": 436, "y": 223},
+    "KODAM_VI": {"x": 408, "y": 138},
+    "KODAM_XIV": {"x": 448, "y": 178},
+    "KODAM_XVII": {"x": 742, "y": 142},
+}
+
+def calculate_kodim_coords(kodam_id: str, kodim_num: str):
+    info = KODAM_DICT.get(kodam_id, {"x": 242, "y": 198})
+    digits = "".join(filter(str.isdigit, kodim_num))
+    num_val = int(digits) if digits else 1
+    dx = ((num_val * 7) % 27) - 13
+    dy = ((num_val * 11) % 23) - 11
+    return max(35, min(765, info["x"] + dx)), max(35, min(250, info["y"] + dy))
+
+def update_registry(kodim_id: str, unit_name: str, kodam_id: str, kodam_name: str, wilayah: str, canary_domain: str, x: int = 242, y: int = 198):
     """Registers unit into backend/app/satuan_registry.json without needing restart or compile."""
     registry = {}
     if REGISTRY_PATH.exists():
@@ -136,6 +158,8 @@ def update_registry(kodim_id: str, unit_name: str, kodam_id: str, kodam_name: st
         "kodam_id": kodam_id,
         "kodam_name": kodam_name,
         "wilayah": wilayah,
+        "x": x,
+        "y": y,
         "canary_domain": canary_domain,
         "status": "MONITORED",
         "registered_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -144,6 +168,15 @@ def update_registry(kodim_id: str, unit_name: str, kodam_id: str, kodam_name: st
     REGISTRY_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(REGISTRY_PATH, "w", encoding="utf-8") as f:
         json.dump(registry, f, indent=2, ensure_ascii=False)
+
+    # Hot-reload broadcast trigger to live C4ISR frontend
+    try:
+        import urllib.request
+        req = urllib.request.Request("http://localhost:8000/api/satuan/reload", data=b"{}", headers={"Content-Type": "application/json"})
+        urllib.request.urlopen(req, timeout=1.0)
+        print("    [✓] Sinyal reload otomatis terkirim ke War Room (Live WebSocket Broadcast).")
+    except Exception:
+        pass
 
 def create_kodim_package(kodim_num: str, kota: str, kodam_idx: int):
     """Generates the full directory structure, canary bait doc, credentials, and simulation bat script."""
@@ -244,6 +277,9 @@ pause
 call "03_SIMULASI_DETONASI\\UJI_DETONASI_KEBOCORAN_KODIM.bat"
 """, encoding="utf-8")
 
+    # Calculate accurate geographic anchor coordinate
+    coords_x, coords_y = calculate_kodim_coords(kodam_id, kodim_clean)
+
     # 5. Metadata JSON
     meta_json = unit_folder / "identitas_satuan.json"
     with open(meta_json, "w", encoding="utf-8") as f:
@@ -253,12 +289,14 @@ call "03_SIMULASI_DETONASI\\UJI_DETONASI_KEBOCORAN_KODIM.bat"
             "kodam_id": kodam_id,
             "kodam_name": kodam_name,
             "wilayah": wilayah,
+            "x": coords_x,
+            "y": coords_y,
             "canary_domain": canary_domain,
             "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }, f, indent=2, ensure_ascii=False)
 
     # 6. Update Central Registry
-    update_registry(kodim_id, unit_name, kodam_id, kodam_name, wilayah, canary_domain)
+    update_registry(kodim_id, unit_name, kodam_id, kodam_name, wilayah, canary_domain, coords_x, coords_y)
     
     return {
         "unit_folder": str(unit_folder),

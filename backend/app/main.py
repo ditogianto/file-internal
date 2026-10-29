@@ -222,6 +222,25 @@ async def toggle_tarpit(payload: TarpitToggleRequest, request: Request, api_key:
     await telemetry.add_log(level=level, tag="TARPIT", message=msg)
     return {"tarpit_active": telemetry.tarpit_active}
 
+@app.get("/api/satuan/registry")
+async def get_satuan_registry():
+    """Returns the live list of registered Kodim units for dynamic UI mapping."""
+    units = telemetry.get_registered_units()
+    return {
+        "status": "success",
+        "units": units,
+        "total": len(units)
+    }
+
+@app.post("/api/satuan/reload")
+async def reload_satuan_registry():
+    """Broadcasts updated unit registry to all connected War Room UI consoles."""
+    await telemetry.broadcast()
+    return {
+        "status": "success",
+        "total_units": len(telemetry.get_registered_units())
+    }
+
 class IsolateRequest(BaseModel):
     ip: str
 

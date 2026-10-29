@@ -31,6 +31,7 @@ export default function App() {
   const [adversaryDossier, setAdversaryDossier] = useState(null);
   const [eventLogs, setEventLogs] = useState([]);
   const [compromisedUnit, setCompromisedUnit] = useState(null);
+  const [registeredUnits, setRegisteredUnits] = useState([]);
   const [wsConnected, setWsConnected] = useState(false);
 
   // Modal State
@@ -116,6 +117,7 @@ PERIHAL      : LAPORAN PENINDAKAN NEXUS-TRAP (NETWORK DECEPTION & ACTIVE TARPIT)
           if (data.adversary_dossier) setAdversaryDossier(data.adversary_dossier);
           if (data.event_logs) setEventLogs(data.event_logs);
           if (data.compromised_unit !== undefined) setCompromisedUnit(data.compromised_unit);
+          if (data.registered_units) setRegisteredUnits(data.registered_units);
         } catch (e) {}
       };
 
@@ -128,6 +130,12 @@ PERIHAL      : LAPORAN PENINDAKAN NEXUS-TRAP (NETWORK DECEPTION & ACTIVE TARPIT)
         ws.close();
       };
     };
+
+    // Initial fetch of registered Kodim units
+    fetch(`${API_BASE}/api/satuan/registry`)
+      .then(r => r.json())
+      .then(d => { if (d && d.units) setRegisteredUnits(d.units); })
+      .catch(() => {});
 
     connectWebSocket();
 
@@ -253,7 +261,7 @@ PERIHAL      : LAPORAN PENINDAKAN NEXUS-TRAP (NETWORK DECEPTION & ACTIVE TARPIT)
         {/* Central Operations Split: Tactical Map & Action Console */}
         <div className="grid grid-cols-12 gap-3 h-[42%] min-h-[200px]">
           <div className="col-span-8 h-full">
-            <TacticalMap systemStatus={systemStatus} compromisedUnit={compromisedUnit} />
+            <TacticalMap systemStatus={systemStatus} compromisedUnit={compromisedUnit} registeredUnits={registeredUnits} />
           </div>
           <div className="col-span-4 h-full">
             <ActionConsole

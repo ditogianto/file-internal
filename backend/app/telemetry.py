@@ -1,4 +1,6 @@
 import asyncio
+import json
+from pathlib import Path
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 from fastapi import WebSocket
@@ -87,14 +89,28 @@ class TelemetryManager:
         if websocket in self.active_connections:
             self.active_connections.remove(websocket)
 
+    def get_registered_units(self) -> List[Dict[str, Any]]:
+        registry_path = Path(__file__).parent / "satuan_registry.json"
+        if registry_path.exists():
+            try:
+                with open(registry_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    return list(data.values())
+            except Exception:
+                pass
+        return []
+
     def get_snapshot(self) -> Dict[str, Any]:
+        units = self.get_registered_units()
         return {
             "system_status": self.system_status,
             "tarpit_active": self.tarpit_active,
             "metrics": self.metrics,
             "adversary_dossier": self.adversary_dossier,
             "event_logs": self.event_logs[-50:],  # last 50 events
-            "compromised_unit": self.compromised_unit
+            "compromised_unit": self.compromised_unit,
+            "registered_units": units,
+            "total_registered_units": len(units)
         }
 
     async def broadcast(self):

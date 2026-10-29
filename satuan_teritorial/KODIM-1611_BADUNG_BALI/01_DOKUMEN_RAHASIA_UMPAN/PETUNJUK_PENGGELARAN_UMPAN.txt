@@ -1,0 +1,16 @@
+========================================================================
+PUSSIBERAD TNI AD // DOKTRIN PERTAHANAN AKTIF (NEXUS-TRAP)
+BERKAS UMPAN CANARY DIGITAL: Kodim 1611/Badung Bali
+========================================================================
+
+PETUNJUK PENGGUNAAN:
+1. File 'RAHASIA_DISLOKASI_PASUKAN_2026_1611.docx' adalah dokumen jebakan.
+2. Tempatkan file ini di Desktop atau folder Dokumen pada workstation staf logistik / intelijen.
+3. JANGAN DIBUKA OLEH STAF RESMI.
+4. Jika komputer staf disusupi peretas atau dicuri, pembukaan dokumen di komputer asing
+   akan langsung mengirimkan sinyal DNS klandestin ke Pusat Komando PUSSIBERAD:
+   Target Subdomain: doc-1611a.kodim-1611.canary.lan
+5. Meja Komando C4ISR seketika akan menyalakan SIAGA 1 MERAH dan mengidentifikasi:
+   - Satuan: Kodim 1611/Badung Bali (Kodam IX/Udayana)
+   - IP Penyerang & Geolocation
+========================================================================

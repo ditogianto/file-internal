@@ -5,9 +5,11 @@
     "kodam_id": "KODAM_JAYA",
     "kodam_name": "Kodam Jaya",
     "wilayah": "Jakarta Pusat, DKI Jakarta & Sekitarnya",
+    "x": 253,
+    "y": 201,
     "canary_domain": "doc-0501a.kodim-0501.canary.lan",
     "status": "MONITORED",
-    "registered_at": "2026-10-30 07:21:30"
+    "registered_at": "2026-10-30 07:31:19"
   },
   "KODIM-0733": {
     "kodim_id": "KODIM-0733",
@@ -15,9 +17,11 @@
     "kodam_id": "KODAM_IV",
     "kodam_name": "Kodam IV/Diponegoro",
     "wilayah": "Kota Semarang, Jawa Tengah & D.I. Yogyakarta",
+    "x": 306,
+    "y": 207,
     "canary_domain": "doc-0733a.kodim-0733.canary.lan",
     "status": "MONITORED",
-    "registered_at": "2026-10-30 07:21:31"
+    "registered_at": "2026-10-30 07:31:21"
   },
   "KODIM-0832": {
     "kodim_id": "KODIM-0832",
@@ -25,9 +29,11 @@
     "kodam_id": "KODAM_V",
     "kodam_name": "Kodam V/Brawijaya",
     "wilayah": "Surabaya Selatan, Jawa Timur",
+    "x": 384,
+    "y": 222,
     "canary_domain": "doc-0832a.kodim-0832.canary.lan",
     "status": "MONITORED",
-    "registered_at": "2026-10-30 07:21:31"
+    "registered_at": "2026-10-30 07:31:26"
   },
   "KODIM-1701": {
     "kodim_id": "KODIM-1701",
@@ -35,9 +41,11 @@
     "kodam_id": "KODAM_XVII",
     "kodam_name": "Kodam XVII/Cenderawasih",
     "wilayah": "Jayapura, Papua",
+    "x": 729,
+    "y": 143,
     "canary_domain": "doc-1701a.kodim-1701.canary.lan",
     "status": "MONITORED",
-    "registered_at": "2026-10-30 07:21:31"
+    "registered_at": "2026-10-30 07:31:24"
   },
   "KODIM-0901": {
     "kodim_id": "KODIM-0901",
@@ -45,9 +53,11 @@
     "kodam_id": "KODAM_VI",
     "kodam_name": "Kodam VI/Mulawarman",
     "wilayah": "Samarinda Ikn, Kalimantan Timur / IKN / Kalsel / Kaltara",
+    "x": 411,
+    "y": 148,
     "canary_domain": "doc-0901a.kodim-0901.canary.lan",
     "status": "MONITORED",
-    "registered_at": "2026-10-30 07:21:31"
+    "registered_at": "2026-10-30 07:31:28"
   },
   "KODIM-0101": {
     "kodim_id": "KODIM-0101",
@@ -55,8 +65,22 @@
     "kodam_id": "KODAM_IM",
     "kodam_name": "Kodam Iskandar Muda",
     "wilayah": "Banda Aceh, Aceh",
+    "x": 47,
+    "y": 51,
     "canary_domain": "doc-0101a.kodim-0101.canary.lan",
     "status": "MONITORED",
-    "registered_at": "2026-10-30 07:22:05"
+    "registered_at": "2026-10-30 07:31:31"
+  },
+  "KODIM-1611": {
+    "kodim_id": "KODIM-1611",
+    "nama": "Kodim 1611/Badung Bali",
+    "kodam_id": "KODAM_IX",
+    "kodam_name": "Kodam IX/Udayana",
+    "wilayah": "Badung Bali, Bali, NTB, NTT",
+    "x": 441,
+    "y": 223,
+    "canary_domain": "doc-1611a.kodim-1611.canary.lan",
+    "status": "MONITORED",
+    "registered_at": "2026-10-30 07:33:35"
   }
 }

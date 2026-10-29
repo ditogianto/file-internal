@@ -1,0 +1,9 @@
+[SISTEM KENDALI OT / SCADA KODIM 1611]
+LOKASI   : Ruang Daya & Genset Cadangan Kodim 1611/Badung Bali
+PROTOKOL : Modbus/TCP Industrial Protocol
+PORT     : 5020 (Decoy Trap Port Pangkalan)
+HOST IP  : 192.168.1.9 (NEXUS-TRAP Sensor Emulation)
+REGISTER : Holding Register 40001 (Tegangan 380V), 40002 (Frekuensi 50Hz), 40003 (BBM Solar 85%)
+
+PERHATIAN: Akses manual hanya melalui izin Perwira Jaga Pangkalan.
+Setiap percobaan koneksi tidak sah akan direkam oleh SIEM PUSSIBERAD.
