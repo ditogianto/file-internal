@@ -58,47 +58,47 @@
     /* Typography Scale */
     .eyebrow {
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: clamp(10px, 0.85vw, 12px);
+      font-size: clamp(11.5px, 0.9vw, 13.5px);
       letter-spacing: 2.2px;
       text-transform: uppercase;
       color: var(--brand);
-      margin-bottom: 0.8vh;
+      margin-bottom: 1vh;
       display: flex; align-items: center; gap: 8px;
     }
     .eyebrow::before {
       content: "";
-      width: 8px; height: 8px;
+      width: 9px; height: 9px;
       background: var(--brand);
       border-radius: 50%;
       box-shadow: 0 0 10px var(--brand);
     }
 
     h1 {
-      font-size: clamp(26px, 2.6vw, 42px);
+      font-size: clamp(30px, 3.2vw, 48px);
       font-weight: 900;
       line-height: 1.15;
       letter-spacing: -0.8px;
       color: #ffffff;
-      margin-bottom: 0.6vh;
+      margin-bottom: 1vh;
     }
     h2 {
-      font-size: clamp(20px, 1.8vw, 28px);
-      font-weight: 800;
+      font-size: clamp(23px, 2.2vw, 34px);
+      font-weight: 900;
       line-height: 1.25;
       letter-spacing: -0.4px;
       color: #ffffff;
-      margin-bottom: 0.6vh;
+      margin-bottom: 1.2vh;
     }
     h3 {
-      font-size: clamp(13px, 1.05vw, 16px);
-      font-weight: 700;
-      color: #e2e8f0;
-      margin-bottom: 0.4vh;
+      font-size: clamp(16px, 1.25vw, 19px);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.6vh;
     }
-    p {
-      font-size: clamp(11px, 0.85vw, 13px);
-      line-height: 1.55;
-      color: var(--text-muted);
+    p, li {
+      font-size: clamp(13.5px, 1.0vw, 16px);
+      line-height: 1.62;
+      color: #cbd5e1;
     }
 
     .hl { color: var(--brand); }
@@ -113,16 +113,17 @@
     .g3 { grid-template-columns: repeat(3, 1fr); }
     .g4 { grid-template-columns: repeat(4, 1fr); }
     .g5 { grid-template-columns: repeat(5, 1fr); }
-    .g-split { grid-template-columns: 1.15fr 0.85fr; }
+    .g-split { grid-template-columns: 1.1fr 0.9fr; }
 
     /* Tactical Cards */
     .card {
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1.6vh 1.4vw;
+      border-radius: 10px;
+      padding: 2.2vh 1.6vw;
       display: flex; flex-direction: column;
       position: relative;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
       transition: border-color 0.15s, transform 0.15s;
     }
     .card:hover {
@@ -131,23 +132,26 @@
 
     .card-tag {
       font-family: ui-monospace, monospace;
-      font-size: 10px; font-weight: 800;
-      letter-spacing: 1px;
+      font-size: 11.5px; font-weight: 800;
+      letter-spacing: 1.2px;
       color: var(--brand);
-      margin-bottom: 0.6vh;
+      margin-bottom: 0.8vh;
     }
 
     /* Terminal & Code Block */
     .code-box {
       background: #03060a;
       border: 1px solid #142233;
-      border-radius: 6px;
-      padding: 1vh 1vw;
+      border-radius: 8px;
+      padding: 1.4vh 1.2vw;
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: clamp(9.5px, 0.78vw, 11.5px);
-      line-height: 1.5;
+      font-size: clamp(12px, 0.88vw, 14px);
+      line-height: 1.6;
       color: #a5b4fc;
       overflow-x: auto;
+      margin-top: 1vh;
+      border-left: 3px solid var(--info);
+    }
       margin-top: 0.8vh;
       border-left: 3px solid var(--info);
     }
@@ -159,13 +163,13 @@
 
     /* Specification Pill */
     .spec-pill {
-      display: inline-flex; align-items: center; gap: 6px;
+      display: inline-flex; align-items: center; gap: 8px;
       background: var(--surface-raised);
       border: 1px solid var(--line);
-      border-radius: 4px;
-      padding: 4px 10px;
+      border-radius: 6px;
+      padding: 6px 14px;
       font-family: ui-monospace, monospace;
-      font-size: 11px;
+      font-size: 12.5px;
       font-weight: 700;
       color: #cbd5e1;
     }
@@ -173,31 +177,32 @@
     /* Table Styles */
     table {
       width: 100%; border-collapse: collapse;
-      font-size: clamp(10.5px, 0.82vw, 12.5px);
-      margin-top: 1vh;
+      font-size: clamp(13px, 0.95vw, 15px);
+      margin-top: 1.2vh;
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 6px;
+      border-radius: 8px;
       overflow: hidden;
     }
     th {
       background: #0d1826;
       color: var(--brand);
       font-family: ui-monospace, monospace;
-      font-size: 11px;
-      letter-spacing: 1px;
+      font-size: 13px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
       text-align: left;
-      padding: 10px 14px;
+      padding: 13px 18px;
       border-bottom: 1px solid var(--line);
     }
     td {
-      padding: 9px 14px;
+      padding: 12px 18px;
       border-bottom: 1px solid #142233;
       color: #cbd5e1;
+      line-height: 1.5;
     }
     tr:last-child td { border-bottom: none; }
-    td strong { color: #ffffff; }
+    td strong { color: #ffffff; font-weight: 700; }
 
     /* Bottom Status HUD */
     .hud {
@@ -288,29 +293,29 @@
     </div>
 
     <!-- Architecture Flow Strip on Cover -->
-    <div style="margin-top: 3vh; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;">
-      <div style="background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--crit); padding: 14px 16px; border-radius: 6px;">
-        <span style="font-family: monospace; font-size: 10px; color: var(--crit); font-weight: bold;">[ INPUT ANCAMAN HULU ]</span>
-        <h4 style="font-size: 13px; color: #fff; margin-top: 4px; font-weight: 700;">Infostealer &amp; Lateral Movement</h4>
-        <p style="font-size: 11px; color: var(--text-muted); margin-top: 3px; line-height: 1.5;">Akun dinas dicuri via APK palsu. Musuh menyusup di subnet pangkalan memakai identitas sah.</p>
+    <div style="margin-top: 3vh; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+      <div style="background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--crit); padding: 18px 20px; border-radius: 8px;">
+        <span style="font-family: monospace; font-size: 11.5px; color: var(--crit); font-weight: 800; letter-spacing: 0.8px;">[ INPUT ANCAMAN HULU ]</span>
+        <h4 style="font-size: 16px; color: #fff; margin-top: 6px; font-weight: 800;">Infostealer &amp; Lateral Movement</h4>
+        <p style="font-size: 13.5px; color: #cbd5e1; margin-top: 6px; line-height: 1.55;">Akun dinas dicuri via APK palsu. Musuh menyusup di subnet pangkalan memakai identitas prajurit yang sah.</p>
       </div>
 
-      <div style="background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--warn); padding: 14px 16px; border-radius: 6px;">
-        <span style="font-family: monospace; font-size: 10px; color: var(--warn); font-weight: bold;">[ REFLEXIVE DECEPTION ]</span>
-        <h4 style="font-size: 13px; color: #fff; margin-top: 4px; font-weight: 700;">Modbus 502 &amp; Tarpit 0 req/s</h4>
-        <p style="font-size: 11px; color: var(--text-muted); margin-top: 3px; line-height: 1.5;">Emulasi OT genset 380V menyerap pemindaian. TCP Tarpit membekukan thread scanner lawan.</p>
+      <div style="background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--warn); padding: 18px 20px; border-radius: 8px;">
+        <span style="font-family: monospace; font-size: 11.5px; color: var(--warn); font-weight: 800; letter-spacing: 0.8px;">[ REFLEXIVE DECEPTION ]</span>
+        <h4 style="font-size: 16px; color: #fff; margin-top: 6px; font-weight: 800;">Modbus 502 &amp; Tarpit 0 req/s</h4>
+        <p style="font-size: 13.5px; color: #cbd5e1; margin-top: 6px; line-height: 1.55;">Emulasi OT genset 380V menyerap pemindaian. TCP Tarpit membekukan memori &amp; thread scanner lawan.</p>
       </div>
 
-      <div style="background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--info); padding: 14px 16px; border-radius: 6px;">
-        <span style="font-family: monospace; font-size: 10px; color: var(--info); font-weight: bold;">[ FORENSIK OUT-OF-BAND ]</span>
-        <h4 style="font-size: 13px; color: #fff; margin-top: 4px; font-weight: 700;">Canary Token &amp; GPU Hash</h4>
-        <p style="font-size: 11px; color: var(--text-muted); margin-top: 3px; line-height: 1.5;">Dokumen umpan membongkar IP &amp; sidik jari hardware musuh via DNS UDP 5053 saat dibuka di VM.</p>
+      <div style="background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--info); padding: 18px 20px; border-radius: 8px;">
+        <span style="font-family: monospace; font-size: 11.5px; color: var(--info); font-weight: 800; letter-spacing: 0.8px;">[ FORENSIK OUT-OF-BAND ]</span>
+        <h4 style="font-size: 16px; color: #fff; margin-top: 6px; font-weight: 800;">Canary Token &amp; GPU Hash</h4>
+        <p style="font-size: 13.5px; color: #cbd5e1; margin-top: 6px; line-height: 1.55;">Dokumen umpan membongkar IP &amp; sidik jari hardware musuh via DNS UDP 5053 saat dibuka di VM luar.</p>
       </div>
 
-      <div style="background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--brand); padding: 14px 16px; border-radius: 6px;">
-        <span style="font-family: monospace; font-size: 10px; color: var(--brand); font-weight: bold;">[ RESPON KOMANDO 1-KLIK ]</span>
-        <h4 style="font-size: 13px; color: #fff; margin-top: 4px; font-weight: 700;">Quarantine &amp; SITREP SHA</h4>
-        <p style="font-size: 11px; color: var(--text-muted); margin-top: 3px; line-height: 1.5;">Pemutusan rute L3 firewall instan dan cetak laporan resmi berstempel HMAC-SHA256 POMAD.</p>
+      <div style="background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--brand); padding: 18px 20px; border-radius: 8px;">
+        <span style="font-family: monospace; font-size: 11.5px; color: var(--brand); font-weight: 800; letter-spacing: 0.8px;">[ RESPON KOMANDO 1-KLIK ]</span>
+        <h4 style="font-size: 16px; color: #fff; margin-top: 6px; font-weight: 800;">Quarantine &amp; SITREP SHA</h4>
+        <p style="font-size: 13.5px; color: #cbd5e1; margin-top: 6px; line-height: 1.55;">Pemutusan rute L3 firewall instan dan cetak laporan resmi berstempel HMAC-SHA256 berstandar POMAD.</p>
       </div>
     </div>
   </section>
@@ -322,43 +327,61 @@
     <div class="eyebrow">01 // TOPOLOGI &amp; SEGMENTASI JARINGAN PERTAHANAN</div>
     <h2>Arsitektur 3 Subnet Terisolasi: <span class="hl-cyan">Zero-Trust Boundaries</span></h2>
     
-    <div class="grid g3" style="margin-top: 1.5vh;">
-      <div class="card" style="border-top: 3px solid var(--brand);">
-        <div class="card-tag">[ SUBNET 01: MEJA KOMANDO C4ISR ]</div>
-        <h3>Management &amp; Decision Plane</h3>
-        <p>Subnet terisolasi khusus operator dan Komandan. Menjalankan Dashboard React, WebSocket Server, dan Generator Dokumen SITREP militer.</p>
-        <div class="code-box">
-          <span class="c-dim"># Port & Services:</span><br>
-          HTTP UI &nbsp; : <span class="c-green">TCP 3000 (React Vite)</span><br>
-          API REST : <span class="c-green">TCP 8000 (FastAPI Core)</span><br>
-          Telemetry: <span class="c-green">WS /ws/telemetry</span><br>
-          Auth &nbsp; &nbsp; : <span class="c-cyan">Header X-C4ISR-Auth</span>
+    <div class="grid g3" style="margin-top: 2vh;">
+      <div class="card" style="border-top: 4px solid var(--brand); min-height: 420px; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8vh;">
+            <div class="card-tag">[ SUBNET 01: MEJA KOMANDO C4ISR ]</div>
+            <span class="spec-pill" style="border-color: var(--brand); color: #6ee7b7; font-size: 11px; padding: 2px 8px;">192.168.10.0/24</span>
+          </div>
+          <h3 style="font-size: 19px; margin-bottom: 0.8vh;">Management &amp; Decision Plane</h3>
+          <p style="font-size: 14px; line-height: 1.6; color: #cbd5e1;">Subnet terisolasi khusus operator dan Komandan pangkalan. Menjalankan Dashboard Interaktif React, WebSocket Telemetry, dan Mesin Generator Dokumen SITREP militer.</p>
+        </div>
+        <div class="code-box" style="margin-top: 1.5vh; font-size: 13px;">
+          <span class="c-dim"># Layanan &amp; Port Manajemen:</span><br>
+          HTTP UI &nbsp; : <span class="c-green">TCP 3000 (React Vite Dashboard)</span><br>
+          API REST : <span class="c-green">TCP 8000 (FastAPI Async Engine)</span><br>
+          Telemetry: <span class="c-green">WS /ws/telemetry (1000ms Broadcast)</span><br>
+          Keamanan : <span class="c-cyan">Header Token X-C4ISR-Auth</span><br>
+          Akses &nbsp; &nbsp;: <span class="c-dim">Whitelist Host Komando Terisolasi</span>
         </div>
       </div>
 
-      <div class="card" style="border-top: 3px solid var(--warn);">
-        <div class="card-tag">[ SUBNET 02: KORIDOR RANJAU KODAM ]</div>
-        <h3>Deception &amp; Sensor Grid</h3>
-        <p>Ladang umpan yang dipasang di subnet pangkalan satuan. Meniru fasilitas vital markas yang tampak sah bagi pemindai lawan.</p>
-        <div class="code-box">
-          <span class="c-dim"># Emulated Sensors:</span><br>
-          OT Genset : <span class="c-amber">TCP 502 (Modbus ICS)</span><br>
-          Perimeter : <span class="c-amber">TCP 554 (RTSP Stream)</span><br>
-          File Share: <span class="c-amber">TCP 445 (SMB Canary Doc)</span><br>
-          Trap Host : <span class="c-cyan">64 Virtual Kodam Nodes</span>
+      <div class="card" style="border-top: 4px solid var(--warn); min-height: 420px; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8vh;">
+            <div class="card-tag">[ SUBNET 02: KORIDOR RANJAU KODAM ]</div>
+            <span class="spec-pill" style="border-color: var(--warn); color: #fde68a; font-size: 11px; padding: 2px 8px;">192.168.20.0/24</span>
+          </div>
+          <h3 style="font-size: 19px; margin-bottom: 0.8vh;">Deception &amp; Sensor Grid</h3>
+          <p style="font-size: 14px; line-height: 1.6; color: #cbd5e1;">Ladang umpan aktif yang dipasang di subnet pangkalan satuan. Meniru fasilitas daya dan logistik markas yang tampak sah bagi pemindai musuh.</p>
+        </div>
+        <div class="code-box" style="margin-top: 1.5vh; font-size: 13px;">
+          <span class="c-dim"># Sensor &amp; Protokol Umpan Terpasang:</span><br>
+          OT Genset : <span class="c-amber">TCP 502 (Modbus ICS 380V/50Hz)</span><br>
+          CCTV Stream: <span class="c-amber">TCP 554 (RTSP Video Feed Umpan)</span><br>
+          File Share : <span class="c-amber">TCP 445 (SMB Canary Rencana Ops)</span><br>
+          Radar Node : <span class="c-cyan">64 Virtual Kodam Honey Nodes</span><br>
+          Toleransi &nbsp;: <span class="c-green">Zero False Positive by Design</span>
         </div>
       </div>
 
-      <div class="card" style="border-top: 3px solid var(--crit);">
-        <div class="card-tag">[ SUBNET 03: SANDBOX PENYERANG ]</div>
-        <h3>Attacker Execution Plane</h3>
-        <p>Lingkungan di mana penyerang beroperasi. Scanner lawan dicekik oleh Tarpit, dan beacon Canary mendeteksi saat dokumen dibuka di VM.</p>
-        <div class="code-box">
-          <span class="c-dim"># Interception Engine:</span><br>
-          Sticky Pit: <span class="c-red">TCP 8888 (Tarpit Choker)</span><br>
-          OOB Canary: <span class="c-red">UDP 5053 (DNS Listener)</span><br>
-          Web Beacon: <span class="c-cyan">TCP 8000/beacon/pixel</span><br>
-          Forensics : <span class="c-amber">JA4 Fingerprint + WebGL</span>
+      <div class="card" style="border-top: 4px solid var(--crit); min-height: 420px; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8vh;">
+            <div class="card-tag">[ SUBNET 03: SANDBOX PENYERANG ]</div>
+            <span class="spec-pill" style="border-color: var(--crit); color: #fca5a5; font-size: 11px; padding: 2px 8px;">10.10.50.0/24</span>
+          </div>
+          <h3 style="font-size: 19px; margin-bottom: 0.8vh;">Attacker Execution Plane</h3>
+          <p style="font-size: 14px; line-height: 1.6; color: #cbd5e1;">Zona terisolasi tempat penyerang beroperasi. Scanner cepat musuh dicekik Tarpit hingga macet (0 req/s), dan suar klandestin melacak kebocoran data di luar markas.</p>
+        </div>
+        <div class="code-box" style="margin-top: 1.5vh; font-size: 13px;">
+          <span class="c-dim"># Modul Pelumpuhan &amp; Pelacak:</span><br>
+          TCP Tarpit : <span class="c-red">TCP 8888 (Zero-Window Choker)</span><br>
+          DNS Beacon : <span class="c-red">UDP 5053 (OOB Canary Listener)</span><br>
+          Web Beacon : <span class="c-cyan">TCP 8000/beacon/pixel (1x1 GIF)</span><br>
+          Atribusi &nbsp; : <span class="c-amber">JA4 Fingerprint + WebGL GPU ID</span><br>
+          Isolasi &nbsp; &nbsp;: <span class="c-green">1-Klik Multi-Firewall L3 Execution</span>
         </div>
       </div>
     </div>
@@ -406,8 +429,8 @@
             </tr>
           </tbody>
         </table>
-        <p style="margin-top: 1vh; font-size: 11px;">
-          <em>Keunggulan Red Team:</em> Peretas terkunci menganalisa data tegangan tiruan, sementara IP penyerang telah tercatat dan memicu transisi <strong>Siaga 2 (Kuning)</strong> di meja komando.
+        <p style="margin-top: 1.2vh; font-size: 13.5px; line-height: 1.6; color: #cbd5e1;">
+          <em>Keunggulan Red Team:</em> Peretas terkunci menganalisa data tegangan tiruan, sementara IP penyerang telah tercatat dan memicu transisi <strong>Siaga 2 (Kuning)</strong> di meja komando C4ISR.
         </p>
       </div>
 
@@ -640,18 +663,18 @@
       <div class="card">
         <h3>Kepatuhan Tata Naskah Militer TNI AD</h3>
         <p>Bukan chatbot generatif bebas yang rentan berhalusinasi. Mesin SITREP NEXUS-TRAP menggunakan *deterministic military template parser* yang memetakan data forensik riil langsung ke format naskah dinas resmi PUSSIBERAD:</p>
-        <ul style="padding-left: 1.2vw; margin-top: 0.8vh; font-size: 11px; line-height: 1.6; color: #cbd5e1;">
+        <ul style="padding-left: 1.2vw; margin-top: 1.2vh; font-size: clamp(13px, 0.95vw, 15px); line-height: 1.7; color: #cbd5e1;">
           <li><strong>Klasifikasi Keamanan:</strong> RAHASIA (SECRET).</li>
-          <li><strong>Nomor Registrasi:</strong> Format R/SITREP-[Tanggal]-[NoUrut]/PUSSIBERAD.</li>
+          <li><strong>Nomor Registrasi:</strong> Format R/SITREP-[Tanggal]-[NoUrut]/PUSSIBERAD. <span style="color: var(--brand); font-weight: 700;">[MARK: NOMOR SURAT RESMI]</span></li>
           <li><strong>Tembusan Resmi:</strong> Komandan PUSSIBERAD &amp; Asintel KASAD.</li>
-          <li><strong>Kronologi 4 Babak:</strong> Pengintaian OT $\rightarrow$ Penahanan Tarpit $\rightarrow$ Suar Canary $\rightarrow$ Tindakan Karantina.</li>
+          <li><strong>Kronologi 4 Babak:</strong> Pengintaian OT → Penahanan Tarpit → Suar Canary → Tindakan Karantina.</li>
           <li><strong>Stempel Segel Kriptografi:</strong> Ditutup dengan Digital Signature SHA-256.</li>
         </ul>
       </div>
 
       <div class="card">
-        <div class="card-tag">[ CONTOH OUTPUT SITREP BERSTAMPS SHA-256 ]</div>
-        <div class="code-box" style="height: 100%; font-size: 10px;">
+        <div class="card-tag">[ CONTOH OUTPUT DETERMINISTIK SITREP BERSTEMPEL SHA-256 ]</div>
+        <div class="code-box" style="height: 100%; font-size: clamp(11.5px, 0.85vw, 13px); line-height: 1.55;">
           ================================================================<br>
           MARKAS BESAR ANGKATAN DARAT // PUSSIBERAD<br>
           KLASIFIKASI : RAHASIA (SECRET)<br>
@@ -805,15 +828,31 @@
       </tbody>
     </table>
 
-    <div style="margin-top: 1.5vh; display: flex; justify-content: space-between; align-items: center; background: #0b1522; border: 1px solid var(--line-bright); border-radius: 6px; padding: 1vh 1.4vw;">
-      <div style="display: flex; gap: 20px;">
-        <div><span style="font-size: 10px; color: var(--text-muted);">LATENSI API CORE:</span><br><strong style="color: var(--brand); font-size: 14px;">&lt; 12 ms</strong></div>
-        <div><span style="font-size: 10px; color: var(--text-muted);">UTILISASI CPU IDLE:</span><br><strong style="color: var(--brand); font-size: 14px;">&lt; 0.8 %</strong></div>
-        <div><span style="font-size: 10px; color: var(--text-muted);">MEMORI BACKEND:</span><br><strong style="color: var(--info); font-size: 14px;">42.4 MB</strong></div>
-        <div><span style="font-size: 10px; color: var(--text-muted);">FRONTEND BUNDLE:</span><br><strong style="color: var(--info); font-size: 14px;">193 kB (Gzip 59kB)</strong></div>
+    <div style="margin-top: 2vh; display: flex; justify-content: space-between; align-items: center; background: #0c1524; border: 1px solid var(--line-bright); border-radius: 8px; padding: 1.4vh 1.8vw; box-shadow: 0 4px 16px rgba(0,0,0,0.35);">
+      <div style="display: flex; gap: 2.5vw;">
+        <div>
+          <span style="font-size: 11px; font-weight: 800; color: var(--text-dim); letter-spacing: 0.8px;">LATENSI API CORE:</span><br>
+          <strong style="color: var(--brand); font-size: 17px; font-family: ui-monospace, monospace;">&lt; 12 ms</strong>
+        </div>
+        <div>
+          <span style="font-size: 11px; font-weight: 800; color: var(--text-dim); letter-spacing: 0.8px;">CPU IDLE LOAD:</span><br>
+          <strong style="color: var(--brand); font-size: 17px; font-family: ui-monospace, monospace;">&lt; 0.8 %</strong>
+        </div>
+        <div>
+          <span style="font-size: 11px; font-weight: 800; color: var(--text-dim); letter-spacing: 0.8px;">MEMORI BACKEND:</span><br>
+          <strong style="color: var(--info); font-size: 17px; font-family: ui-monospace, monospace;">42.4 MB</strong>
+        </div>
+        <div>
+          <span style="font-size: 11px; font-weight: 800; color: var(--text-dim); letter-spacing: 0.8px;">FRONTEND ASSETS:</span><br>
+          <strong style="color: var(--info); font-size: 17px; font-family: ui-monospace, monospace;">193 kB (Gzip 59kB)</strong>
+        </div>
+        <div>
+          <span style="font-size: 11px; font-weight: 800; color: var(--text-dim); letter-spacing: 0.8px;">RANTAI AUDIT:</span><br>
+          <strong style="color: var(--brand); font-size: 17px; font-family: ui-monospace, monospace;">235 Hash Valid</strong>
+        </div>
       </div>
-      <div class="spec-pill" style="border-color: var(--brand); background: rgba(16,185,129,0.15); color: #6ee7b7;">
-        STATUS: SIAP DIGELAR DI JAJARAN KODAM SE-INDONESIA
+      <div class="spec-pill" style="border-color: var(--brand); background: rgba(16,185,129,0.18); color: #6ee7b7; font-size: 12.5px; padding: 8px 16px;">
+        ★ STATUS VERIFIKASI: 100% SIAP GELAR DI JAJARAN KODAM SE-INDONESIA
       </div>
     </div>
   </section>

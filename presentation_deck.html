@@ -111,9 +111,9 @@
       background: #0f172a;
       border: 1px solid #334155;
       color: #cbd5e1;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 6px;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -133,39 +133,43 @@
     }
 
     .slide-counter {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       color: #e2e8f0;
-      min-width: 90px;
+      min-width: 100px;
       text-align: center;
     }
 
     .slide-title-indicator {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 13.5px;
+      font-weight: 700;
       color: var(--accent-cyan);
-      max-width: 480px;
+      max-width: 520px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     .quick-link {
-      color: #94a3b8;
-      font-size: 12px;
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 700;
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 10px;
-      border-radius: 4px;
-      transition: background 0.15s;
+      padding: 6px 12px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      transition: all 0.15s;
     }
 
     .quick-link:hover {
       background: #1e293b;
       color: var(--accent-green);
+      border-color: var(--accent-green);
     }
 
     /* Thumbnail Quick Select Drawer (Hidden by default) */
@@ -272,10 +276,11 @@
       <div class="slide-title-indicator" id="slide-title">Cover: Platform Pertahanan Siber Aktif & Kontra-Spionase</div>
     </div>
 
+    <!-- [MARK: VERIFIKASI SEBELUM SUBMIT] Stage Live Demo URLs -->
     <div class="hud-right">
-      <a href="http://localhost:3000" target="_blank" class="quick-link">⚡ LIVE WAR-ROOM</a>
-      <a href="http://localhost:8000/canary-qr" target="_blank" class="quick-link">📱 QR DEMO JURI</a>
-      <button class="nav-btn" onclick="toggleFullscreen()">⛶ FULLSCREEN (F11)</button>
+      <a href="http://localhost:3000" target="_blank" class="quick-link" title="Buka Dashboard Operasi C4ISR Live">⚡ LIVE WAR-ROOM (PORT 3000)</a>
+      <a href="http://localhost:8000/canary-qr" target="_blank" class="quick-link" title="Buka Halaman QR Code untuk Pengujian Juri">📱 QR DEMO JURI (PORT 8000)</a>
+      <button class="nav-btn" onclick="toggleFullscreen()" title="Layar Penuh (F11)">⛶ FULLSCREEN (F11)</button>
     </div>
   </div>
 
