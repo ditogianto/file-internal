@@ -349,7 +349,7 @@
       </div>
       <div class="card-header-tag">[ TITIK INFEKSI HULU ]</div>
       <h3>1. Satu Klik yang Keliru</h3>
-      <p>Staf administrasi satuan tidak sengaja mengunduh file jahat (APK pinjol/undangan palsu). Laptop dinas dikuasai malware Trojan secara klandestin.</p>
+      <p>Staf administrasi satuan tidak sengaja mengunduh file jahat (APK undangan dinas / pinjol palsu). Komputer staf dikuasai malware <em>Infostealer</em> secara klandestin.</p>
     </div>
 
     <!-- Card 2 -->
@@ -379,8 +379,8 @@
         </svg>
       </div>
       <div class="card-header-tag">[ PERGERAKAN LATERAL ]</div>
-      <h3>2. Kredensial Resmi Dicuri</h3>
-      <p>Peretas menggunakan akun dan token sesi intranet staf yang sah. Sistem keamanan gerbang luar tertipu karena hak aksesnya sah.</p>
+      <h3>2. Masuk Lewat Pintu Depan</h3>
+      <p>Token sesi intranet dinas dan akun VPN staf dicuri. Penyerang masuk ke jaringan pangkalan memakai hak akses sah prajurit (<em>Living off the Land</em>). Gerbang luar tidak curiga.</p>
     </div>
 
     <!-- Card 3 -->
@@ -412,13 +412,13 @@
           <line x1="139" y1="51" x2="185" y2="51" stroke="#ef4444" stroke-width="1"/>
         </svg>
       </div>
-      <div class="card-header-tag">[ SASARAN STRATEGIS ]</div>
-      <h3>3. Incaran Fasilitas Fisik</h3>
-      <p>Peretas mengincar dokumen mutasi pasukan dan <strong>panel genset markas (Port 502 Modbus)</strong> yang tidak memiliki sandi untuk memadamkan daya markas.</p>
+      <div class="card-header-tag">[ SASARAN STRATEGIS DI DALAM ]</div>
+      <h3>3. Berkas Rahasia &amp; Fasilitas Daya</h3>
+      <p>Musuh merayap mencari 2 incaran vital pangkalan: (1) Folder bersama berisi <strong>Rencana Dislokasi Pasukan</strong> (File Server/NAS), dan (2) Kontroler <strong>Smart Genset/UPS (Port 502 Modbus)</strong> untuk menyabotase pasokan listrik pangkalan.</p>
     </div>
   </div>
   <div class="analogy">
-    <p><b>Analogi Lapangan:</b> Seperti penyusup yang berhasil masuk ke markas militer karena mengenakan <b>seragam dinas dan membawa tanda pengenal asli yang dicuri</b>. Penjaga gerbang luar tidak bisa membedakannya dari prajurit sah.</p>
+    <p><b>Analogi Nyata di Lapangan:</b> Seperti penyusup yang tidak memanjat pagar kawat berduri markas, melainkan <b>memakai seragam dinas, kartu akses, dan kunci kantor prajurit yang sah</b>. Penjaga gerbang luar mempersilakan masuk dengan hormat karena identitasnya sah.</p>
   </div>
 </section>
 
@@ -476,7 +476,7 @@
       </div>
       <div class="card-header-tag">[ LANGKAH 01: PASANG RANJAU ]</div>
       <h3>Umpan Presisi di Intranet</h3>
-      <p>Memasang genset tiruan, file rahasia bertabur pelacak, dan portal dinas palsu yang tampak 100% nyata bagi perkakas pemindai musuh.</p>
+      <p>Memasang genset &amp; CCTV tiruan, file rahasia bertabur suar pelacak, dan portal intranet palsu yang tampak 100% nyata bagi perkakas pemindai musuh.</p>
     </div>
 
     <!-- Card 2 -->
@@ -501,7 +501,7 @@
       </div>
       <div class="card-header-tag">[ LANGKAH 02: KUNCI &amp; CEKIK ]</div>
       <h3>Pelumpuhan Otomatis</h3>
-      <p>Saat pemindai musuh masuk, koneksinya dicekik perlahan (1 byte per detik). Alat pemindai musuh macet total kehabisan soket.</p>
+      <p>Saat pemindai musuh masuk, koneksinya dicekik perlahan (1 byte per detik). Alat pemindai musuh macet total kehabisan soket (0 req/s).</p>
     </div>
 
     <!-- Card 3 -->
@@ -535,7 +535,7 @@
     </div>
   </div>
   <div class="analogy">
-    <p><b>Doktrin Perang Stratagem:</b> Seperti strategi <b>"Tank Kayu"</b> dalam perang gerilya. Musuh menghabiskan energinya menyerang sasaran tiruan, sementara koordinat sarang musuh terbongkar sempurna.</p>
+    <p><b>Doktrin Perang Aktif (Stratagem 33 &amp; 25):</b> Seperti strategi <b>umpan kamuflase pangkalan</b>. Alih-alih lelah mengejar musuh yang berkeliaran di ratusan komputer satuan, kita biarkan musuh sendiri yang melangkah ke dalam ladang ranjau digital kita.</p>
   </div>
 </section>
 
@@ -561,7 +561,7 @@
       </div>
       <span class="tag t-warn">OT DECOY</span>
       <h3>Tank Kayu</h3>
-      <p>Genset &amp; radar tiruan yang membalas pemindai musuh dengan tegangan palsu 380V.</p>
+      <p>Sensor emulasi Smart Genset (Port 502 Modbus) &amp; CCTV pangkalan. Membalas pemindai musuh dengan tegangan normal 380V agar musuh terkunci di umpan.</p>
     </div>
 
     <!-- Tool 2: Lem Tikus -->
@@ -582,7 +582,7 @@
       </div>
       <span class="tag t-warn">TCP TARPIT</span>
       <h3>Lem Tikus</h3>
-      <p>Mesin penahan koneksi yang membuat alat pemindai musuh macet total (0 req/s).</p>
+      <p>Meneteskan respon data hanya 1 byte per detik. Memori &amp; thread pemindai cepat lawan (Gobuster/Nmap) kehabisan soket dan macet total (0 req/s).</p>
     </div>
 
     <!-- Tool 3: Koper GPS -->
@@ -606,7 +606,7 @@
       </div>
       <span class="tag t-crit">CANARY OOB</span>
       <h3>Koper Ber-GPS</h3>
-      <p>Dokumen umpan yang meledakkan suar pelacak saat dibuka di VM penyerang.</p>
+      <p>Dokumen rahasia umpan di folder bersama pangkalan. Saat dicuri dan dibuka di laptop/VM luar pangkalan, suar DNS rahasia membongkar IP &amp; GPU musuh.</p>
     </div>
 
     <!-- Tool 4: Pintu Baja -->
@@ -628,7 +628,7 @@
       </div>
       <span class="tag t-info">QUARANTINE</span>
       <h3>Pintu Baja</h3>
-      <p>Perintah 1-klik yang memutus total rute penyerang di firewall pangkalan.</p>
+      <p>Perintah 1-klik yang memutus total kabel data workstation terinfeksi dan mencetak aturan blokir firewall router pangkalan (iptables/MikroTik/Cisco).</p>
     </div>
 
     <!-- Tool 5: Buku Bersegel -->
@@ -651,7 +651,7 @@
       </div>
       <span class="tag t-brand">AUDIT POMAD</span>
       <h3>Buku Bersegel</h3>
-      <p>Rantai audit SHA-256 yang sah dan anti-rusak untuk persidangan Oditur Militer.</p>
+      <p>Rantai bukti forensik digital HMAC-SHA256 anti-manipulasi yang sah untuk penyidik Polisi Militer (POMAD) dan persidangan Oditur Militer.</p>
     </div>
   </div>
 </section>
@@ -677,8 +677,8 @@
           <line x1="30" y1="48" x2="110" y2="48" stroke="#334155" stroke-width="2"/>
         </svg>
       </div>
-      <h3>Penyusup Masuk</h3>
-      <p>Staf terinfeksi APK palsu. Peretas mulai merayap di subnet lokal memakai akun staf dinas.</p>
+      <h3>Kredensial Staf Bocor</h3>
+      <p>Staf administrasi satuan terkena malware Infostealer (APK palsu). Akun intranet dinas jatuh ke tangan musuh.</p>
     </div>
 
     <!-- Step 2 -->
@@ -695,8 +695,8 @@
           <text x="88" y="34" fill="#fcd34d" font-size="8" font-weight="900" text-anchor="middle" font-family="monospace">380V</text>
         </svg>
       </div>
-      <h3>Sentuh Umpan OT</h3>
-      <p>Peretas menemukan Port 502 Modbus. Genset tiruan membalas 380V. Meja komando membunyikan <strong>Siaga Kuning</strong>.</p>
+      <h3>Sentuh Umpan Genset/CCTV</h3>
+      <p>Musuh memindai Port 502 Modbus kontroler genset pangkalan. Umpan membalas 380V. Meja komando membunyikan <strong>Siaga Kuning</strong>.</p>
     </div>
 
     <!-- Step 3 -->
@@ -713,8 +713,8 @@
           <path d="M 45 48 C 65 44 75 44 95 48" stroke="#f59e0b" stroke-width="2"/>
         </svg>
       </div>
-      <h3>Koneksi Dicekik</h3>
-      <p>Peretas melancarkan scanner cepat. Tarpit menahan TCP 1 byte/detik. Kecepatan scanner anjlok ke <strong>0 req/s</strong>.</p>
+      <h3>Pemindai Lawan Dibekukan</h3>
+      <p>Musuh melancarkan scanner cepat. Tarpit menahan TCP 1 byte/detik. Alat pemindai musuh seketika macet ke <strong>0 req/s</strong>.</p>
     </div>
 
     <!-- Step 4 -->
@@ -731,8 +731,8 @@
           <path d="M 85 18 A 25 25 0 0 1 120 48" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="2,2"/>
         </svg>
       </div>
-      <h3>Suar Meledak</h3>
-      <p>Dokumen umpan dibuka di VM penyerang. Suar DNS Canary membongkar IP sarang musuh. Meja komando meledak <strong>Siaga 1 Merah</strong>.</p>
+      <h3>Suar Dokumen Meledak</h3>
+      <p>Dokumen rahasia umpan dibuka di VM penyerang. Suar DNS Canary membongkar IP &amp; GPU musuh. Meja komando meledak <strong>Siaga 1 Merah</strong>.</p>
     </div>
 
     <!-- Step 5 -->
@@ -750,12 +750,12 @@
           <text x="97" y="35" fill="#a7f3d0" font-size="7" font-weight="900" text-anchor="middle" font-family="monospace">SITREP</text>
         </svg>
       </div>
-      <h3>Isolasi &amp; SITREP</h3>
-      <p>Komandan menekan tombol <strong>[ISOLASI]</strong>. Komputer korban diputus total, dan Laporan Militer resmi tercetak otomatis.</p>
+      <h3>Isolasi 1-Klik &amp; SITREP</h3>
+      <p>Komandan menekan tombol <strong>[ISOLASI]</strong>. Komputer korban diputus total, dan Laporan Militer resmi tercetak otomatis berstempel SHA-256.</p>
     </div>
   </div>
   <div class="analogy" style="margin-top: 1.8vh;">
-    <p><b>Jaminan Keterbacaan Panggung:</b> Seluruh proses divisualisasikan dengan diagram terarah. Komandan tidak perlu membaca log teknis mentah—cukup melihat tahapan yang sedang aktif dan mengambil keputusan taktis.</p>
+    <p><b>Jaminan Realitas Operasional:</b> Menjembatani dua alam nyata satuan TNI AD: <b>Sistem Berkas Administrasi (IT)</b> dan <b>Fasilitas Daya Pangkalan (OT)</b>. Komandan tidak dipusingkan oleh ribuan alarm palsu, melainkan fokus pada keputusan taktis 1-klik.</p>
   </div>
 </section>
 
@@ -820,7 +820,7 @@
       </div>
       <div class="card-header-tag">[ MENIT 00:00 ]</div>
       <h3>Markas Tenang</h3>
-      <p>Layar kiri menampilkan Pusat Komando C4ISR Siaga Hijau. Sensor umpan siap menanti pergerakan musuh.</p>
+      <p>Layar kiri proyektor menampilkan Pusat Komando C4ISR Siaga Hijau. 64 node sensor umpan memantau jaringan Kodam se-Indonesia.</p>
     </div>
 
     <!-- Minute 01:00 -->
@@ -836,8 +836,8 @@
         </svg>
       </div>
       <div class="card-header-tag">[ MENIT 01:00 ]</div>
-      <h3>Musuh Intip Genset</h3>
-      <p>Di layar kanan, musuh memindai Port 502 Modbus. Genset palsu membalas 380V. Meja komando membunyikan Siaga Kuning.</p>
+      <h3>Musuh Intip Genset &amp; CCTV</h3>
+      <p>Di laptop simulasi musuh, peretas memindai Port 502 Modbus kontroler daya pangkalan. Umpan membalas 380V normal. Meja komando membunyikan Siaga Kuning.</p>
     </div>
 
     <!-- Minute 02:00 -->
@@ -854,8 +854,8 @@
         </svg>
       </div>
       <div class="card-header-tag">[ MENIT 02:00 ]</div>
-      <h3>Scanner Dibekukan</h3>
-      <p>Musuh melancarkan scanner cepat. Operator menekan tombol Tarpit. Terminal musuh seketika <strong>MACET TOTAL (0 req/s)</strong>!</p>
+      <h3>Terminal Musuh Dibekukan</h3>
+      <p>Musuh melancarkan scanner cepat. Operator menekan tombol Tarpit. Terminal musuh seketika <strong>MACET TOTAL (0 req/s)</strong> kehabisan soket!</p>
     </div>
 
     <!-- Minute 03:00 -->
@@ -873,12 +873,12 @@
         </svg>
       </div>
       <div class="card-header-tag">[ MENIT 03:00 ]</div>
-      <h3>Canary &amp; Isolasi</h3>
-      <p>Dokumen umpan dibuka di VM. Sirene Siaga 1 Merah meledak! Komandan menekan tombol isolasi, ping musuh mati seketika.</p>
+      <h3>Suar Canary &amp; Isolasi</h3>
+      <p>Dokumen rahasia umpan dibuka di VM penyerang. Sirene Siaga 1 Merah meledak di panggung! Komandan menekan [ISOLASI], ping musuh mati, dan SITREP tercetak seketika.</p>
     </div>
   </div>
   <div class="analogy">
-    <p><b>Fitur Interaktif Khusus Dewan Juri:</b> Dewan Juri di panggung dapat memindai <b>QR Code Taktis</b> dengan kamera HP masing-masing untuk mengunduh dokumen umpan dan membuktikan kebocoran secara langsung di layar proyektor!</p>
+    <p><b>Fitur Interaktif Khusus Dewan Juri:</b> Dewan Juri di panggung dapat memindai <b>QR Code Taktis</b> dengan kamera HP masing-masing untuk mengunduh dokumen umpan dan membuktikan kebocoran suar klandestin secara langsung di layar proyektor!</p>
   </div>
 </section>
 
