@@ -3,205 +3,593 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data: screenshots/;">
-<title>NEXUS-TRAP: Penjelasan untuk Semua Orang</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline';">
+<title>NEXUS-TRAP // Presentasi Doktrin Pertahanan Siber Aktif TNI AD</title>
 <style>
-  :root{
-    --bg:#0b0f0e; --surface:#121816; --raised:#18201d; --line:#26322e;
-    --text:#f8fafc; --muted:#cbd5e1;
-    --brand:#10b981; --brand-soft:rgba(16,185,129,.12);
-    --ok:#22c55e; --warn:#f59e0b; --crit:#ef4444; --info:#38bdf8; --ai:#a78bfa;
-    --r:16px;
+  :root {
+    --bg: #070a0f;
+    --surface: #0f1622;
+    --raised: #162030;
+    --line: #223247;
+    --line-active: #059669;
+    --text: #f8fafc;
+    --muted: #cbd5e1;
+    --dim: #64748b;
+    --brand: #10b981;
+    --brand-soft: rgba(16, 185, 129, 0.12);
+    --ok: #10b981;
+    --warn: #f59e0b;
+    --crit: #ef4444;
+    --info: #38bdf8;
+    --r: 12px;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,Roboto,sans-serif;line-height:1.5}
-  .deck{height:100%;position:relative;overflow:hidden}
-  .slide{position:absolute;inset:0;padding:5vh 7vw 10vh;display:flex;flex-direction:column;justify-content:center;opacity:0;visibility:hidden;transform:translateX(24px);transition:opacity .35s,transform .35s}
-  .slide.active{opacity:1;visibility:visible;transform:none}
-  .eyebrow{font-size:clamp(12px,1.1vw,15px);letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:1.2vh}
-  h1{font-size:clamp(34px,5.2vw,76px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
-  h2{font-size:clamp(26px,3.2vw,46px);line-height:1.15;font-weight:800;margin-bottom:3vh}
-  h3{font-size:clamp(17px,1.5vw,22px);font-weight:700;margin-bottom:.6vh}
-  p,li{font-size:clamp(15px,1.3vw,20px);color:var(--muted)}
-  .lead{font-size:clamp(18px,1.8vw,26px);color:var(--text);max-width:60ch}
-  strong{color:var(--text)} .hl{color:var(--brand)}
-  .grid{display:grid;gap:1.6vw}
-  .g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:2.4vh 1.5vw}
-  .icon{font-size:clamp(28px,3vw,44px);line-height:1;margin-bottom:1.2vh}
-  .tag{display:inline-block;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25em .7em;border-radius:999px;border:1px solid currentColor;margin-bottom:1.2vh}
-  .t-ok{color:var(--ok)} .t-warn{color:var(--warn)} .t-crit{color:var(--crit)} .t-info{color:var(--info)} .t-ai{color:var(--ai)} .t-brand{color:var(--brand)}
-  .analogy{border-left:4px solid var(--brand);background:var(--brand-soft);padding:1.6vh 1.4vw;border-radius:0 12px 12px 0;margin-top:2.4vh}
-  .analogy p{color:var(--text)} .analogy b{color:var(--brand)}
-  .big{font-size:clamp(40px,5vw,72px);font-weight:800;line-height:1}
-  .tl .card{border-top:5px solid var(--c)}
-  .step{font-size:clamp(12px,1vw,14px);color:var(--muted);font-weight:700;letter-spacing:.08em;margin-bottom:.6vh}
-  table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-  th,td{padding:1.5vh 1.3vw;text-align:left;font-size:clamp(14px,1.2vw,19px);border-bottom:1px solid var(--line)}
-  th{background:var(--raised);color:var(--text)} td{color:var(--muted)} tr:last-child td{border-bottom:0}
-  td.yes{color:var(--ok);font-weight:600} td.no{color:var(--crit);font-weight:600}
-  .dot{width:clamp(40px,4vw,60px);height:clamp(40px,4vw,60px);border-radius:50%;margin:0 auto 1.2vh;display:grid;place-items:center;font-weight:800;color:#0b0f0e;font-size:clamp(16px,1.6vw,24px)}
-  .center{text-align:center}
-  .bar{position:fixed;left:0;bottom:0;height:4px;background:var(--brand);transition:width .35s;z-index:5}
-  .nav{position:fixed;right:2vw;bottom:2.4vh;display:flex;align-items:center;gap:.6vw;z-index:5}
-  .nav button{background:var(--raised);color:var(--text);border:1px solid var(--line);border-radius:10px;width:44px;height:44px;font-size:18px;cursor:pointer}
-  .nav button:hover{border-color:var(--brand)}
-  .nav button:focus-visible{outline:3px solid var(--info);outline-offset:2px}
-  .count{color:var(--muted);font-size:14px;min-width:56px;text-align:center;font-variant-numeric:tabular-nums}
-  .foot{position:fixed;left:2vw;bottom:2.6vh;color:var(--muted);font-size:13px;z-index:5}
-  @media (max-width:900px){.g3,.g4,.g5{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}}
-  @media print{.nav,.bar,.foot{display:none}.deck{height:auto;overflow:visible}.slide{position:relative;opacity:1;visibility:visible;transform:none;height:100vh;page-break-after:always}}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .deck { height: 100%; position: relative; overflow: hidden; }
+  .slide {
+    position: absolute;
+    inset: 0;
+    padding: 6vh 7vw 9vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+    transition: opacity .3s cubic-bezier(0.16, 1, 0.3, 1), transform .3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .slide.active { opacity: 1; visibility: visible; transform: none; }
+  
+  /* Typography Scale */
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: clamp(11px, 1vw, 13px);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--brand);
+    font-weight: 700;
+    margin-bottom: 1.2vh;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--brand);
+    border-radius: 50%;
+  }
+  h1 {
+    font-size: clamp(34px, 4.8vw, 68px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  h2 {
+    font-size: clamp(24px, 3vw, 42px);
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 2.8vh;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: clamp(16px, 1.4vw, 20px);
+    font-weight: 700;
+    margin-bottom: 0.8vh;
+    color: var(--text);
+  }
+  p, li {
+    font-size: clamp(14px, 1.2vw, 18px);
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .lead {
+    font-size: clamp(18px, 1.7vw, 24px);
+    color: var(--muted);
+    max-width: 65ch;
+    line-height: 1.5;
+  }
+  strong { color: var(--text); font-weight: 700; }
+  .hl { color: var(--brand); }
+  .hl-crit { color: var(--crit); }
+  .hl-warn { color: var(--warn); }
+  
+  /* Grid Systems */
+  .grid { display: grid; gap: 1.4vw; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .g5 { grid-template-columns: repeat(5, 1fr); }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 2.6vh 1.6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  }
+  .card-header-tag {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: clamp(10px, 0.85vw, 12px);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 1.2vh;
+  }
+  .tag {
+    display: inline-block;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: clamp(10px, 0.85vw, 12px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25em 0.8em;
+    border-radius: 4px;
+    margin-bottom: 1.2vh;
+    width: fit-content;
+  }
+  .t-ok { background: rgba(16, 185, 129, 0.15); color: var(--ok); border: 1px solid rgba(16, 185, 129, 0.4); }
+  .t-warn { background: rgba(245, 158, 11, 0.15); color: var(--warn); border: 1px solid rgba(245, 158, 11, 0.4); }
+  .t-crit { background: rgba(239, 68, 68, 0.15); color: var(--crit); border: 1px solid rgba(239, 68, 68, 0.4); }
+  .t-info { background: rgba(56, 189, 248, 0.15); color: var(--info); border: 1px solid rgba(56, 189, 248, 0.4); }
+  .t-brand { background: var(--brand-soft); color: var(--brand); border: 1px solid rgba(16, 185, 129, 0.4); }
+
+  /* Military Tactical Callout Box */
+  .analogy {
+    border-left: 4px solid var(--brand);
+    background: var(--brand-soft);
+    padding: 1.8vh 1.6vw;
+    border-radius: 0 var(--r) var(--r) 0;
+    margin-top: 2.6vh;
+  }
+  .analogy p { color: var(--text); font-size: clamp(14px, 1.15vw, 18px); }
+  .analogy b { color: var(--brand); }
+
+  .big-stat {
+    font-size: clamp(38px, 4.5vw, 64px);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.8vh;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Pipeline Stepper (Large & Legible) */
+  .pipeline-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 2.2vh 1.2vw;
+    position: relative;
+    border-top: 4px solid var(--step-color, var(--brand));
+  }
+  .pipeline-step-num {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: clamp(20px, 2vw, 32px);
+    font-weight: 900;
+    color: var(--step-color, var(--brand));
+    line-height: 1;
+    margin-bottom: 0.8vh;
+  }
+
+  /* Comparison Table */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    overflow: hidden;
+    margin-top: 1vh;
+  }
+  th, td {
+    padding: 1.8vh 1.6vw;
+    text-align: left;
+    font-size: clamp(14px, 1.15vw, 18px);
+    border-bottom: 1px solid var(--line);
+  }
+  th { background: var(--raised); color: var(--text); font-weight: 700; }
+  td { color: var(--muted); }
+  tr:last-child td { border-bottom: 0; }
+  td.yes { color: var(--ok); font-weight: 700; }
+  td.no { color: var(--crit); font-weight: 700; }
+
+  /* Traffic Light Command Dots */
+  .dot-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 1.4vh;
+  }
+  .dot-green { background: rgba(16, 185, 129, 0.2); border: 2px solid var(--ok); color: var(--ok); }
+  .dot-amber { background: rgba(245, 158, 11, 0.2); border: 2px solid var(--warn); color: var(--warn); }
+  .dot-red { background: rgba(239, 68, 68, 0.2); border: 2px solid var(--crit); color: var(--crit); }
+
+  /* Controls & Nav */
+  .bar { position: fixed; left: 0; bottom: 0; height: 4px; background: var(--brand); transition: width .3s ease; z-index: 50; }
+  .nav {
+    position: fixed;
+    right: 2vw;
+    bottom: 2vh;
+    display: flex;
+    align-items: center;
+    gap: 0.6vw;
+    z-index: 50;
+  }
+  .nav button {
+    background: var(--raised);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0 14px;
+    height: 40px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .nav button:hover { border-color: var(--brand); color: var(--brand); }
+  .count {
+    color: var(--dim);
+    font-family: ui-monospace, monospace;
+    font-size: 13px;
+    min-width: 60px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .foot {
+    position: fixed;
+    left: 2vw;
+    bottom: 2.2vh;
+    color: var(--dim);
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    z-index: 50;
+  }
+
+  @media (max-width: 1024px) {
+    .g5, .g4, .g3 { grid-template-columns: repeat(2, 1fr); }
+    .g2 { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <main class="deck" id="deck">
 
-<!-- 1 -->
-<section class="slide active" aria-label="Sampul">
-  <div class="eyebrow">Kartika Cyber Hackathon 2026 · Kategori Penangkalan</div>
+<!-- SLIDE 1: COVER -->
+<section class="slide active" aria-label="Sampul Presentasi">
+  <div class="eyebrow">PUSSIBERAD TNI AD × KARTIKA CYBER HACKATHON 2026 // KATEGORI PENANGKALAN</div>
   <h1>NEXUS-TRAP<br><span class="hl">Ranjau Umpan Digital</span><br>Penjaga Rahasia Markas</h1>
-  <p class="lead" style="margin-top:3vh">Penyusup boleh saja masuk ke jaringan kita.<br>Tapi yang dia sentuh hanyalah <strong>umpan</strong>, dan saat itu juga <strong>dia ketahuan</strong>.</p>
+  <p class="lead" style="margin-top:2.6vh">
+    Penyusup boleh saja berhasil masuk ke jaringan satuan kita.<br>
+    Tetapi yang dia temukan hanyalah <strong>fasilitas tipuan</strong>, dan saat itu juga <strong>posisinya terbongkar</strong>.
+  </p>
 </section>
 
-<!-- 2 -->
-<section class="slide" aria-label="Masalah">
-  <div class="eyebrow">01 · Masalahnya</div>
-  <h2>Penyusupnya sudah di dalam,<br>dan dia memegang <span class="hl">kartu akses asli</span>.</h2>
+<!-- SLIDE 2: MASALAH UTAMA (BEBAS DARI EMOJI RUSAK) -->
+<section class="slide" aria-label="Masalah Utama Satuan">
+  <div class="eyebrow">01 // LATAR BELAKANG ANCAMAN</div>
+  <h2>Penyusup sudah berada di dalam jaringan,<br>memakai <span class="hl">hak akses dan seragam yang sah</span>.</h2>
   <div class="grid g3">
-    <div class="card"><div class="icon" aria-hidden="true">📱</div><h3>1. Satu klik keliru</h3><p>Seorang staf memasang aplikasi palsu, misalnya undangan digital atau pinjol. Perangkatnya diam-diam dikendalikan orang lain.</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🪪</div><h3>2. Kartu akses berpindah tangan</h3><p>Penyusup memakai akun resmi staf tersebut. Di mata sistem, dia terlihat seperti pegawai biasa.</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🎯</div><h3>3. Incaran utama</h3><p>Dokumen rahasia pasukan dan <strong>panel genset markas</strong>. Kalau genset mati, markas jadi gelap.</p></div>
+    <div class="card">
+      <div class="card-header-tag">[ TITIK INFEKSI HULU ]</div>
+      <h3>1. Satu Klik yang Keliru</h3>
+      <p>Staf administrasi di satuan daerah tidak sengaja mengunduh APK palsu (tautan pinjol/undangan dinas). Komputer kantor dinas diam-diam dikendalikan malware Trojan.</p>
+    </div>
+    <div class="card">
+      <div class="card-header-tag">[ PERGERAKAN LATERAL ]</div>
+      <h3>2. Kredensial Resmi Dicuri</h3>
+      <p>Peretas menggunakan akun dan token sesi intranet staf yang sah. Sistem firewall gerbang luar tidak dapat membedakan mana klik prajurit dinas dan mana perintah peretas.</p>
+    </div>
+    <div class="card">
+      <div class="card-header-tag">[ SASARAN STRATEGIS ]</div>
+      <h3>3. Incaran Fasilitas Fisik</h3>
+      <p>Peretas mencari dokumen rahasia dislokasi pasukan dan <strong>panel genset pangkalan (Port 502 Modbus)</strong> yang tidak memiliki sandi atau enkripsi.</p>
+    </div>
   </div>
-  <div class="analogy"><p><b>Analoginya:</b> seperti orang asing yang memakai <b>seragam dan kartu pegawai curian</b>. Satpam di gerbang tidak bisa membedakan dia dari pegawai asli.</p></div>
+  <div class="analogy">
+    <p><b>Analogi Lapangan:</b> Seperti orang luar yang menyelinap ke dalam markas komando karena mengenakan <b>seragam dan kartu tanda pengenal dinas yang dicuri</b>. Petugas pos jaga gerbang luar tertipu karena seragamnya asli.</p>
+  </div>
 </section>
 
-<!-- 3 -->
-<section class="slide" aria-label="Kenapa alarm biasa gagal">
-  <div class="eyebrow">02 · Kenapa pengamanan biasa kewalahan</div>
-  <h2>Alarm yang terus berbunyi<br>akhirnya <span class="hl">diabaikan</span>.</h2>
+<!-- SLIDE 3: KEGAGALAN SISTEM LAMA -->
+<section class="slide" aria-label="Kenapa Pertahanan Lama Gagal">
+  <div class="eyebrow">02 // KELEMAHAN SISTEM KONVENSIONAL</div>
+  <h2>Alarm yang terus-menerus berbunyi<br>akhirnya <span class="hl-crit">diabaikan oleh personel</span>.</h2>
   <div class="grid g2">
-    <div class="card">
-      <span class="tag t-crit">✕ Cara lama</span>
-      <p class="big t-crit">±14.000</p>
-      <p>peringatan per jam di satuan yang sibuk. Hampir semuanya alarm palsu. Petugas piket tidak mungkin memeriksa satu per satu.</p>
+    <div class="card" style="border-top: 4px solid var(--crit);">
+      <span class="tag t-crit">✕ SISTEM SIEM &amp; FIREWALL LAMA</span>
+      <p class="big-stat hl-crit">±14.000</p>
+      <p>Peringatan per jam membanjiri ruang piket di satuan yang sibuk. Sebagian besar adalah <strong>alarm palsu (false positive)</strong>. Personel Infolahta kewalahan (*Alert Fatigue*) dan ancaman nyata lolos tanpa terdeteksi.</p>
     </div>
-    <div class="card">
-      <span class="tag t-ok">✓ NEXUS-TRAP</span>
-      <p class="big t-ok">Sedikit, tapi tepat</p>
-      <p>Alarm hanya berbunyi saat ada yang menyentuh umpan. Pegawai asli tidak punya alasan menyentuh umpan, jadi alarmnya hampir pasti sungguhan.</p>
+    <div class="card" style="border-top: 4px solid var(--ok);">
+      <span class="tag t-ok">✓ PARADIGMA NEXUS-TRAP</span>
+      <p class="big-stat hl">0% Palsu</p>
+      <p>Alarm hanya berbunyi bila ada entitas yang menyentuh aset umpan. Karena aset umpan tidak memiliki fungsi dinas legal, <strong>siapa pun yang menyentuhnya 100% dipastikan penyusup</strong>.</p>
     </div>
   </div>
-  <div class="analogy"><p><b>Analoginya:</b> alarm mobil yang berbunyi tiap kali ada angin lewat, lama-lama tidak ada yang peduli. Kami membuat alarm yang <b>hanya berbunyi kalau ada yang benar-benar membuka brankas palsu</b>.</p></div>
+  <div class="analogy">
+    <p><b>Analogi Lapangan:</b> Alarm mobil di parkiran markas yang berbunyi setiap ada hembusan angin lama-kelamaan dimatikan oleh petugas. NEXUS-TRAP adalah alarm yang <b>hanya menyalak jika brankas besi palsu benar-benar dibuka</b>.</p>
+  </div>
 </section>
 
-<!-- 4 -->
-<section class="slide" aria-label="Ide besar">
-  <div class="eyebrow">03 · Ide besarnya</div>
-  <h2>Jangan sibuk mengejar penyusup.<br>Biarkan <span class="hl">dia yang datang ke umpan</span>.</h2>
+<!-- SLIDE 4: DOKTRIN PERANG SIBER AKTIF -->
+<section class="slide" aria-label="Ide Besar Pertahanan Aktif">
+  <div class="eyebrow">03 // DOKTRIN PERANG AKTIF</div>
+  <h2>Jangan lelah mengejar musuh.<br>Biarkan <span class="hl">musuh yang datang ke ladang ranjau</span>.</h2>
   <div class="grid g3">
-    <div class="card"><div class="icon" aria-hidden="true">🪤</div><h3>Pasang umpan</h3><p>Genset palsu, dokumen "rahasia" palsu, dan halaman login palsu. Bagi penyusup, semuanya terlihat sangat meyakinkan.</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🔔</div><h3>Umpan berbunyi</h3><p>Begitu umpan disentuh, ruang komando langsung tahu: siapa pelakunya, dari mana, dan apa yang dia incar.</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🛡️</div><h3>Komandan bertindak</h3><p>Satu tombol untuk memblokir pelaku, lalu laporan resmi tercetak otomatis.</p></div>
+    <div class="card">
+      <div class="card-header-tag">[ TAKTIK 01: PASANG RANJAU ]</div>
+      <h3>Umpan Presisi di Intranet</h3>
+      <p>Memasang genset palsu, dokumen dinas rahasia bertabur pelacak, dan portal login tiruan yang tampak 100% nyata bagi perkakas pemindai musuh.</p>
+    </div>
+    <div class="card">
+      <div class="card-header-tag">[ TAKTIK 02: KUNCI &amp; CEKIK ]</div>
+      <h3>Pelumpuhan Otomatis</h3>
+      <p>Saat pemindai musuh masuk, koneksi jaringannya dicekik perlahan (1 byte per detik). Alat musuh macet total kehabisan soket tanpa mereka sadari.</p>
+    </div>
+    <div class="card">
+      <div class="card-header-tag">[ TAKTIK 03: PENINDAKAN ]</div>
+      <h3>Komando Bertindak 1-Klik</h3>
+      <p>Satu tombol dari Meja Komandan mengisolasi komputer korban seketika, dan Laporan Situasi Militer berstempel SHA-256 tercetak dalam 1 detik.</p>
+    </div>
   </div>
-  <div class="analogy"><p><b>Analoginya:</b> strategi <b>"tank kayu"</b> dalam perang. Musuh sibuk menyerang sasaran palsu, sementara posisinya justru terbongkar.</p></div>
+  <div class="analogy">
+    <p><b>Doktrin Perang Stratagem:</b> Seperti strategi <b>"Tank Kayu"</b> dalam perang gerilya. Musuh menghabiskan seluruh amunisinya untuk menyerang sasaran tiruan, sementara posisi dan koordinat sarang musuh terbongkar sempurna.</p>
+  </div>
 </section>
 
-<!-- 5 -->
-<section class="slide" aria-label="Lima alat">
-  <div class="eyebrow">04 · Lima alat dalam satu sistem</div>
-  <h2>Setiap alat punya <span class="hl">padanan di dunia nyata</span></h2>
+<!-- SLIDE 5: LIMA ALAT DALAM SATU SISTEM -->
+<section class="slide" aria-label="Lima Alat Pertahanan">
+  <div class="eyebrow">04 // INSTRUMEN PERTAHANAN TERPADU</div>
+  <h2>Setiap modul teknis memiliki <span class="hl">padanan nyata di lapangan</span>.</h2>
   <div class="grid g5">
-    <div class="card"><div class="icon" aria-hidden="true">🪵</div><span class="tag t-warn">Umpan</span><h3>Tank Kayu</h3><p>Genset dan radar palsu yang "menjawab" layaknya mesin asli.</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🍯</div><span class="tag t-warn">Penahan</span><h3>Lem Tikus</h3><p>Alat pemindai penyusup dibuat super lambat, seperti kaki yang menempel di lem.</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🧳</div><span class="tag t-crit">Pelacak</span><h3>Koper ber-GPS</h3><p>Dokumen palsu yang "melapor balik" ketika dibuka, termasuk di luar markas.</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🚪</div><span class="tag t-info">Tindakan</span><h3>Pintu Baja</h3><p>Satu klik untuk memblokir alamat pelaku dan menyiapkan aturan blokir bagi satuan lain.</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">📜</div><span class="tag t-ai">Bukti</span><h3>Buku Bersegel</h3><p>Setiap kejadian dicatat dengan segel digital. Kalau ada yang mengubah, langsung ketahuan.</p></div>
+    <div class="card">
+      <span class="tag t-warn">OT DECOY</span>
+      <h3>Tank Kayu</h3>
+      <p>Genset &amp; radar tiruan yang membalas pemindai musuh dengan tegangan palsu 380V yang stabil.</p>
+    </div>
+    <div class="card">
+      <span class="tag t-warn">TCP TARPIT</span>
+      <h3>Lem Tikus</h3>
+      <p>Mesin penahan koneksi yang membuat perkakas otomatis musuh macet dan membeku (0 req/s).</p>
+    </div>
+    <div class="card">
+      <span class="tag t-crit">CANARY OOB</span>
+      <h3>Koper Ber-GPS</h3>
+      <p>Dokumen umpan yang meledakkan suar pelacak saat dibuka di lingkungan mesin virtual penyerang.</p>
+    </div>
+    <div class="card">
+      <span class="tag t-info">QUARANTINE</span>
+      <h3>Pintu Baja</h3>
+      <p>Perintah 1-klik yang memutus total rute penyerang di firewall dan router markas dalam 1 detik.</p>
+    </div>
+    <div class="card">
+      <span class="tag t-brand">AUDIT POMAD</span>
+      <h3>Buku Bersegel</h3>
+      <p>Rantai bukti kriptografis HMAC-SHA256 yang sah dan anti-manipulasi di hadapan Oditur Militer.</p>
+    </div>
   </div>
 </section>
 
-<!-- 6 -->
-<section class="slide" aria-label="Infografis Visual 5 Tahap">
-  <div class="eyebrow">05 · Peta Alur Visual Lengkap</div>
-  <h2>Dari Penyusupan hingga <span class="hl">Pelumpuhan 1-Klik</span></h2>
-  <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1vh;display:flex;align-items:center;justify-content:center;max-height:55vh;overflow:hidden;">
-    <img src="screenshots/workflow_non_tech.png" alt="Infografis Alur 5 Tahap NEXUS-TRAP" style="width:100%;max-height:53vh;object-fit:contain;border-radius:10px;">
+<!-- SLIDE 6: ALUR 5 TAHAP PROSES (PENGGANTI GAMBAR KECIL YANG TIDAK TERBACA!) -->
+<section class="slide" aria-label="Alur Operasi 5 Tahap">
+  <div class="eyebrow">05 // ALUR OPERASIONAL PENINDAKAN (DARI INFEKSI SAMPAI SELESAI)</div>
+  <h2>Bagaimana NEXUS-TRAP Bekerja? <span class="hl">Alur 5 Langkah Presisi</span></h2>
+  <div class="grid g5" style="margin-top: 1.5vh;">
+    <div class="pipeline-card" style="--step-color: var(--crit);">
+      <div class="pipeline-step-num">01</div>
+      <h3>Penyusup Masuk</h3>
+      <p>Staf terinfeksi malware. Peretas mulai memindai jaringan lokal markas menggunakan akun resmi.</p>
+    </div>
+    <div class="pipeline-card" style="--step-color: var(--warn);">
+      <div class="pipeline-step-num">02</div>
+      <h3>Sentuh Umpan OT</h3>
+      <p>Peretas menemukan Port 502 Modbus. Genset tiruan membalas normal. Meja komando membunyikan <strong>Siaga Kuning</strong>.</p>
+    </div>
+    <div class="pipeline-card" style="--step-color: var(--warn);">
+      <div class="pipeline-step-num">03</div>
+      <h3>Koneksi Dicekik</h3>
+      <p>Peretas melancarkan scanner cepat. Tarpit mencekik soket TCP (1 byte/detik). Kecepatan scanner anjlok ke <strong>0 req/s</strong>.</p>
+    </div>
+    <div class="pipeline-card" style="--step-color: var(--crit);">
+      <div class="pipeline-step-num">04</div>
+      <h3>Suar Meledak</h3>
+      <p>Dokumen umpan dibuka di VM penyerang. Suar DNS Canary membongkar IP sarang musuh. Meja komando meledak <strong>Siaga 1 Merah</strong>.</p>
+    </div>
+    <div class="pipeline-card" style="--step-color: var(--ok);">
+      <div class="pipeline-step-num">05</div>
+      <h3>Isolasi &amp; SITREP</h3>
+      <p>Komandan menekan tombol <strong>[ISOLASI]</strong>. Komputer korban diputus total, dan Laporan Militer resmi tercetak otomatis.</p>
+    </div>
   </div>
-  <div class="analogy" style="margin-top:1.5vh;"><p><b>Alur 5 Langkah:</b> 1. Pencuri Menyelinap ➔ 2. Umpan Tank Kayu ➔ 3. Lem Tikus Tarpit ➔ 4. Koper Ber-GPS ➔ 5. Pintu Baja &amp; Laporan Bersegel.</p></div>
+  <div class="analogy" style="margin-top: 2.2vh;">
+    <p><b>Jaminan Keterbacaan:</b> Seluruh proses berjalan secara otomatis. Komandan tidak perlu membaca baris kode terminal—cukup memantau perubahan status dan mengambil keputusan taktis.</p>
+  </div>
 </section>
 
-<!-- 7 -->
-<section class="slide" aria-label="Lampu status">
-  <div class="eyebrow">06 · Yang dilihat komandan</div>
-  <h2>Cukup satu layar dan <span class="hl">tiga lampu</span>, seperti lampu lalu lintas</h2>
+<!-- SLIDE 7: TIGA LAMPU KENDALI KOMANDAN -->
+<section class="slide" aria-label="Tiga Lampu Meja Komandan">
+  <div class="eyebrow">06 // ANTARMUKA MEJA KOMANDO</div>
+  <h2>Kendali operasional dirancang sesederhana <span class="hl">lampu lalu lintas</span>.</h2>
   <div class="grid g3">
-    <div class="card center"><div class="dot" style="background:var(--ok)" aria-hidden="true">✓</div><span class="tag t-ok">Siaga Hijau</span><p>Aman. Semua umpan tidak tersentuh.</p></div>
-    <div class="card center"><div class="dot" style="background:var(--warn)" aria-hidden="true">!</div><span class="tag t-warn">Siaga Kuning</span><p>Ada yang mulai mengintip umpan genset. Waspada.</p></div>
-    <div class="card center"><div class="dot" style="background:var(--crit)" aria-hidden="true">✕</div><span class="tag t-crit">Siaga Merah</span><p>Dokumen umpan dibuka. Penyusup terkonfirmasi, saatnya bertindak.</p></div>
+    <div class="card" style="align-items: center; text-align: center;">
+      <div class="dot-badge dot-green">✓</div>
+      <span class="tag t-ok">SIAGA 3 (HIJAU)</span>
+      <h3>Perimeter Aman</h3>
+      <p>64 sensor aktif memantau pangkalan. Tidak ada umpan yang tersentuh. Situasi terkendali normal.</p>
+    </div>
+    <div class="card" style="align-items: center; text-align: center;">
+      <div class="dot-badge dot-amber">!</div>
+      <span class="tag t-warn">SIAGA 2 (KUNING)</span>
+      <h3>Pengintaian Terdeteksi</h3>
+      <p>Ada entitas yang mulai memindai port genset atau portal login umpan. Nada blip radar taktis berbunyi.</p>
+    </div>
+    <div class="card" style="align-items: center; text-align: center;">
+      <div class="dot-badge dot-red">✕</div>
+      <span class="tag t-crit">SIAGA 1 (MERAH)</span>
+      <h3>Intrusi Terkonfirmasi</h3>
+      <p>Dokumen umpan dibuka di luar markas. Profil hardware musuh terkunci di Dossier, siap isolasi 1-klik.</p>
+    </div>
   </div>
-  <div class="analogy"><p><b>Tidak perlu ahli komputer.</b> Selain warna, setiap status punya ikon, tulisan, dan bunyi sirene yang berbeda, jadi tetap jelas bagi siapa pun, termasuk yang buta warna.</p></div>
+  <div class="analogy">
+    <p><b>Aksesibilitas Dual-Coding:</b> Selain perubahan warna, setiap status disertai <b>label teks tegas, animasi denyut radar, dan sintesis audio sirene</b>, sehingga tetap 100% jelas bagi pengguna dengan keterbatasan penglihatan warna (CVD).</p>
+  </div>
 </section>
 
-<!-- 8 -->
-<section class="slide" aria-label="Alur cerita">
-  <div class="eyebrow">07 · Alur cerita demo (3 menit)</div>
-  <h2>Satu kisah penyusupan,<br>dari awal sampai <span class="hl">tertangkap</span></h2>
-  <div class="grid g4 tl">
-    <div class="card" style="--c:var(--ok)"><div class="step">MENIT 0</div><h3>Markas tenang</h3><p>Lampu hijau. Umpan sudah terpasang dan menunggu.</p></div>
-    <div class="card" style="--c:var(--warn)"><div class="step">MENIT 1</div><h3>Penyusup mengintip genset</h3><p>Genset palsu menjawab "normal". Lampu berubah kuning.</p></div>
-    <div class="card" style="--c:var(--warn)"><div class="step">MENIT 2</div><h3>Penyusup mencoba menyisir</h3><p>Lem tikus aktif, alat penyusup tertahan hingga hampir diam.</p></div>
-    <div class="card" style="--c:var(--crit)"><div class="step">MENIT 3</div><h3>Dokumen umpan dibuka</h3><p>Lampu merah. Komandan menekan satu tombol, pelaku diblokir, laporan tercetak.</p></div>
+<!-- SLIDE 8: KOREOGRAFI DEMO 3 MENIT -->
+<section class="slide" aria-label="Koreografi Demo Panggung">
+  <div class="eyebrow">07 // KOREOGRAFI LIVE DEMO PANGGUNG</div>
+  <h2>Babak Pembuktian Langsung: <span class="hl">Split-Screen 3 Menit</span></h2>
+  <div class="grid g4">
+    <div class="card" style="border-top: 4px solid var(--ok);">
+      <div class="card-header-tag">[ MENIT 00:00 ]</div>
+      <h3>Markas Tenang</h3>
+      <p>Layar kiri menampilkan Pusat Komando C4ISR Siaga Hijau. Sensor umpan siap menanti pergerakan musuh.</p>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--warn);">
+      <div class="card-header-tag">[ MENIT 01:00 ]</div>
+      <h3>Musuh Intip Genset</h3>
+      <p>Di layar kanan, musuh memindai Port 502 Modbus. Genset palsu membalas 380V. Meja komando membunyikan Siaga Kuning.</p>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--warn);">
+      <div class="card-header-tag">[ MENIT 02:00 ]</div>
+      <h3>Scanner Dibekukan</h3>
+      <p>Musuh melancarkan scanner cepat. Operator menekan tombol Tarpit. Terminal musuh seketika <strong>MACET TOTAL (0 req/s)</strong>!</p>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--crit);">
+      <div class="card-header-tag">[ MENIT 03:00 ]</div>
+      <h3>Canary &amp; Isolasi</h3>
+      <p>Dokumen umpan dibuka di VM. Sirene Siaga 1 Merah meledak! Komandan menekan tombol isolasi, ping musuh mati seketika.</p>
+    </div>
   </div>
-  <div class="analogy"><p><b>Juri bisa mencoba sendiri:</b> pindai kode QR, unduh "dokumen rahasia", buka di HP, lalu lihat namanya muncul di layar komando.</p></div>
+  <div class="analogy">
+    <p><b>Fitur Khusus Dewan Juri:</b> Dewan Juri di panggung dapat memindai <b>QR Code Taktis</b> dengan kamera HP masing-masing untuk mengunduh dokumen umpan dan membuktikan kebocoran secara langsung di layar proyektor!</p>
+  </div>
 </section>
 
-<!-- 9 -->
-<section class="slide" aria-label="Aman untuk kita">
-  <div class="eyebrow">08 · Aman untuk pihak sendiri</div>
-  <h2>Jebakan ini <span class="hl">tidak akan berbalik</span><br>melukai markas sendiri</h2>
+<!-- SLIDE 9: KEAMANAN PIHAK SENDIRI -->
+<section class="slide" aria-label="Aman untuk Markas Sendiri">
+  <div class="eyebrow">08 // KEAMANAN &amp; INTEGRITAS INTERNAL</div>
+  <h2>Jebakan ini dirancang <span class="hl">tidak akan berbalik</span> melukai markas.</h2>
   <div class="grid g3">
-    <div class="card"><div class="icon" aria-hidden="true">🎖️</div><h3>Ada daftar kebal</h3><p>Router markas dan komputer komando tidak bisa ikut terblokir. Ibaratnya, kawan sendiri sudah memakai tanda pengenal.</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🕵️</div><h3>Tidak bisa diadu domba</h3><p>Penyusup tidak bisa "memfitnah" komputer lain supaya diblokir. Sistem hanya percaya pada jejak yang benar-benar terverifikasi.</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🏠</div><h3>100% di dalam markas</h3><p>Tidak butuh internet atau layanan asing. Semua data tetap tersimpan di markas sendiri.</p></div>
+    <div class="card">
+      <div class="card-header-tag">[ ANTI-FRIENDLY-FIRE ]</div>
+      <h3>Daftar Putih Kebal</h3>
+      <p>Alamat IP Gateway markas, server induk, dan laptop komando dilindungi oleh modul pengecualian otomatis (*Immune Whitelist*), sehingga mustahil terisolasi secara tidak sengaja.</p>
+    </div>
+    <div class="card">
+      <div class="card-header-tag">[ ANTI-ADU DOMBA ]</div>
+      <h3>Verifikasi Soket TCP Asli</h3>
+      <p>Peretas tidak bisa memalsukan identitas untuk menjebak rekan prajurit lain. Perintah isolasi firewall hanya menerima alamat IP soket fisik yang terverifikasi melalui *3-way handshake*.</p>
+    </div>
+    <div class="card">
+      <div class="card-header-tag">[ KEDAULATAN NIR-CLOUD ]</div>
+      <h3>100% On-Premise Air-Gapped</h3>
+      <p>Tidak bergantung pada server cloud asing, API pihak ketiga, atau internet publik. Seluruh data taktis dan rekaman intelijen tetap berada di bawah kendali penuh pangkalan TNI AD.</p>
+    </div>
   </div>
 </section>
 
-<!-- 10 -->
-<section class="slide" aria-label="Sebelum dan sesudah">
-  <div class="eyebrow">09 · Sebelum vs sesudah</div>
-  <h2>Apa yang berubah untuk satuan?</h2>
+<!-- SLIDE 10: SEBELUM VS SESUDAH -->
+<section class="slide" aria-label="Perbandingan Sebelum dan Sesudah">
+  <div class="eyebrow">09 // DAMPAK OPERASIONAL BAGI SATUAN</div>
+  <h2>Apa yang berubah secara nyata bagi satuan teritorial?</h2>
   <table>
-    <thead><tr><th scope="col">Situasi</th><th scope="col">Tanpa NEXUS-TRAP</th><th scope="col">Dengan NEXUS-TRAP</th></tr></thead>
+    <thead>
+      <tr>
+        <th scope="col" style="width: 28%;">Parameter Operasional</th>
+        <th scope="col" style="width: 36%;">Tanpa NEXUS-TRAP (Cara Lama)</th>
+        <th scope="col" style="width: 36%;">Dengan NEXUS-TRAP (Pertahanan Aktif)</th>
+      </tr>
+    </thead>
     <tbody>
-      <tr><td>Penyusup memakai akun asli</td><td class="no">✕ Tidak terdeteksi</td><td class="yes">✓ Ketahuan saat menyentuh umpan</td></tr>
-      <tr><td>Jumlah alarm palsu</td><td class="no">✕ Ribuan per jam</td><td class="yes">✓ Sangat sedikit, fokus pada ancaman nyata</td></tr>
-      <tr><td>Dokumen dibawa keluar markas</td><td class="no">✕ Hilang tanpa jejak</td><td class="yes">✓ Melapor balik saat dibuka</td></tr>
-      <tr><td>Waktu menyusun laporan</td><td class="no">✕ Berjam-jam, ditulis manual</td><td class="yes">✓ Hitungan detik, sudah bersegel</td></tr>
-      <tr><td>Bukti untuk proses hukum</td><td class="no">✕ Mudah dipersoalkan</td><td class="yes">✓ Catatan bersegel, perubahan terdeteksi</td></tr>
+      <tr>
+        <td><strong>Penyusup Berkedok Akun Sah</strong></td>
+        <td class="no">✕ Tidak terdeteksi firewall perimeter</td>
+        <td class="yes">✓ Langsung tertangkap saat sentuh umpan</td>
+      </tr>
+      <tr>
+        <td><strong>Beban Alarm Palsu (*False Alarm*)</strong></td>
+        <td class="no">✕ Ribuan log bising per jam (Alert Fatigue)</td>
+        <td class="yes">✓ 0% Alarm Palsu (Hanya berbunyi jika disentuh)</td>
+      </tr>
+      <tr>
+        <td><strong>Dokumen Bocor ke Luar Markas</strong></td>
+        <td class="no">✕ Hilang selamanya tanpa jejak</td>
+        <td class="yes">✓ Melapor balik lokasi IP &amp; GPU musuh saat dibuka</td>
+      </tr>
+      <tr>
+        <td><strong>Waktu Pembuatan Laporan Insiden</strong></td>
+        <td class="no">✕ Berjam-jam diketik manual oleh staf</td>
+        <td class="yes">✓ 1 Detik tercetak otomatis berstempel SHA-256</td>
+      </tr>
+      <tr>
+        <td><strong>Keabsahan Bukti Pengadilan</strong></td>
+        <td class="no">✕ Rentan ditolak karena log mudah diedit</td>
+        <td class="yes">✓ Rantai audit HMAC-SHA256 berstandar POMAD</td>
+      </tr>
     </tbody>
   </table>
 </section>
 
-<!-- 11 -->
-<section class="slide" aria-label="Penutup">
-  <div class="eyebrow">10 · Penutup</div>
-  <h1 style="max-width:18ch">Kita tidak menunggu diserang.<br><span class="hl">Kita menyiapkan panggungnya.</span></h1>
-  <p class="lead" style="margin-top:3vh">NEXUS-TRAP membalik keadaan: penyusup mengira sedang mencuri, padahal setiap langkahnya sedang <strong>direkam, ditahan, dan dilaporkan</strong>.</p>
+<!-- SLIDE 11: PENUTUP -->
+<section class="slide" aria-label="Kesimpulan dan Penutup">
+  <div class="eyebrow">10 // KESIMPULAN DOKTRIN</div>
+  <h1 style="max-width:20ch">Kita tidak menunggu diserang.<br><span class="hl">Kita yang menyiapkan panggungnya.</span></h1>
+  <p class="lead" style="margin-top:2.6vh">
+    NEXUS-TRAP membalikkan keadaan asimetris: Musuh mengira sedang meretas fasilitas pangkalan,<br>
+    padahal setiap langkah mereka sedang <strong>ditahan, dicatat, dan dilaporkan ke meja komando</strong>.
+  </p>
   <div class="grid g3" style="margin-top:4vh">
-    <div class="card"><span class="tag t-brand">Murah</span><p>Berjalan di komputer biasa, tanpa lisensi asing.</p></div>
-    <div class="card"><span class="tag t-brand">Mudah</span><p>Satu layar, tiga lampu, satu tombol.</p></div>
-    <div class="card"><span class="tag t-brand">Mandiri</span><p>Sepenuhnya offline, data milik TNI AD.</p></div>
+    <div class="card" style="border-top: 3px solid var(--brand);">
+      <span class="tag t-brand">EFISIENSI ANGGARAN</span>
+      <p>Berjalan lancar di komputer pangkalan biasa tanpa lisensi vendor asing yang mahal.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid var(--info);">
+      <span class="tag t-info">KEMUDAHAN OPERASI</span>
+      <p>Cukup satu layar, tiga indikator siaga, dan satu tombol isolasi untuk komandan.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid var(--warn);">
+      <span class="tag t-warn">KEDAULATAN PENUH</span>
+      <p>100% mandiri karya talenta nasional, siap digelar di jajaran satuan Kodim se-Indonesia.</p>
+    </div>
   </div>
 </section>
 
 </main>
 
-<div class="foot">NEXUS-TRAP · Pussiberad TNI AD</div>
+<div class="foot">NEXUS-TRAP // PUSSIBERAD TNI AD × CODEPOLITAN</div>
 <div class="bar" id="bar"></div>
-<nav class="nav" aria-label="Navigasi slide">
-  <button id="prev" aria-label="Slide sebelumnya">←</button>
-  <span class="count" id="count"></span>
-  <button id="next" aria-label="Slide berikutnya">→</button>
-  <button id="fs" aria-label="Layar penuh (Fullscreen)" title="Layar Penuh (Tekan F)">⛶</button>
+<nav class="nav" aria-label="Navigasi Presentasi">
+  <button id="prev" aria-label="Slide sebelumnya">← SEBELUMNYA</button>
+  <span class="count" id="count">1 / 11</span>
+  <button id="next" aria-label="Slide berikutnya">SELANJUTNYA →</button>
+  <button id="fs" aria-label="Layar Penuh" title="Layar Penuh (F)">⛶ FULLSCREEN</button>
 </nav>
 
 <script>
@@ -212,7 +600,10 @@
   let i = Math.min(Math.max(parseInt(location.hash.slice(1), 10) - 1 || 0, 0), slides.length - 1);
   const show = (n) => {
     i = Math.min(Math.max(n, 0), slides.length - 1);
-    slides.forEach((s, k) => { s.classList.toggle('active', k === i); s.setAttribute('aria-hidden', k !== i); });
+    slides.forEach((s, k) => {
+      s.classList.toggle('active', k === i);
+      s.setAttribute('aria-hidden', k !== i);
+    });
     bar.style.width = ((i + 1) / slides.length * 100) + '%';
     count.textContent = (i + 1) + ' / ' + slides.length;
     history.replaceState(null, '', '#' + (i + 1));
@@ -231,7 +622,13 @@
     if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
     if (e.key === 'Home') show(0);
     if (e.key === 'End') show(slides.length - 1);
-    if (e.key === 'f') document.documentElement.requestFullscreen?.();
+    if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.();
+      } else {
+        document.exitFullscreen?.();
+      }
+    }
   });
   let x0 = null;
   document.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
