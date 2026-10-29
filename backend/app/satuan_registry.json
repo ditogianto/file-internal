@@ -1,0 +1,62 @@
+{
+  "KODIM-0501": {
+    "kodim_id": "KODIM-0501",
+    "nama": "Kodim 0501/Jakarta Pusat",
+    "kodam_id": "KODAM_JAYA",
+    "kodam_name": "Kodam Jaya",
+    "wilayah": "Jakarta Pusat, DKI Jakarta & Sekitarnya",
+    "canary_domain": "doc-0501a.kodim-0501.canary.lan",
+    "status": "MONITORED",
+    "registered_at": "2026-10-30 07:21:30"
+  },
+  "KODIM-0733": {
+    "kodim_id": "KODIM-0733",
+    "nama": "Kodim 0733/Kota Semarang",
+    "kodam_id": "KODAM_IV",
+    "kodam_name": "Kodam IV/Diponegoro",
+    "wilayah": "Kota Semarang, Jawa Tengah & D.I. Yogyakarta",
+    "canary_domain": "doc-0733a.kodim-0733.canary.lan",
+    "status": "MONITORED",
+    "registered_at": "2026-10-30 07:21:31"
+  },
+  "KODIM-0832": {
+    "kodim_id": "KODIM-0832",
+    "nama": "Kodim 0832/Surabaya Selatan",
+    "kodam_id": "KODAM_V",
+    "kodam_name": "Kodam V/Brawijaya",
+    "wilayah": "Surabaya Selatan, Jawa Timur",
+    "canary_domain": "doc-0832a.kodim-0832.canary.lan",
+    "status": "MONITORED",
+    "registered_at": "2026-10-30 07:21:31"
+  },
+  "KODIM-1701": {
+    "kodim_id": "KODIM-1701",
+    "nama": "Kodim 1701/Jayapura",
+    "kodam_id": "KODAM_XVII",
+    "kodam_name": "Kodam XVII/Cenderawasih",
+    "wilayah": "Jayapura, Papua",
+    "canary_domain": "doc-1701a.kodim-1701.canary.lan",
+    "status": "MONITORED",
+    "registered_at": "2026-10-30 07:21:31"
+  },
+  "KODIM-0901": {
+    "kodim_id": "KODIM-0901",
+    "nama": "Kodim 0901/Samarinda Ikn",
+    "kodam_id": "KODAM_VI",
+    "kodam_name": "Kodam VI/Mulawarman",
+    "wilayah": "Samarinda Ikn, Kalimantan Timur / IKN / Kalsel / Kaltara",
+    "canary_domain": "doc-0901a.kodim-0901.canary.lan",
+    "status": "MONITORED",
+    "registered_at": "2026-10-30 07:21:31"
+  },
+  "KODIM-0101": {
+    "kodim_id": "KODIM-0101",
+    "nama": "Kodim 0101/Banda Aceh",
+    "kodam_id": "KODAM_IM",
+    "kodam_name": "Kodam Iskandar Muda",
+    "wilayah": "Banda Aceh, Aceh",
+    "canary_domain": "doc-0101a.kodim-0101.canary.lan",
+    "status": "MONITORED",
+    "registered_at": "2026-10-30 07:22:05"
+  }
+}

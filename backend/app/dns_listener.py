@@ -1,8 +1,29 @@
 import asyncio
+import json
+from pathlib import Path
 from typing import Optional
 from dnslib import DNSRecord, DNSHeader, RR, A, QTYPE
 from app.config import settings
 from app.telemetry import telemetry
+
+REGISTRY_PATH = Path(__file__).parent / "satuan_registry.json"
+
+def resolve_unit_identity(raw_unit_str: str) -> str:
+    """Resolves unit identifier to official Kodam/Kodim designation from dynamic registry."""
+    if not raw_unit_str or "CANARY" in raw_unit_str.upper():
+        return "KODAM JAYA (JAKARTA)"
+    
+    cleaned = raw_unit_str.upper().replace(" ", "-")
+    try:
+        if REGISTRY_PATH.exists():
+            with open(REGISTRY_PATH, "r", encoding="utf-8") as f:
+                registry = json.load(f)
+            for k, v in registry.items():
+                if k.upper() in cleaned or cleaned in k.upper():
+                    return f"{v.get('nama', k)} ({v.get('kodam_name', 'KODAM JAYA')})"
+    except Exception:
+        pass
+    return raw_unit_str.replace("-", " ").upper()
 
 class CanaryDNSProtocol(asyncio.DatagramProtocol):
     def connection_made(self, transport):
@@ -32,8 +53,8 @@ class CanaryDNSProtocol(asyncio.DatagramProtocol):
         # Extract doc id and unit from hierarchical qname (e.g. doc-991a.kodim-0501.canary.mil.id)
         parts = qname.split(".")
         doc_id = parts[0].upper() if parts else "DOC-991A"
-        raw_unit = parts[1].replace("-", " ").upper() if len(parts) > 1 else "KODAM JAYA"
-        unit_target = raw_unit if raw_unit and "CANARY" not in raw_unit else "KODAM JAYA"
+        raw_unit = parts[1] if len(parts) > 1 else "KODAM-JAYA"
+        unit_target = resolve_unit_identity(raw_unit)
         
         telemetry.metrics["canary_triggers"] += 1
         telemetry.compromised_unit = unit_target
