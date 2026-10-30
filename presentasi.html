@@ -60,6 +60,39 @@
     }
 
     /* ========================================================================= */
+    /* UNIVERSAL HORIZONTAL & VIEWPORT CENTERING (BALANCED ACROSS RESOLUTIONS)   */
+    /* ========================================================================= */
+    #view-awam, #view-teknis, #view-deck {
+      align-items: center;
+      justify-content: center;
+    }
+
+    #view-awam .deck, #view-teknis .deck, #view-deck .deck-viewport {
+      width: 100vw;
+      height: calc(100vh - 58px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    #view-awam .slide,
+    #view-teknis .slide,
+    #view-deck .stage-slide {
+      max-width: 1560px !important;
+      width: min(1560px, 92vw) !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      box-sizing: border-box;
+    }
+
+    /* ========================================================================= */
     /* 2. PORTAL HOME VIEW (MODE SELECTOR)                                       */
     /* ========================================================================= */
     #view-home {
@@ -1213,6 +1246,8 @@
       width: 100%;
       height: 100%;
       max-width: 1560px;
+      margin-left: auto;
+      margin-right: auto;
       padding: 3.5vh 3.5vw 4vh 3.5vw;
       box-sizing: border-box;
       flex-direction: column;
@@ -1392,7 +1427,7 @@
       background: #090e18;
       border: 1px solid #1e293b;
       border-radius: 12px;
-      padding: 24px;
+      padding: 26px 22px;
       display: flex;
       flex-direction: column;
     }
@@ -1505,7 +1540,7 @@
       background: #090e18;
       border: 1px solid #1e293b;
       border-radius: 12px;
-      padding: 22px 18px;
+      padding: 24px 20px;
       display: flex;
       flex-direction: column;
       position: relative;
@@ -1588,10 +1623,10 @@
       background: #090e18;
       border: 1px solid #1e293b;
       border-radius: 10px;
-      padding: 16px 14px;
+      padding: 20px 16px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 7px;
     }
     .choreo-time {
       font-family: var(--master-mono);
@@ -3500,6 +3535,7 @@
               Alih-alih bersusah payah mengejar penyusup di antara ribuan komputer pangkalan, kita sediakan dokumen umpan yang tampak sangat rahasia.
               Saat dibuka di laptop penyerang, suar DNS otomatis berdering di Meja Komando PUSSIBERAD.
             </p>
+            <div class="stage-stat-pill" style="margin-top: auto;">Deteksi OOB DNS UDP 5053</div>
           </div>
 
           <div class="stage-card">
@@ -3516,6 +3552,7 @@
               Penyerang mengira berhasil menemukan celah direktori server. Kenyataannya, mereka terjerat aliran chunk TCP tak berujung (0 req/s).
               Sumber daya pemindai musuh terkunci dan membeku sementara markas tetap aman.
             </p>
+            <div class="stage-stat-pill" style="margin-top: auto;">Throttling 1 Byte/s RFC 9309</div>
           </div>
 
           <div class="stage-card">
@@ -3534,7 +3571,12 @@
               Setiap jejak, geolokasi IP, dan sidik jari perangkat penyerang langsung disegel dalam rantai HMAC-SHA256.
               Laporan Naskah Dinas SITREP terbit seketika dan sah sebagai alat bukti hukum peradilan militer.
             </p>
+            <div class="stage-stat-pill" style="margin-top: auto;">Rantai Integritas HMAC-SHA256</div>
           </div>
+        </div>
+
+        <div style="margin-top: 2.6vh; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 8px; padding: 12px 20px; font-family: var(--master-mono); font-size: 11.5px; color: #a7f3d0; text-align: center;">
+          ★ DOKTRIN AKTIF: BUKAN MENGEJAR PENYUSUP DI RATUSAN KOMPUTER SATUAN, MELAINKAN MEMASANG UMPAN DETERMINISTIK BERSTEMPEL HUKUM POMAD
         </div>
       </div>
     </section>
@@ -3622,6 +3664,11 @@
       <div class="stage-slide-content">
         <div class="stage-eyebrow">04 // SKENARIO PANGGUNG &amp; UJI PENJURIAN</div>
         <h2 class="stage-h2">Koreografi Demonstrasi Langsung <span class="stage-hl-green">(10 Menit di Layar Kaca)</span></h2>
+
+        <div style="margin-bottom: 1.6vh; display: flex; align-items: center; justify-content: space-between; background: rgba(15, 23, 42, 0.6); border: 1px solid #1e293b; border-radius: 6px; padding: 10px 18px; font-family: var(--master-mono); font-size: 11px;">
+          <span style="color: #64748b;">TOTAL DURASI DEMO PENJURIAN: <strong style="color: #ffffff;">10 MENIT</strong></span>
+          <span style="color: #38bdf8; font-weight: 800;">5 FASE RESPON AKTIF // DARI INFILTRASI HINGGA ISOLASI HUKUM</span>
+        </div>
 
         <div class="stage-choreography-grid">
           <div class="choreo-step">
