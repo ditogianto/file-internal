@@ -107,7 +107,621 @@ def generate_cover_awam_visual():
     </div>
     """
 
-def get_native_stage_deck_slides():
+def generate_c4isr_preview_svg():
+    return """
+    <div class="c4isr-preview-container" style="position: relative; width: 100%; border-radius: 10px; background: #070d18; border: 1px solid #1e3a5f; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6);">
+      <!-- Window Titlebar -->
+      <div style="background: #0f1c30; padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e293b;">
+        <div style="display: flex; align-items: center; gap: 7px;">
+          <span style="width: 8px; height: 8px; background: #ef4444; border-radius: 50%;"></span>
+          <span style="width: 8px; height: 8px; background: #f59e0b; border-radius: 50%;"></span>
+          <span style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></span>
+          <span style="margin-left: 8px; font-family: var(--master-mono); font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.5px;">C4ISR MEJA KOMANDO PUSSIBERAD // OPERASI NUSA GUARD 2026</span>
+        </div>
+        <div style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; border-radius: 4px; padding: 2px 8px; font-family: var(--master-mono); font-size: 9.5px; font-weight: 900; color: #f87171;">
+          DEFCON 1 SIAGA MERAH
+        </div>
+      </div>
+
+      <!-- Map & Telemetry Grid Area -->
+      <div style="padding: 14px 16px; position: relative;">
+        <!-- SVG Map of NKRI with Satuan Nodes -->
+        <svg viewBox="0 0 540 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 165px; filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.1));">
+          <!-- Grid Lines -->
+          <line x1="0" y1="45" x2="540" y2="45" stroke="#102035" stroke-width="0.7" stroke-dasharray="3 3"/>
+          <line x1="0" y1="90" x2="540" y2="90" stroke="#102035" stroke-width="0.7" stroke-dasharray="3 3"/>
+          <line x1="0" y1="135" x2="540" y2="135" stroke="#102035" stroke-width="0.7" stroke-dasharray="3 3"/>
+          <line x1="135" y1="0" x2="135" y2="180" stroke="#102035" stroke-width="0.7" stroke-dasharray="3 3"/>
+          <line x1="270" y1="0" x2="270" y2="180" stroke="#102035" stroke-width="0.7" stroke-dasharray="3 3"/>
+          <line x1="405" y1="0" x2="405" y2="180" stroke="#102035" stroke-width="0.7" stroke-dasharray="3 3"/>
+
+          <!-- Stylized Archipelago Landmass Polygons -->
+          <path d="M 40 50 L 90 20 L 140 85 L 115 130 L 70 80 Z" fill="#0d1b2e" stroke="#1e3a5f" stroke-width="1.2"/>
+          <path d="M 145 135 L 245 140 L 260 155 L 150 150 Z" fill="#0d1b2e" stroke="#1e3a5f" stroke-width="1.2"/>
+          <path d="M 200 45 L 270 35 L 285 95 L 210 100 Z" fill="#0d1b2e" stroke="#1e3a5f" stroke-width="1.2"/>
+          <path d="M 295 50 L 330 35 L 320 85 L 335 125 L 305 110 Z" fill="#0d1b2e" stroke="#1e3a5f" stroke-width="1.2"/>
+          <path d="M 410 70 L 490 55 L 515 115 L 440 135 Z" fill="#0d1b2e" stroke="#1e3a5f" stroke-width="1.2"/>
+
+          <!-- Normal Kodam Nodes (Green) -->
+          <circle cx="55" cy="35" r="3.5" fill="#10b981"/>
+          <text x="55" y="27" fill="#64748b" font-size="7" font-family="monospace" text-anchor="middle">KODAM IM</text>
+
+          <circle cx="240" cy="65" r="4" fill="#06b6d4"/>
+          <text x="240" y="55" fill="#38bdf8" font-size="7.5" font-family="monospace" font-weight="bold" text-anchor="middle">IKN (MLW)</text>
+
+          <circle cx="225" cy="142" r="3.5" fill="#10b981"/>
+          <text x="225" y="160" fill="#64748b" font-size="7" font-family="monospace" text-anchor="middle">KODAM V</text>
+
+          <circle cx="315" cy="85" r="3.5" fill="#10b981"/>
+          <text x="315" y="75" fill="#64748b" font-size="7" font-family="monospace" text-anchor="middle">KODAM XIV</text>
+
+          <circle cx="470" cy="95" r="3.5" fill="#10b981"/>
+          <text x="470" y="85" fill="#64748b" font-size="7" font-family="monospace" text-anchor="middle">KODAM XVII</text>
+
+          <!-- TARGET NODE INTRUDED: KODAM JAYA (Red Blinking Radar Reticle) -->
+          <circle cx="160" cy="138" r="14" fill="rgba(239, 68, 68, 0.25)"/>
+          <circle cx="160" cy="138" r="8" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="2 3"/>
+          <circle cx="160" cy="138" r="4" fill="#ef4444"/>
+          <line x1="160" y1="120" x2="160" y2="156" stroke="#ef4444" stroke-width="0.8"/>
+          <line x1="142" y1="138" x2="178" y2="138" stroke="#ef4444" stroke-width="0.8"/>
+          
+          <rect x="175" y="115" width="135" height="22" rx="3" fill="#090e18" stroke="#ef4444" stroke-width="1"/>
+          <text x="182" y="129" fill="#fca5a5" font-size="8" font-family="monospace" font-weight="900">! KODAM JAYA // INTRUSI</text>
+        </svg>
+
+        <!-- Command Controls & Real-Time Dossier Split -->
+        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 12px; margin-top: 10px;">
+          <!-- Left: Dossier Box -->
+          <div style="background: #090e18; border: 1px solid #1e293b; border-radius: 6px; padding: 10px; font-family: var(--master-mono); font-size: 10.5px; line-height: 1.5;">
+            <div style="color: #38bdf8; font-weight: 800; border-bottom: 1px solid #1e293b; padding-bottom: 3px; margin-bottom: 5px;">
+              DOSSIER PENYERANG TERTANGKAP:
+            </div>
+            <div><span style="color: #64748b;">IP PELAKU :</span> <strong style="color: #f87171;">192.168.1.88</strong></div>
+            <div><span style="color: #64748b;">CANARY OOB:</span> <span style="color: #fbbf24;">doc-991a.kodim-0501.lan</span></div>
+            <div><span style="color: #64748b;">HARDWARE  :</span> <span style="color: #cbd5e1;">GPU-7b3a99e120fd9c48</span></div>
+            <div><span style="color: #64748b;">STATUS    :</span> <span style="color: #f87171; font-weight: 800;">TERKUNCI DI SIAGA 1</span></div>
+          </div>
+
+          <!-- Right: Isolation Action Trigger -->
+          <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 6px; padding: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-family: var(--master-mono); font-size: 10px; font-weight: 800; color: #f87171; margin-bottom: 4px;">
+                TINDAKAN PENANGGULANGAN:
+              </div>
+              <div style="font-size: 11px; line-height: 1.4; color: #cbd5e1;">
+                Eksekusi isolasi host tersangka seketika tanpa kompromi.
+              </div>
+            </div>
+            <div style="background: #ef4444; color: #ffffff; padding: 8px; border-radius: 4px; font-family: var(--master-mono); font-size: 11px; font-weight: 900; text-align: center; letter-spacing: 0.5px; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);">
+              ⚡ ISOLIR HOST 1-KLIK
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bar -->
+      <div style="background: #090e18; padding: 7px 16px; border-top: 1px solid #1e293b; display: flex; align-items: center; justify-content: space-between; font-family: var(--master-mono); font-size: 10px;">
+        <span style="color: #10b981;">★ ANTI-FRIENDLY-FIRE: GATEWAY 100% AMAN</span>
+        <span style="color: #64748b;">11 KODAM LIVE MONITOR // LATENSI &lt; 12MS</span>
+      </div>
+    </div>
+    """
+
+def get_native_stage_deck_slides(radar_visual=""):
+    c4isr_preview = generate_c4isr_preview_svg()
+    return f"""
+    <!-- ========================================================================= -->
+    <!-- SLIDE 1: COVER & EXECUTIVE VALUE PROPOSITION                              -->
+    <!-- ========================================================================= -->
+    <section class="slide active stage-slide" id="deck-slide-1">
+      <div class="stage-slide-content">
+        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px; align-items: center; width: 100%;">
+          <!-- Left Column: Executive Value Proposition -->
+          <div>
+            <div class="stage-eyebrow">
+              <span>PUSSIBERAD TNI AD × KARTIKA CYBER HACKATHON 2026</span>
+              <span class="stage-tag">KATEGORI: PENANGKALAN</span>
+            </div>
+            
+            <h1 class="stage-h1" style="font-size: clamp(30px, 3.2vw, 54px); margin-bottom: 1.4vh;">
+              NEXUS-TRAP<br>
+              <span class="stage-hl-green">ACTIVE CYBER DECEPTION &amp; INTERDICTION</span>
+            </h1>
+
+            <p class="stage-lead" style="font-size: clamp(14px, 1.1vw, 17px); line-height: 1.55; margin-bottom: 2vh;">
+              Platform Pertahanan Siber Asimetris, Kontra-Spionase Internal, dan Pelumpuh Otomatis Pemindai Lawan
+              untuk Melindungi Jaringan Markas Satuan Teritorial Komando Daerah Militer (Kodam) Se-Indonesia.
+            </p>
+
+            <div class="stage-doctrine-quote" style="margin-bottom: 0;">
+              <span class="quote-bar"></span>
+              <div>
+                <strong style="color: #fbbf24;">DOKTRIN UTAMA SUN TZU:</strong><br>
+                <em style="color: #cbd5e1;">"Penyusup mengira sedang meretas fasilitas markas, padahal setiap langkah mereka sedang dijebak, dicatat, dan dilaporkan ke meja komando."</em>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Tactical Radar Hologram Visual -->
+          <div style="display: flex; align-items: center; justify-content: center;">
+            {radar_visual}
+          </div>
+        </div>
+
+        <!-- Full-Width Bottom 4 Executive Metric Cards -->
+        <div class="stage-metrics-grid" style="margin-top: 2.5vh;">
+          <div class="stage-metric-card border-green">
+            <div class="metric-val text-green">100%</div>
+            <div class="metric-title">AKURASI DETERMINISTIK</div>
+            <div class="metric-sub">Zero False Positive by Design (Sekali ranjau disentuh = 100% musuh)</div>
+          </div>
+          <div class="stage-metric-card border-cyan">
+            <div class="metric-val text-cyan">0 req/s</div>
+            <div class="metric-title">TARPIT CHOKER INTERDICTION</div>
+            <div class="metric-sub">Membekukan worker thread scanner otomatis &amp; soket penyerang</div>
+          </div>
+          <div class="stage-metric-card border-amber">
+            <div class="metric-val text-amber">100%</div>
+            <div class="metric-title">AIR-GAP ON-PREMISE</div>
+            <div class="metric-sub">Kedaulatan total tanpa ketergantungan lisensi cloud vendor pihak ketiga</div>
+          </div>
+          <div class="stage-metric-card border-purple">
+            <div class="metric-val text-purple">&lt; 1 DETIK</div>
+            <div class="metric-title">SITREP RESMI SHA-256</div>
+            <div class="metric-sub">Naskah dinas militer bersegel kriptografis sah untuk alat bukti POMAD</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SLIDE 2: PARADOKS PERTAHANAN PASIF VS PERTAHANAN AKTIF                     -->
+    <!-- ========================================================================= -->
+    <section class="slide stage-slide" id="deck-slide-2">
+      <div class="stage-slide-content">
+        <div class="stage-eyebrow">01 // LATAR BELAKANG &amp; PARADOKS ANCAMAN SIBER</div>
+        <h2 class="stage-h2">Penyusup Memakai <span class="stage-hl-red">Kredensial Sah Staf</span>. Firewall Konvensional Buta.</h2>
+        
+        <div class="stage-split-grid">
+          <!-- Left: Dilema Pasif -->
+          <div class="stage-card card-fail">
+            <div class="card-tag tag-red">PARADOKS PERTAHANAN PASIF (FIREWALL / SIEM BIASA)</div>
+            <h3 class="stage-h3" style="margin-bottom: 14px;">Kerapuhan Paradigma Penjaga Gerbang</h3>
+            
+            <div class="tile-item" style="border-left: 3px solid #ef4444;">
+              <div class="tile-hdr text-red">01. TITIK BUTA INTERNAL (IDENTITY BLINDSPOT)</div>
+              <div class="tile-desc">Staf tertipu phishing atau APK malware dinas. Penyerang masuk lewat pintu depan memakai kredensial sah prajurit (Living off the Land). Firewall gerbang tidak curiga.</div>
+            </div>
+
+            <div class="tile-item" style="border-left: 3px solid #ef4444;">
+              <div class="tile-hdr text-red">02. BANJIR ALARM PALSU (ALARM FATIGUE)</div>
+              <div class="tile-desc">SIEM konvensional memuntahkan 10.000+ log setiap hari. Tim analis siber kelelahan dan sinyal intrusi nyata tenggelam dalam tumpukan alarm palsu.</div>
+            </div>
+
+            <div class="tile-item" style="border-left: 3px solid #ef4444;">
+              <div class="tile-hdr text-red">03. DWELL TIME FATAL (&gt; 200 HARI SADAR)</div>
+              <div class="tile-desc">Rata-rata industri membutuhkan 200+ hari untuk menyadari penyusupan. Kebocoran baru diketahui setelah rahasia dislokasi pasukan dijual di Dark Web.</div>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 10px; font-family: var(--master-mono); font-size: 11px; color: #f87171; font-weight: 800; border-top: 1px dashed rgba(239,68,68,0.3);">
+              STATUS: TERLAMBAT DAN BUTA TOTAL DI DALAM PERIMETER
+            </div>
+          </div>
+
+          <!-- Right: Solusi Aktif -->
+          <div class="stage-card card-win">
+            <div class="card-tag tag-green">DOKTRIN PERTAHANAN AKTIF (NEXUS-TRAP)</div>
+            <h3 class="stage-h3" style="margin-bottom: 14px;">Memasang Ranjau Digital di Dalam Markas</h3>
+            
+            <div class="tile-item" style="border-left: 3px solid #10b981;">
+              <div class="tile-hdr text-green">01. AKURASI DETERMINISTIK 100%</div>
+              <div class="tile-desc">Dokumen umpan dan sensor genset tidak pernah disentuh personel normal. Siapa pun yang menyentuh umpan DIPASTIKAN 100% adalah musuh nyata.</div>
+            </div>
+
+            <div class="tile-item" style="border-left: 3px solid #10b981;">
+              <div class="tile-hdr text-green">02. DETEKSI TEMBUS SANDBOX &amp; VM</div>
+              <div class="tile-desc">Dokumen Word (.docx) menyisipkan suar DNS klandestin UDP 5053. Begitu file dibuka di komputer musuh di luar pangkalan, IP publik dan lokasinya terbongkar seketika.</div>
+            </div>
+
+            <div class="tile-item" style="border-left: 3px solid #10b981;">
+              <div class="tile-hdr text-green">03. PENCEKIKAN SUMBER DAYA LAWAN (TARPIT)</div>
+              <div class="tile-desc">Aliran data 1 byte/detik membekukan scanner Gobuster musuh di 0 req/s. Soket lawan macet total tanpa ada beban lalu lintas palsu di jaringan pangkalan.</div>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 10px; font-family: var(--master-mono); font-size: 11px; color: #34d399; font-weight: 800; border-top: 1px dashed rgba(16,185,129,0.3);">
+              STATUS: INTERSEPSI KILAT &lt; 1 DETIK TANPA ALARM PALSU
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2.2vh; background: #090e18; border: 1px solid #1e293b; border-radius: 8px; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; font-family: var(--master-mono); font-size: 11.5px;">
+          <span style="color: #94a3b8;">PERBANDINGAN KECEPATAN DETEKSI:</span>
+          <span style="color: #ffffff; font-weight: 900;">200 HARI (PARADIKMA PASIF) <span style="color: var(--master-green);">&rarr; &lt; 1 DETIK (DOKTRIN AKTIF NEXUS-TRAP)</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SLIDE 3: FILOSOFI LONCENG ASIMETRIS & STEMPEL KRIPTOGRAFIS                 -->
+    <!-- ========================================================================= -->
+    <section class="slide stage-slide" id="deck-slide-3">
+      <div class="stage-slide-content">
+        <div class="stage-eyebrow">02 // LANDASAN TEORI &amp; SENI PERANG SUN TZU</div>
+        <h2 class="stage-h2">Landasan Doktrin: <span class="stage-hl-green">Lonceng Asimetris</span> &amp; <span class="stage-hl-cyan">Stempel Digital</span></h2>
+        
+        <div class="stage-cards-3">
+          <div class="stage-card">
+            <div class="card-icon-round icon-green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </div>
+            <h3 class="stage-h3">Stratagem 33: Memancing di Air Keruh</h3>
+            <div class="stage-stratagem-sub">Doktrin Umpan Berpelacak Klandestin</div>
+            
+            <div style="font-size: 12.5px; line-height: 1.55; color: #cbd5e1; display: flex; flex-direction: column; gap: 8px; margin: 10px 0 16px 0;">
+              <div><strong style="color: #6ee7b7;">MEKANISME:</strong> Menanam dokumen Word (.docx) berelasi tersembunyi di folder staf.</div>
+              <div><strong style="color: #6ee7b7;">TRIGER MUSUH:</strong> Musuh mencuri file dan membukanya di komputer luar markas.</div>
+              <div><strong style="color: #6ee7b7;">DAMPAK TEMPUR:</strong> Suar DNS 5053 berdering seketika, membongkar IP publik lawan.</div>
+            </div>
+
+            <div class="stage-stat-pill" style="margin-top: auto;">Deteksi OOB DNS UDP 5053</div>
+          </div>
+
+          <div class="stage-card">
+            <div class="card-icon-round icon-cyan">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+            </div>
+            <h3 class="stage-h3">Stratagem 25: Menukar Balok Kayu Lapuk</h3>
+            <div class="stage-stratagem-sub">Doktrin Tarpit Anti-Reconnaissance</div>
+            
+            <div style="font-size: 12.5px; line-height: 1.55; color: #cbd5e1; display: flex; flex-direction: column; gap: 8px; margin: 10px 0 16px 0;">
+              <div><strong style="color: #7dd3fc;">MEKANISME:</strong> Mengalirkan respons chunk TCP tak berujung 1 byte per detik.</div>
+              <div><strong style="color: #7dd3fc;">TRIGER MUSUH:</strong> Alat pemindai (Gobuster/dirsearch) mencoba scanning direktori markas.</div>
+              <div><strong style="color: #7dd3fc;">DAMPAK TEMPUR:</strong> Worker thread musuh terkunci pada 0 req/s, terminal lawan macet total.</div>
+            </div>
+
+            <div class="stage-stat-pill" style="margin-top: auto;">Throttling 1 Byte/s RFC 9309</div>
+          </div>
+
+          <div class="stage-card">
+            <div class="card-icon-round icon-purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3 class="stage-h3">Stempel Integritas: Validitas POMAD</h3>
+            <div class="stage-stratagem-sub">Rantai Bukti Forensik Tak Terbantahkan</div>
+            
+            <div style="font-size: 12.5px; line-height: 1.55; color: #cbd5e1; display: flex; flex-direction: column; gap: 8px; margin: 10px 0 16px 0;">
+              <div><strong style="color: #d8b4fe;">MEKANISME:</strong> Menyegel setiap log intrusi dalam rantai HMAC-SHA256 SQLite.</div>
+              <div><strong style="color: #d8b4fe;">TRIGER MUSUH:</strong> Setiap upaya akses ilegal terekam sidik jari GPU dan IP sumbernya.</div>
+              <div><strong style="color: #d8b4fe;">DAMPAK TEMPUR:</strong> Terbit Naskah Dinas SITREP resmi sah untuk peradilan militer POMAD.</div>
+            </div>
+
+            <div class="stage-stat-pill" style="margin-top: auto;">Rantai Integritas HMAC-SHA256</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2.6vh; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 8px; padding: 12px 20px; font-family: var(--master-mono); font-size: 11.5px; color: #a7f3d0; text-align: center;">
+          ★ DOKTRIN AKTIF: BUKAN MENGEJAR PENYUSUP DI RATUSAN KOMPUTER SATUAN, MELAINKAN MEMASANG UMPAN DETERMINISTIK BERSTEMPEL HUKUM POMAD
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SLIDE 4: 4 PILAR ARSITEKTUR TEKNIS                                        -->
+    <!-- ========================================================================= -->
+    <section class="slide stage-slide" id="deck-slide-4">
+      <div class="stage-slide-content">
+        <div class="stage-eyebrow">03 // ARSITEKTUR SISTEM &amp; REKAYASA TEKNIS</div>
+        <h2 class="stage-h2">Empat Pilar Pertahanan Asimetris <span class="stage-hl-green">NEXUS-TRAP</span></h2>
+
+        <div class="stage-cards-4">
+          <div class="stage-pillar-card p-green">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <div class="pillar-num">01</div>
+              <span class="pillar-layer-badge">ICS/SCADA LAYER</span>
+            </div>
+            <h3 class="pillar-title">OT GENSET DECOY</h3>
+            <div class="pillar-proto">Modbus/TCP Port 502 / 5020</div>
+            <p class="pillar-desc">
+              Meniru register daya genset cadangan pangkalan (380V, 50Hz, BBM 85%).
+              Merespons paket pemindai ICS/SCADA industri tanpa membahayakan genset fisik pangkalan.
+            </p>
+            <div class="pillar-telemetry-box">
+              <span class="telem-label">TELEMETRI KELUARAN:</span><br>
+              40001: 380V | 40002: 50Hz | 40003: 85% BBM
+            </div>
+            <div class="pillar-badge" style="margin-top: 10px;">Transisi Siaga Kuning</div>
+          </div>
+
+          <div class="stage-pillar-card p-cyan">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <div class="pillar-num">02</div>
+              <span class="pillar-layer-badge">L4/L7 TRAFFIC LAYER</span>
+            </div>
+            <h3 class="pillar-title">TCP TARPIT CHOKER</h3>
+            <div class="pillar-proto">HTTP Endless Chunk Stream</div>
+            <p class="pillar-desc">
+              Menjebak alat otomatis (Gobuster/Dirbuster) dengan aliran data tak berujung 1 byte per detik.
+              Membekukan worker thread scanner penyerang pada kecepatan 0 req/s.
+            </p>
+            <div class="pillar-telemetry-box">
+              <span class="telem-label">THROTTLING RATE:</span><br>
+              0.00 kb/s | 1 Byte/s | Thread Musuh Macet Total
+            </div>
+            <div class="pillar-badge" style="margin-top: 10px;">RFC 9309 FCrDNS Guard</div>
+          </div>
+
+          <div class="stage-pillar-card p-amber">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <div class="pillar-num">03</div>
+              <span class="pillar-layer-badge">OOB THREAT INTEL</span>
+            </div>
+            <h3 class="pillar-title">CANARY TOKEN DNS</h3>
+            <div class="pillar-proto">Out-of-Band UDP Port 5053</div>
+            <p class="pillar-desc">
+              Umpan dokumen Word (.docx) menyisipkan relasi template klandestin.
+              Membongkar IP publik &amp; geolokasi penyerang bahkan saat dibuka di lingkungan Sandbox/VM terisolasi.
+            </p>
+            <div class="pillar-telemetry-box">
+              <span class="telem-label">OOB DNS RESOLVER:</span><br>
+              doc-991a.kodim-0501.canary.lan &rarr; IP Terlacak
+            </div>
+            <div class="pillar-badge" style="margin-top: 10px;">Transisi Siaga 1 Merah</div>
+          </div>
+
+          <div class="stage-pillar-card p-purple">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <div class="pillar-num">04</div>
+              <span class="pillar-layer-badge">C4ISR DECISION LAYER</span>
+            </div>
+            <h3 class="pillar-title">AUTO-SITREP &amp; ISOLASI</h3>
+            <div class="pillar-proto">SHA-256 &amp; Multi-Firewall L3</div>
+            <p class="pillar-desc">
+              Pemutusan koneksi 1-klik dengan Anti-Friendly-Fire gateway pangkalan.
+              Menghasilkan naskah dinas resmi PUSSIBERAD dan aturan firewall (iptables, MikroTik, Cisco ACL).
+            </p>
+            <div class="pillar-telemetry-box">
+              <span class="telem-label">RANTAI BUKTI SHA-256:</span><br>
+              1178D8418DBADC3F... [Sah untuk POMAD]
+            </div>
+            <div class="pillar-badge" style="margin-top: 10px;">&lt; 1 Detik Terbit Otomatis</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2.5vh; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 12px 20px; font-family: var(--master-mono); font-size: 11.5px; color: #a7f3d0; text-align: center;">
+          ★ SELURUH 4 PILAR BERJALAN TERISOLASI SECARA ZERO-IMPACT TANPA MEMBEBANI JARINGAN UTAMA SATUAN
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SLIDE 5: KOREOGRAFI LIVE DEMO 10 MENIT                                    -->
+    <!-- ========================================================================= -->
+    <section class="slide stage-slide" id="deck-slide-5">
+      <div class="stage-slide-content">
+        <div class="stage-eyebrow">04 // SKENARIO PANGGUNG &amp; UJI PENJURIAN</div>
+        <h2 class="stage-h2">Koreografi Demonstrasi Langsung <span class="stage-hl-green">(10 Menit di Layar Kaca)</span></h2>
+
+        <div style="margin-bottom: 1.6vh; display: flex; align-items: center; justify-content: space-between; background: rgba(15, 23, 42, 0.6); border: 1px solid #1e293b; border-radius: 6px; padding: 10px 18px; font-family: var(--master-mono); font-size: 11px;">
+          <span style="color: #64748b;">TOTAL DURASI DEMO PENJURIAN: <strong style="color: #ffffff;">10 MENIT</strong></span>
+          <span style="color: #38bdf8; font-weight: 800;">5 FASE RESPON AKTIF // DARI INFILTRASI HINGGA ISOLASI HUKUM</span>
+        </div>
+
+        <div class="stage-choreography-grid">
+          <div class="choreo-step">
+            <div class="choreo-time">00:00 - 02:30</div>
+            <div class="choreo-status st-green">SIAGA 3 HIJAU</div>
+            <h4 class="choreo-title">Baseline Normal Pangkalan</h4>
+            <p class="choreo-desc">
+              Dashboard memantau 11 Kodam aktif. Sensor Modbus genset dan suar Canary dalam status siaga tanpa beban lalu lintas palsu.
+            </p>
+          </div>
+
+          <div class="choreo-step">
+            <div class="choreo-time">02:30 - 04:30</div>
+            <div class="choreo-status st-amber">SIAGA 2 KUNING</div>
+            <h4 class="choreo-title">Pengintaian Modbus OT</h4>
+            <p class="choreo-desc">
+              Penyerang memindai port 502 genset markas. Umpan membalas 380V/50Hz. Dashboard membunyikan Siaga Kuning dan mencatat IP pelaku.
+            </p>
+          </div>
+
+          <div class="choreo-step">
+            <div class="choreo-time">04:30 - 07:00</div>
+            <div class="choreo-status st-cyan">TARPIT TRAPPED</div>
+            <h4 class="choreo-title">Pembekuan Terminal Musuh</h4>
+            <p class="choreo-desc">
+              Penyerang meluncurkan Gobuster scanner. Tarpit Choker mengunci worker thread lawan ke 0 req/s. Terminal musuh macet total.
+            </p>
+          </div>
+
+          <div class="choreo-step">
+            <div class="choreo-time">07:00 - 09:00</div>
+            <div class="choreo-status st-red">SIAGA 1 MERAH</div>
+            <h4 class="choreo-title">Detonasi Dokumen Canary</h4>
+            <p class="choreo-desc">
+              Musuh membuka file rahasia curian di luar markas. Suar DNS 5053 meledak, pin Kodam di peta menyala merah, geolokasi musuh tertangkap.
+            </p>
+          </div>
+
+          <div class="choreo-step">
+            <div class="choreo-time">09:00 - 10:00</div>
+            <div class="choreo-status st-purple">NETRALISASI</div>
+            <h4 class="choreo-title">1-Klik Isolasi &amp; SITREP</h4>
+            <p class="choreo-desc">
+              Komandan menekan 1 tombol isolasi host. Naskah Dinas SITREP berstempel hash SHA-256 terbit seketika untuk Danpussiberad.
+            </p>
+          </div>
+        </div>
+
+        <!-- Live Demo Operational Metrics Strip -->
+        <div class="stage-demo-strip">
+          <div class="demo-metric-item">
+            <span class="m-lbl">LATENSI INTERSEPSI:</span>
+            <span class="m-val">&lt; 12 ms</span>
+          </div>
+          <div class="demo-metric-item">
+            <span class="m-lbl">ANTI-FRIENDLY-FIRE:</span>
+            <span class="m-val text-green">AKTIF (GATEWAY 100% AMAN)</span>
+          </div>
+          <div class="demo-metric-item">
+            <span class="m-lbl">INTEGRITAS BUKTI HUKUM:</span>
+            <span class="m-val text-cyan">HMAC-SHA256 LENGKAP</span>
+          </div>
+          <div class="demo-metric-item">
+            <span class="m-lbl">TARGET PENINDAKAN:</span>
+            <span class="m-val text-amber">1-KLIK QUARANTINE HOST</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SLIDE 6: PURWARUPA C4ISR & BUKTI HUKUM POMAD                              -->
+    <!-- ========================================================================= -->
+    <section class="slide stage-slide" id="deck-slide-6">
+      <div class="stage-slide-content">
+        <div class="stage-eyebrow">05 // PURWARUPA SISTEM &amp; VALIDITAS HUKUM</div>
+        <h2 class="stage-h2">Layar Komando C4ISR &amp; <span class="stage-hl-green">Naskah Dinas Bersegel SHA-256</span></h2>
+
+        <div class="stage-split-grid">
+          <!-- Left: Real SVG Wireframe Prototype of Dashboard -->
+          <div class="stage-card">
+            <div class="card-tag tag-cyan">INTERFACE MEJA KOMANDO PUSSIBERAD</div>
+            <h3 class="stage-h3" style="margin-bottom: 12px;">Dashboard C4ISR 1-Layar Zero-Scroll</h3>
+            {c4isr_preview}
+          </div>
+
+          <!-- Right: Official SITREP Document Prototype -->
+          <div class="stage-card">
+            <div class="card-tag tag-purple">STANDAR NASKAH DINAS MILITER TNI AD</div>
+            <h3 class="stage-h3" style="margin-bottom: 12px;">Integritas Forensik Berstandar POMAD</h3>
+            
+            <div class="sitrep-preview-box">
+              <div class="sitrep-hdr">KOP: MARKAS BESAR ANGKATAN DARAT // PUSAT SIBER TNI AD</div>
+              <div class="sitrep-line">NOMOR: R/SITREP-20261027-091/PUSSIBERAD | KLASIFIKASI: RAHASIA</div>
+              <div class="sitrep-body">
+                1. DASAR: Doktrin Pertahanan Siber Semesta TNI AD Kep/44/XII/2025.<br>
+                2. FAKTA: Intersepsi Dokumen Umpan Satuan KODAM JAYA / KOREM 051.<br>
+                3. PENINDAKAN: Host 192.168.1.88 Diisolir. Aturan Firewall Terpasang.<br>
+                4. SEKTOR: Hardware/GPU Fingerprint 7b3a99e120fd9c48 Tercatat.
+              </div>
+              <div class="sitrep-seal">
+                ★ SEGEL SHA-256: 1178D8418DBADC3F4D9085AC98EFB76378A86C459D115C6B... [VALID]
+              </div>
+            </div>
+
+            <div style="margin-top: 14px; background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 6px; padding: 12px 14px; font-family: var(--master-mono); font-size: 11px; color: #d8b4fe; display: flex; align-items: center; justify-content: space-between;">
+              <span>STATUS RANTAI BUKTI:</span>
+              <span style="font-weight: 800;">100% UNTAMPERED // ALAT BUKTI SAH PERADILAN MILITER</span>
+            </div>
+            
+            <div style="margin-top: auto; padding-top: 12px; font-family: var(--master-mono); font-size: 10.5px; color: #64748b; line-height: 1.4;">
+              * Laporan otomatis diekspor dalam format resmi militer siap cetak dan diverifikasi stempel hash kriptografis oleh Oditur Militer.
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2.2vh; background: #090e18; border: 1px solid #1e293b; border-radius: 8px; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; font-family: var(--master-mono); font-size: 11.5px;">
+          <div style="display: flex; align-items: center; gap: 8px; color: #a7f3d0;">
+            <span style="display: inline-block; width: 7px; height: 7px; background: #10b981; border-radius: 50%; box-shadow: 0 0 6px #10b981;"></span>
+            <span>SOP KESIAPAN MILITER: DARI DETEKSI RAW HINGGA PERINTAH ISOLASI TERLAKSANA DALAM SATU TAMPILAN</span>
+          </div>
+          <div style="color: #64748b;">PUSSIBERAD TNI AD // 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SLIDE 7: KESIMPULAN & KEDAULATAN PERTAHANAN SIBER NKRI                     -->
+    <!-- ========================================================================= -->
+    <section class="slide stage-slide" id="deck-slide-7">
+      <div class="stage-slide-content">
+        <div class="stage-eyebrow">06 // KESIMPULAN STRATEGIS &amp; KESIAPAN GELAR</div>
+        <h2 class="stage-h2">100% Mandiri, <span class="stage-hl-green">Kedaulatan Penuh</span>, Siap Gelar di Jajaran Kodam</h2>
+
+        <div class="stage-cards-3">
+          <div class="stage-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div class="card-icon-round icon-green" style="margin-bottom: 0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+              <span class="stage-stat-giant text-green">Rp 0,-</span>
+            </div>
+            
+            <h3 class="stage-h3">Efisiensi Anggaran Negara</h3>
+            <div class="stage-stratagem-sub">Nol Rupiah Lisensi Vendor Asing</div>
+            <p class="stage-text">
+              Didesain khusus untuk berjalan di komputer pangkalan biasa tanpa perlu membeli server atau lisensi vendor luar negeri bernilai miliaran rupiah.
+            </p>
+            <div class="stage-stat-pill" style="margin-top: auto;">100% Mandiri Finansial</div>
+          </div>
+
+          <div class="stage-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div class="card-icon-round icon-cyan" style="margin-bottom: 0;">
+                <svg width="24" height="20" viewBox="0 0 24 20" fill="none" style="filter: drop-shadow(0 0 6px rgba(239,68,68,0.3));">
+                  <rect x="0.5" y="0.5" width="23" height="19" rx="3.5" stroke="#06b6d4" stroke-width="1"/>
+                  <rect x="1" y="1" width="22" height="9" fill="#ef4444" rx="3 3 0 0"/>
+                  <rect x="1" y="10" width="22" height="9" fill="#f8fafc" rx="0 0 3 3"/>
+                </svg>
+              </div>
+              <span class="stage-stat-giant text-cyan">100%</span>
+            </div>
+
+            <h3 class="stage-h3">Kedaulatan &amp; Kemandirian</h3>
+            <div class="stage-stratagem-sub">Air-Gapped Standalone &amp; Zero-Backdoor</div>
+            <p class="stage-text">
+              100% karya mandiri talenta nasional. Bebas dari risiko backdoor atau spyware pihak asing yang dapat membocorkan rahasia militer Indonesia.
+            </p>
+            <div class="stage-stat-pill" style="margin-top: auto;">Kebal Embargo Teknologi</div>
+          </div>
+
+          <div class="stage-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div class="card-icon-round icon-purple" style="margin-bottom: 0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <span class="stage-stat-giant text-purple">&lt; 1 Menit</span>
+            </div>
+
+            <h3 class="stage-h3">Gelar Instan Satuan Kodim</h3>
+            <div class="stage-stratagem-sub">Hot-Plug Teritorial Nusantara</div>
+            <p class="stage-text">
+              Mekanisme hot-plug generator satuan memungkinkan pendaftaran Kodim baru dalam 1 klik tanpa perlu kompilasi ulang kode atau restart server.
+            </p>
+            <div class="stage-stat-pill" style="margin-top: auto;">Hot-Plug Zero-Recompile</div>
+          </div>
+        </div>
+
+        <div class="stage-final-banner">
+          <div class="banner-quote">
+            "KITA TIDAK MENUNGGU DISERANG. KITA YANG MENYIAPKAN PANGGUNGNYA."
+          </div>
+          <div class="banner-sub">
+            PUSSIBERAD TNI AD × KARTIKA CYBER HACKATHON 2026 // DOKTRIN PERTAHANAN SIBER AKTIF
+          </div>
+        </div>
+      </div>
+    </section>
+    """
+
     return """
     <!-- ========================================================================= -->
     <!-- SLIDE 1: COVER & EXECUTIVE VALUE PROPOSITION                              -->
@@ -546,6 +1160,43 @@ def get_native_stage_deck_slides():
 
 def get_stage_deck_styles():
     return """
+    /* New Revamped Styles for Stage Deck */
+    .tile-item {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 11px 14px;
+      margin-bottom: 9px;
+    }
+    .tile-hdr {
+      font-family: var(--master-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .tile-desc {
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--master-muted);
+    }
+    .pillar-layer-badge {
+      font-family: var(--master-mono);
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #273b56;
+      color: #7dd3fc;
+    }
+    .stage-stat-giant {
+      font-family: var(--master-mono);
+      font-size: clamp(32px, 3.2vw, 48px);
+      font-weight: 900;
+      line-height: 1;
+    }
+
     /* ========================================================================= */
     /* STAGE DECK NATIVE RESPONSIVE 16:9 VIEWPORT STYLES                         */
     /* ========================================================================= */
@@ -1148,7 +1799,7 @@ def build():
     teknis_slides = re.search(r'<main class="deck"[^>]*>(.*?)</main>', teknis_raw, re.DOTALL).group(1)
 
     # 2. Native Stage Deck Slides & Styles
-    stage_deck_slides = get_native_stage_deck_slides()
+    stage_deck_slides = get_native_stage_deck_slides(radar_visual=radar_visual)
     stage_deck_styles = get_stage_deck_styles()
 
     # Drawer Cards for Stage Deck
