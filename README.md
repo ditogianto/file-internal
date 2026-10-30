@@ -11,6 +11,15 @@
 > **Kategori:** Penangkalan (*Active Cyber Defense, Deception, Counter-Espionage & Incident Response*)  
 > **Lisensi:** Permisif Militer Mandiri (100% Air-Gapped On-Premise, Bebas Lisensi Asing, Bebas Ketergantungan Cloud)  
 
+> [!IMPORTANT]
+> ### 🌐 INFORMASI REPOSITORI RESMI (DUAL-REPOSITORY DEPLOYMENT)
+> Sistem **NEXUS-TRAP** dikelola melalui dua repositori terpisah:
+> 1. **Mesin Utama & C4ISR Engine (Backend, Honeypot, Decoy, Test Suite):**  
+>    👉 [https://github.com/ditogianto/file-internal](https://github.com/ditogianto/file-internal)
+> 2. **Portal Presentasi Web & Live Slide Deck (Deployable Static Web / GitHub Pages):**  
+>    👉 [https://github.com/ditogianto/cyber-hackhathon](https://github.com/ditogianto/cyber-hackhathon)  
+>    *Live Showcase:* [https://ditogianto.github.io/cyber-hackhathon/](https://ditogianto.github.io/cyber-hackhathon/)  
+
 ---
 
 ![Banner Thumbnail Karya](screenshots/thumbnail_karya_1200x630.png)
@@ -152,9 +161,12 @@ satuan_teritorial/
 
 ---
 
-## 6. Portal Presentasi Terpadu 3-in-1 (`presentasi.html`)
+## 6. Portal Presentasi Terpadu 3-in-1 (`presentasi.html` / Web Deployment)
 
-Seluruh materi presentasi resmi telah disatukan ke dalam satu berkas tunggal yang elegan, mandiri, dan responsif: [`presentasi.html`](presentasi.html).
+Seluruh materi presentasi resmi telah disatukan ke dalam satu berkas tunggal yang elegan, mandiri, dan responsif: [`presentasi.html`](presentasi.html).  
+Selain itu, presentasi ini telah dipaketkan ke dalam repositori web khusus untuk hosting mandiri di GitHub Pages:
+* **Repositori Web:** [https://github.com/ditogianto/cyber-hackhathon](https://github.com/ditogianto/cyber-hackhathon)
+* **Akses Online Langsung:** [https://ditogianto.github.io/cyber-hackhathon/](https://ditogianto.github.io/cyber-hackhathon/)
 
 ![Portal Presentasi Resmi NEXUS-TRAP](screenshots/preview_01_home.png)
 
