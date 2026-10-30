@@ -13,7 +13,7 @@ $BackendPath = Join-Path $RootPath "backend"
 
 # Jalankan backend di window powershell terpisah
 $BackendJob = Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '$BackendPath'; pip install -r requirements.txt; python run_backend.py" -PassThru
-Write-Host "    -> Backend PID: $($BackendJob.Id) berjalan di port 8000 (Modbus: 5020, DNS: 5353)" -ForegroundColor Green
+Write-Host "    -> Backend PID: $($BackendJob.Id) berjalan di port 8000 (Modbus: 5020, DNS: 5053)" -ForegroundColor Green
 
 # 2. Inisialisasi Frontend
 Write-Host "`n[2/3] Menyiapkan Frontend C4ISR UI (React + Vite + TailwindCSS)..." -ForegroundColor Yellow

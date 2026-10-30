@@ -25,6 +25,10 @@ def resolve_unit_identity(raw_unit_str: str) -> str:
         pass
     return raw_unit_str.replace("-", " ").upper()
 
+import time
+
+dns_rate_limit: dict[str, float] = {}
+
 class CanaryDNSProtocol(asyncio.DatagramProtocol):
     def connection_made(self, transport):
         self.transport = transport
@@ -35,9 +39,14 @@ class CanaryDNSProtocol(asyncio.DatagramProtocol):
             qname = str(request.q.qname).lower().rstrip(".")
             client_ip = addr[0]
 
-            # Detect if this is a canary beacon query
+            # Detect if this is a canary beacon query with DoS flood guard
             if "canary" in qname or "doc-" in qname or settings.CANARY_DOMAIN in qname:
-                asyncio.create_task(self.handle_canary_hit(qname, client_ip))
+                now = time.time()
+                rate_key = f"{client_ip}:{qname}"
+                last_hit = dns_rate_limit.get(rate_key, 0)
+                if (now - last_hit) >= 2.0:
+                    dns_rate_limit[rate_key] = now
+                    asyncio.create_task(self.handle_canary_hit(qname, client_ip))
 
             # Build standard valid reply to satisfy client resolver
             reply = DNSRecord(

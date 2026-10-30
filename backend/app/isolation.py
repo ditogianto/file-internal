@@ -36,13 +36,20 @@ async def isolate_host(target_ip: str) -> bool:
     # Execution: Safe parameterized firewall enforcement
     try:
         if sys.platform.startswith("linux"):
-            subprocess.run(["iptables", "-A", "INPUT", "-s", str(ip_obj), "-j", "DROP"], check=False)
+            subprocess.run(["iptables", "-I", "INPUT", "1", "-s", str(ip_obj), "-j", "DROP"], check=False)
         elif sys.platform.startswith("win"):
             rule_name = f"NEXUS_QUARANTINE_{str(ip_obj).replace(':', '_')}"
-            subprocess.run([
+            res = subprocess.run([
                 "netsh", "advfirewall", "firewall", "add", "rule",
                 f"name={rule_name}", "dir=in", "action=block", f"remoteip={str(ip_obj)}"
-            ], check=False)
+            ], capture_output=True, text=True, check=False)
+            if res.returncode != 0 and "elevation" in (res.stderr or "").lower():
+                await telemetry.add_log(
+                    level="WARN",
+                    tag="FIREWALL_NOTICE",
+                    message=f"Pemberitahuan: Aturan firewall lokal Windows membutuhkan prompt Administrator. Host {ip_obj} tetap dikunci di Sentral Blacklist router.",
+                    source_ip=str(ip_obj)
+                )
     except Exception:
         pass
 
@@ -61,3 +68,16 @@ async def isolate_host(target_ip: str) -> bool:
         source_ip=str(ip_obj)
     )
     return True
+
+async def cleanup_all_quarantines() -> None:
+    """Removes temporary local firewall isolation rules when resetting system state."""
+    for ip in list(telemetry.isolated_hosts):
+        try:
+            if sys.platform.startswith("linux"):
+                subprocess.run(["iptables", "-D", "INPUT", "-s", ip, "-j", "DROP"], check=False)
+            elif sys.platform.startswith("win"):
+                rule_name = f"NEXUS_QUARANTINE_{ip.replace(':', '_')}"
+                subprocess.run(["netsh", "advfirewall", "firewall", "delete", "rule", f"name={rule_name}"], capture_output=True, check=False)
+        except Exception:
+            pass
+    telemetry.isolated_hosts.clear()

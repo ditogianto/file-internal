@@ -18,7 +18,7 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
 }
 
 # Ensure inside repository directory
-Set-Location -Path $PSScriptRoot
+Set-Location -Path (Resolve-Path "$PSScriptRoot/..")
 
 # Check current status
 Write-Host "[1/4] Memeriksa status git lokal..." -ForegroundColor Yellow

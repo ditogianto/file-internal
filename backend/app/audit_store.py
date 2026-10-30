@@ -21,7 +21,9 @@ HMAC_SECRET = os.getenv("C4ISR_AUDIT_HMAC_KEY", "PUSSIBERAD-MILITARY-CHAIN-OF-CU
 GENESIS_HASH = "0000000000000000000000000000000000000000000000000000000000000000"
 
 def get_connection() -> sqlite3.Connection:
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA synchronous=NORMAL")
     conn.row_factory = sqlite3.Row
     return conn
 

@@ -27,7 +27,7 @@ from app.tarpit import execute_tarpit_response
 from app.dns_listener import start_dns_listener
 from app.modbus_service import start_modbus_service
 from app.ai_sitrep import generate_sitrep, check_ai_health
-from app.isolation import isolate_host
+from app.isolation import isolate_host, cleanup_all_quarantines
 from app.crawler_guard import classify_request, get_robots_txt_content
 from app.audit_store import register_canary_token, mark_canary_triggered, verify_audit_chain_integrity
 
@@ -333,6 +333,7 @@ async def reset_demo_state(request: Request, api_key: str = Security(API_KEY_HEA
         )
 
     # Eksekusi reset asli untuk operator komando terotentikasi
+    await cleanup_all_quarantines()
     telemetry.reset_state()
     await telemetry.broadcast()
     return {"status": "reset_completed", "state": telemetry.get_snapshot()}
@@ -854,22 +855,70 @@ async def simulate_canary():
 
 # --- Live Juri / Audience Interactive Canary Endpoints ---
 
+import zipfile
+
+def generate_dynamic_canary_docx(token: str, server_host: str, server_port: int) -> bytes:
+    """Dynamically embeds the active server host and unique canary token into DOCX OpenXML relationships."""
+    sample_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "decoys", "samples", "Rahasia_Dislokasi_Pasukan_2026.docx"))
+    canary_domain = f"{token.lower()}.kodam-jaya.{settings.CANARY_DOMAIN}"
+    beacon_http_url = f"http://{server_host}:{server_port}/api/canary/beacon/{token}"
+    
+    if os.path.exists(sample_path):
+        with open(sample_path, "rb") as f:
+            buf_in = f.read()
+        buf_out = io.BytesIO()
+        with zipfile.ZipFile(io.BytesIO(buf_in), "r") as zin:
+            with zipfile.ZipFile(buf_out, "w", zipfile.ZIP_DEFLATED) as zout:
+                for item in zin.infolist():
+                    content = zin.read(item.filename)
+                    if item.filename == "word/_rels/document.xml.rels":
+                        xml_str = content.decode("utf-8")
+                        xml_str = re.sub(r'Target="http://[^/]+/template\.dotx"', f'Target="http://{canary_domain}/template.dotx"', xml_str)
+                        xml_str = re.sub(r'Target="http://[^/]+/api/canary/beacon/[^"]+"', f'Target="{beacon_http_url}"', xml_str)
+                        content = xml_str.encode("utf-8")
+                    elif item.filename == "word/document.xml":
+                        xml_str = content.decode("utf-8")
+                        xml_str = xml_str.replace("DOC-991A", token)
+                        content = xml_str.encode("utf-8")
+                    zout.writestr(item, content)
+        return buf_out.getvalue()
+    return b""
+
 @app.get("/download/dokumen-rahasia")
 async def download_canary_docx(request: Request):
     """Allows jury or audience to download the canary docx file directly via smartphone or laptop.
-    Generates a unique dynamic tracking token for forensic attribution."""
+    Generates a unique dynamic tracking token for forensic attribution with live host binding."""
     client_ip = get_effective_client_ip(request)
     unique_token = f"DOC-{uuid.uuid4().hex[:6].upper()}"
     register_canary_token(unique_token, client_ip, "Rahasia_Dislokasi_Pasukan_2026.docx")
     
-    file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "decoys", "samples", "Rahasia_Dislokasi_Pasukan_2026.docx"))
+    # Resolve server host from request or LAN IP
+    host_header = request.headers.get("host")
+    if host_header and ":" in host_header:
+        server_host = host_header.split(":")[0]
+    else:
+        server_host = get_server_lan_ip()
+    
+    docx_bytes = generate_dynamic_canary_docx(unique_token, server_host, settings.PORT)
     
     await telemetry.add_log(
         level="WARN",
         tag="CANARY_DL",
-        message=f"Dokumen intelijen #{unique_token} diunduh sasaran dari IP {client_ip}. Suar aktif menanti pembongkaran!",
+        message=f"Dokumen intelijen #{unique_token} diunduh sasaran dari IP {client_ip} (Host: {server_host}). Suar aktif menanti pembongkaran!",
         source_ip=client_ip
     )
+    
+    if docx_bytes:
+        return Response(
+            content=docx_bytes,
+            media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            headers={
+                "Content-Disposition": f'attachment; filename="Rahasia_Dislokasi_Pasukan_2026_{unique_token}.docx"',
+                "X-Canary-Token": unique_token
+            }
+        )
+    
+    file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "decoys", "samples", "Rahasia_Dislokasi_Pasukan_2026.docx"))
     return FileResponse(
         path=file_path,
         filename=f"Rahasia_Dislokasi_Pasukan_2026_{unique_token}.docx",

@@ -80,9 +80,10 @@ async def verify_fcrdns_async(ip: str, valid_domains: list) -> Tuple[bool, str]:
             if not matches_domain:
                 return False, host
                 
-            # 2. Forward lookup to confirm no PTR poisoning
-            forward_ip = socket.gethostbyname(host)
-            if forward_ip == ip:
+            # 2. Forward lookup to confirm no PTR poisoning (supports multi-A record clusters)
+            addr_info = socket.getaddrinfo(host, None)
+            resolved_ips = {item[4][0] for item in addr_info}
+            if ip in resolved_ips:
                 return True, host
             return False, host
         except Exception:
