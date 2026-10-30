@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="shieldBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b132b"/>
+      <stop offset="50%" stop-color="#050811"/>
+      <stop offset="100%" stop-color="#020408"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="innerGrid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.2"/>
+    </linearGradient>
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Base Hexagonal Fortress Plate -->
+  <polygon points="256,16 480,132 480,380 256,496 32,380 32,132" fill="url(#shieldBg)" stroke="url(#borderGrad)" stroke-width="8" stroke-linejoin="round"/>
+  
+  <!-- Inner Tactical Inset -->
+  <polygon points="256,40 456,144 456,368 256,472 56,368 56,144" fill="none" stroke="#1e293b" stroke-width="3" stroke-dasharray="8 6"/>
+
+  <!-- Radar Trap Grid Circles -->
+  <circle cx="256" cy="256" r="170" fill="none" stroke="#0e2238" stroke-width="2"/>
+  <circle cx="256" cy="256" r="120" fill="none" stroke="#0e2238" stroke-width="2.5"/>
+  <circle cx="256" cy="256" r="70" fill="none" stroke="#10b981" stroke-width="2" stroke-opacity="0.5"/>
+
+  <!-- Crosshair Coordinates -->
+  <line x1="256" y1="60" x2="256" y2="452" stroke="#06b6d4" stroke-width="2" stroke-opacity="0.4" stroke-dasharray="12 8"/>
+  <line x1="76" y1="256" x2="436" y2="256" stroke="#06b6d4" stroke-width="2" stroke-opacity="0.4" stroke-dasharray="12 8"/>
+  
+  <!-- Diagonal Trap Web Interlinks (Deception Matrix) -->
+  <line x1="120" y1="120" x2="392" y2="392" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.3"/>
+  <line x1="392" y1="120" x2="120" y2="392" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.3"/>
+
+  <!-- Concentric Decoy Nodes -->
+  <polygon points="256,136 360,196 360,316 256,376 152,316 152,196" fill="none" stroke="url(#innerGrid)" stroke-width="3"/>
+  
+  <!-- Glowing Core Focal Nexus -->
+  <circle cx="256" cy="256" r="50" fill="url(#coreGlow)"/>
+  <polygon points="256,206 298,256 256,306 214,256" fill="#10b981" filter="url(#glowEffect)"/>
+  <polygon points="256,224 282,256 256,288 230,256" fill="#ffffff"/>
+
+  <!-- Apex Tripwire Warning Beacon (Canary Sensor) -->
+  <circle cx="256" cy="74" r="14" fill="#ef4444" filter="url(#glowEffect)"/>
+  <circle cx="256" cy="74" r="6" fill="#ffffff"/>
+  
+  <!-- Subtle Tactical Corner Brackets -->
+  <path d="M 90 150 L 90 130 L 115 130" fill="none" stroke="#10b981" stroke-width="4"/>
+  <path d="M 422 150 L 422 130 L 397 130" fill="none" stroke="#10b981" stroke-width="4"/>
+  <path d="M 90 362 L 90 382 L 115 382" fill="none" stroke="#06b6d4" stroke-width="4"/>
+  <path d="M 422 362 L 422 382 L 397 382" fill="none" stroke="#06b6d4" stroke-width="4"/>
+</svg>

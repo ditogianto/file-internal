@@ -1,4 +1,9 @@
 # NEXUS-TRAP (Network Deception & Active Tarpit)
+
+<p align="center">
+  <img src="nexus_trap_logo.svg" alt="NEXUS-TRAP Military Brandmark" width="620">
+</p>
+
 ## Platform Pertahanan Siber Aktif (Active Deception), Kontra-Spionase Internal, & Pelumpuh Instrumen Lawan (Tarpit) Terintegrasi IT/OT untuk Satuan Jajaran TNI AD
 
 [![Kategori: Penangkalan](https://img.shields.io/badge/Kategori-PENANGKALAN-047857?style=for-the-badge&logo=shield)](https://kartikacyberhackathon.id)

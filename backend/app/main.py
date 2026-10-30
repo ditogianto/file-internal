@@ -1179,3 +1179,43 @@ async def serve_qr_png():
     if p.exists():
         return Response(content=p.read_bytes(), media_type="image/png")
     raise HTTPException(status_code=404, detail="File not found")
+
+@app.get("/favicon.svg")
+async def serve_favicon_svg():
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent.parent / "favicon.svg"
+    if p.exists():
+        return Response(content=p.read_bytes(), media_type="image/svg+xml")
+    raise HTTPException(status_code=404, detail="File not found")
+
+@app.get("/favicon.png")
+async def serve_favicon_png():
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent.parent / "favicon.png"
+    if p.exists():
+        return Response(content=p.read_bytes(), media_type="image/png")
+    raise HTTPException(status_code=404, detail="File not found")
+
+@app.get("/apple-touch-icon.png")
+async def serve_apple_icon():
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent.parent / "apple-touch-icon.png"
+    if p.exists():
+        return Response(content=p.read_bytes(), media_type="image/png")
+    raise HTTPException(status_code=404, detail="File not found")
+
+@app.get("/nexus_trap_logo.svg")
+async def serve_logo_svg():
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent.parent / "nexus_trap_logo.svg"
+    if p.exists():
+        return Response(content=p.read_bytes(), media_type="image/svg+xml")
+    raise HTTPException(status_code=404, detail="File not found")
+
+@app.get("/nexus_trap_mark.svg")
+async def serve_mark_svg():
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent.parent / "nexus_trap_mark.svg"
+    if p.exists():
+        return Response(content=p.read_bytes(), media_type="image/svg+xml")
+    raise HTTPException(status_code=404, detail="File not found")
