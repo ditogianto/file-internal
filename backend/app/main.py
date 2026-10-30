@@ -1155,3 +1155,27 @@ async def serve_master_presentation():
     if pres_path.exists():
         return HTMLResponse(content=pres_path.read_text(encoding="utf-8"))
     raise HTTPException(status_code=404, detail="Master Presentation not found")
+
+@app.get("/QR_DOWNLOAD_FILE_INTERNAL.html", response_class=HTMLResponse)
+async def serve_qr_html():
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent.parent / "QR_DOWNLOAD_FILE_INTERNAL.html"
+    if p.exists():
+        return HTMLResponse(content=p.read_text(encoding="utf-8"))
+    raise HTTPException(status_code=404, detail="File not found")
+
+@app.get("/qr_download_file_internal.svg")
+async def serve_qr_svg():
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent.parent / "qr_download_file_internal.svg"
+    if p.exists():
+        return Response(content=p.read_bytes(), media_type="image/svg+xml")
+    raise HTTPException(status_code=404, detail="File not found")
+
+@app.get("/qr_download_file_internal.png")
+async def serve_qr_png():
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent.parent / "qr_download_file_internal.png"
+    if p.exists():
+        return Response(content=p.read_bytes(), media_type="image/png")
+    raise HTTPException(status_code=404, detail="File not found")

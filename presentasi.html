@@ -2646,13 +2646,13 @@
   <div class="analogy" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; background: rgba(245, 158, 11, 0.1); border-left: 4px solid #f59e0b; padding: 12px 18px; border-radius: 6px;">
     <div style="display: flex; align-items: center; gap: 16px;">
       <div style="background: #ffffff; padding: 6px; border-radius: 6px; display: inline-flex; width: 72px; height: 72px; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(245, 158, 11, 0.3); flex-shrink: 0;">
-        <img src="/api/canary/qr.svg" alt="QR Code Juri" style="width: 60px; height: 60px;" onerror="this.src='qr_download_file_internal.svg';">
+        <img src="qr_download_file_internal.svg" alt="QR Code Juri" style="width: 60px; height: 60px; cursor: pointer;" onclick="toggleCanaryModal(true)">
       </div>
       <div>
         <p style="margin: 0; line-height: 1.5; color: #e2e8f0; font-size: 13px;"><b>⚡ Fitur Interaktif Khusus Dewan Juri:</b> Pindai <b>QR Code Taktis</b> ini dengan kamera HP masing-masing untuk mengunduh dokumen umpan dan membuktikan kebocoran suar klandestin seketika di layar proyektor! <span style="color: #f59e0b; font-weight: 700;">[LIVE AUDIENCE DETONATION]</span></p>
       </div>
     </div>
-    <a href="/canary-qr" target="_blank" style="padding: 10px 16px; background: #f59e0b; color: #000; font-weight: 800; font-size: 11px; border-radius: 4px; text-decoration: none; white-space: nowrap; font-family: monospace;">
+    <a href="QR_DOWNLOAD_FILE_INTERNAL.html" onclick="toggleCanaryModal(true); return false;" target="_blank" style="padding: 10px 16px; background: #f59e0b; color: #000; font-weight: 800; font-size: 11px; border-radius: 4px; text-decoration: none; white-space: nowrap; font-family: monospace;">
       QR FULLSCREEN ↗
     </a>
   </div>
@@ -3928,7 +3928,7 @@
         <div style="margin-top: 1.8vh; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(90deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.9)); border: 1px solid #f59e0b; border-radius: 8px; padding: 12px 20px;">
           <div style="display: flex; align-items: center; gap: 18px;">
             <div style="background: #ffffff; padding: 6px; border-radius: 6px; display: inline-flex; width: 68px; height: 68px; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(245, 158, 11, 0.35); flex-shrink: 0;">
-              <img src="/api/canary/qr.svg" alt="QR Code Panggung" style="width: 56px; height: 56px;" onerror="this.src='qr_download_file_internal.svg';">
+              <img src="qr_download_file_internal.svg" alt="QR Code Panggung" style="width: 56px; height: 56px; cursor: pointer;" onclick="toggleCanaryModal(true)">
             </div>
             <div>
               <div style="color: #fbbf24; font-weight: 800; font-size: 13px; letter-spacing: 0.05em; margin-bottom: 2px;">
@@ -3940,7 +3940,7 @@
               </div>
             </div>
           </div>
-          <a href="/canary-qr" target="_blank" style="padding: 10px 18px; background: #f59e0b; color: #000; font-weight: 800; font-size: 11px; border-radius: 4px; text-decoration: none; letter-spacing: 0.05em; white-space: nowrap; font-family: monospace;">
+          <a href="QR_DOWNLOAD_FILE_INTERNAL.html" onclick="toggleCanaryModal(true); return false;" target="_blank" style="padding: 10px 18px; background: #f59e0b; color: #000; font-weight: 800; font-size: 11px; border-radius: 4px; text-decoration: none; letter-spacing: 0.05em; white-space: nowrap; font-family: monospace;">
             BUKA QR LAYAR PENUH ↗
           </a>
         </div>
@@ -4509,5 +4509,52 @@
     window.addEventListener('hashchange', initFromHash);
     initFromHash();
   </script>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: TACTICAL FULLSCREEN CANARY QR VIEWER                               -->
+  <!-- ========================================================================= -->
+  <div id="canary-modal" style="display: none; position: fixed; inset: 0; z-index: 99999; background: rgba(2, 6, 23, 0.92); backdrop-filter: blur(8px); align-items: center; justify-content: center;" onclick="if(event.target===this) toggleCanaryModal(false)">
+    <div style="background: #0f172a; border: 1px solid #334155; border-radius: 16px; padding: 36px 40px; text-align: center; max-width: 460px; width: 90%; box-shadow: 0 25px 60px rgba(0,0,0,0.85); position: relative;" onclick="event.stopPropagation()">
+      <button onclick="toggleCanaryModal(false)" style="position: absolute; top: 14px; right: 16px; background: transparent; border: none; color: #94a3b8; font-size: 26px; cursor: pointer; line-height: 1;" title="Tutup (Esc)">&times;</button>
+      
+      <div style="display: inline-block; background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); padding: 5px 14px; border-radius: 9999px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; margin-bottom: 16px;">
+        LIVE CANARY TOKEN // PUSSIBERAD
+      </div>
+      
+      <h3 style="font-size: 20px; font-weight: 800; margin: 0 0 8px 0; color: #ffffff;">UMPAN DOKUMEN INTELIJEN</h3>
+      <p style="color: #94a3b8; font-size: 12.5px; line-height: 1.5; margin: 0 0 20px 0;">
+        Pindai QR Code di bawah dengan kamera smartphone untuk mengunduh <code>Rahasia_Dislokasi_Pasukan_2026.docx</code> langsung dari GitHub.
+      </p>
+      
+      <div style="background: #ffffff; padding: 18px; border-radius: 12px; display: inline-block; margin-bottom: 20px; box-shadow: 0 0 35px rgba(239, 68, 68, 0.25);">
+        <img src="qr_download_file_internal.svg" alt="QR Code Unduh Berkas" style="width: 230px; height: 230px; display: block;">
+      </div>
+      
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <a href="https://github.com/ditogianto/file-internal/raw/master/Rahasia_Dislokasi_Pasukan_2026.docx" target="_blank" style="flex: 1; background: #ef4444; color: #ffffff; text-decoration: none; padding: 12px 16px; border-radius: 6px; font-weight: 700; font-size: 12px; letter-spacing: 0.05em; display: inline-block;">
+          UNDUH BERKAS (.DOCX) ↗
+        </a>
+        <a href="QR_DOWNLOAD_FILE_INTERNAL.html" target="_blank" style="background: #1e293b; color: #cbd5e1; text-decoration: none; padding: 12px 14px; border-radius: 6px; font-weight: 700; font-size: 12px; display: inline-block; border: 1px solid #334155;">
+          TAB BARU ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleCanaryModal(show) {
+      const modal = document.getElementById('canary-modal');
+      if (modal) {
+        modal.style.display = show ? 'flex' : 'none';
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        toggleCanaryModal(false);
+      }
+    });
+  </script>
+
 </body>
 </html>
