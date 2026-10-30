@@ -17,8 +17,8 @@
 > 1. **Mesin Utama & C4ISR Engine (Backend, Honeypot, Decoy, Test Suite):**  
 >    👉 [https://github.com/ditogianto/file-internal](https://github.com/ditogianto/file-internal)
 > 2. **Portal Presentasi Web & Live Slide Deck (Deployable Static Web / GitHub Pages):**  
->    👉 [https://github.com/ditogianto/cyber-hackhathon](https://github.com/ditogianto/cyber-hackhathon)  
->    *Live Showcase:* [https://ditogianto.github.io/cyber-hackhathon/](https://ditogianto.github.io/cyber-hackhathon/)  
+>    👉 [https://github.com/ditogianto/hackathon](https://github.com/ditogianto/hackathon)  
+>    *Live Showcase:* [https://ditogianto.github.io/hackathon/](https://ditogianto.github.io/hackathon/)  
 
 ---
 
@@ -165,8 +165,8 @@ satuan_teritorial/
 
 Seluruh materi presentasi resmi telah disatukan ke dalam satu berkas tunggal yang elegan, mandiri, dan responsif: [`presentasi.html`](presentasi.html).  
 Selain itu, presentasi ini telah dipaketkan ke dalam repositori web khusus untuk hosting mandiri di GitHub Pages:
-* **Repositori Web:** [https://github.com/ditogianto/cyber-hackhathon](https://github.com/ditogianto/cyber-hackhathon)
-* **Akses Online Langsung:** [https://ditogianto.github.io/cyber-hackhathon/](https://ditogianto.github.io/cyber-hackhathon/)
+* **Repositori Web:** [https://github.com/ditogianto/hackathon](https://github.com/ditogianto/hackathon)
+* **Akses Online Langsung:** [https://ditogianto.github.io/hackathon/](https://ditogianto.github.io/hackathon/)
 
 ![Portal Presentasi Resmi NEXUS-TRAP](screenshots/preview_01_home.png)
 
