@@ -327,15 +327,16 @@ nexus-trap/
 │   ├── 04_host_ping_monitor.py  # Monitor ICMP Waktu Nyata Pembukti Karantina
 │   └── run_full_accident_scenario.py # Rehearsal Otomatis Seluruh Skenario Insiden
 ├── screenshots/                 # Galeri Infografis & Tangkapan Layar 1080p Widescreen
-├── presentation_deck.html       # Visual Presentasi Vektor Interaktif (Full HD 1080p SVG)
-├── presentasi_awam.html         # Presentasi Responsif Animatif untuk Pemangku Kepentingan Awam
-├── PPT_NEXUS_TRAP_RESMI_KCH2026.pptx # Pitch Deck 16:9 Bebas Overflow
-├── PANDUAN_PRESENTASI_DAN_DEMO_JUARA.md # Skrip Verbatim & Buku Saku Pertanyaan Juri
-├── PANDUAN_REKAMAN_VIDEO_YOUTUBE_10_MENIT.md # Storyboard & Teleprompter Video YouTube 10 Menit
-├── PROPOSAL_TEKNIS_DAN_ARSITEKTUR_KCH2026.md # Proposal & Whitepaper Resmi Hackathon (Kualitas Dokumentasi)
-├── PANDUAN_WORKFLOW_DEMO_DAN_STUDI_KASUS_NYATA.md # Prosedur Gladi Bersih Lapangan
-├── setup_remote_and_push.ps1    # Otomasi Publikasi Repositori ke GitHub (Windows PowerShell)
-├── setup_remote_and_push.sh     # Otomasi Publikasi Repositori ke GitHub (Linux / Bash)
+├── satuan_teritorial/           # Paket Dokumen Umpan & Uji Detonasi Kodim Se-Indonesia
+├── tools/                       # Generator Satuan Kodim Baru & Builder Presentasi
+├── bak/                         # Arsip Dokumen Panduan, Presentasi Lama, & Skrip Pengujian
+├── presentasi.html              # [MASTER] Portal Presentasi Terpadu (Non-Tech, Tech, Stage Deck)
+├── JALANKAN_PUSAT_KOMANDO.bat   # [1-KLIK] Launcher Meja Komando C4ISR & Browser
+├── TAMBAH_SATUAN_KODIM_BARU.bat # [1-KLIK] Generator Satuan Kodim Baru (Zero-Recompile)
+├── start_all.ps1                # Launcher Layanan Background & Frontend (PowerShell)
+├── start_all.sh                 # Launcher Layanan Background & Frontend (Linux Bash)
+├── reset_demo.ps1               # Skrip Reset Kondisi Uji Coba ke Siaga Hijau
+├── docker-compose.yml           # Orkestrasi Kontainer Produksi
 ├── LICENSE                      # Lisensi Permisif Open Source Militer Mandiri
 └── CONTRIBUTING.md              # Standar Kualitas & Panduan Pengembangan Lanjutan
 ```
