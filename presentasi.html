@@ -1797,123 +1797,246 @@
       letter-spacing: 1.5px;
     }
     
+  
+    /* ========================================================================= */
+    /* AUDIENCE HERO & DIFFERENTIATOR CARD STYLING                               */
+    /* ========================================================================= */
+    .target-audience-box {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .audience-label {
+      display: inline-block;
+      font-family: var(--master-mono);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .tag-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); }
+    .tag-cyan { background: rgba(6, 182, 212, 0.15); color: #38bdf8; border: 1px solid rgba(6, 182, 212, 0.35); }
+    .tag-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.35); }
+
+    .audience-title {
+      font-size: clamp(16px, 1.15vw, 19px);
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .title-green { color: #ffffff; text-shadow: 0 0 14px rgba(16, 185, 129, 0.4); }
+    .title-cyan { color: #ffffff; text-shadow: 0 0 14px rgba(6, 182, 212, 0.4); }
+    .title-purple { color: #ffffff; text-shadow: 0 0 14px rgba(168, 85, 247, 0.4); }
+
+    .audience-sub {
+      font-size: 11.5px;
+      color: #94a3b8;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .card-divider {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent);
+      margin-bottom: 12px;
+    }
+
+    .format-header {
+      margin-bottom: 10px;
+    }
+    .format-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .format-code {
+      font-family: var(--master-mono);
+      font-size: 10px;
+      font-weight: 800;
+      color: #64748b;
+      letter-spacing: 0.5px;
+    }
+    .format-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #e2e8f0;
+      line-height: 1.3;
+    }
+
+    .format-desc {
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: #94a3b8;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+
+    .format-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .format-pill {
+      font-family: var(--master-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .pill-green { color: #a7f3d0; border: 1px solid rgba(16, 185, 129, 0.25); background: rgba(16, 185, 129, 0.05); }
+    .pill-cyan { color: #bae6fd; border: 1px solid rgba(6, 182, 212, 0.25); background: rgba(6, 182, 212, 0.05); }
+    .pill-purple { color: #e9d5ff; border: 1px solid rgba(168, 85, 247, 0.25); background: rgba(168, 85, 247, 0.05); }
+
   </style>
 </head>
 <body>
 
-  <!-- ========================================================================= -->
+    <!-- ========================================================================= -->
   <!-- VIEW 1: HOME PORTAL SELECTOR                                              -->
   <!-- ========================================================================= -->
   <div id="view-home" class="view-container active">
     <header class="home-header">
       <div class="home-eyebrow">PUSSIBERAD TNI AD × KARTIKA CYBER HACKATHON 2026 // DOKTRIN PERTAHANAN SIBER AKTIF</div>
-            <div style="margin-bottom: 22px; display: flex; justify-content: center;">
-        <img src="nexus_trap_logo.svg" alt="NEXUS-TRAP Military Brandmark" style="height: 76px; max-width: 92%; filter: drop-shadow(0 4px 25px rgba(16, 185, 129, 0.2));">
-      </div>
       <h1 class="home-title">
         <span class="title-line-1">PORTAL PRESENTASI RESMI</span>
         <span class="title-line-2">NEXUS-TRAP</span>
       </h1>
       <p class="home-desc">
-        Sistem Pertahanan Aktif Siber, Deception Teritorial Klandestin, dan Kontra-Spionase Mandiri.
-        Pilih format presentasi di bawah ini sesuai profil audiens dan alokasi waktu evaluasi panggung.
+        Pilih salah satu dari <strong>3 format presentasi</strong> di bawah ini sesuai profil target Dewan Juri:
       </p>
     </header>
 
-    <!-- 3 Mode Cards -->
+    <!-- 3 Audience-Driven Presentation Modes -->
     <div class="home-cards-grid">
       
-      <!-- Card 1: Non-Tech (Awam) -->
+      <!-- Card 1: Non-Tech / Eksekutif -->
       <div class="home-card card-awam" onclick="switchMode('awam')">
-        <div>
-          <div class="card-top">
-            <span class="card-badge badge-green">11 SLIDE // DOKTRIN AWAM</span>
-            <span class="card-key-shortcut">[1] AWAM</span>
+        <div style="display: flex; flex-direction: column; height: 100%;">
+          
+          <!-- Audience Hero Header -->
+          <div class="target-audience-box">
+            <span class="audience-label tag-green">TARGET AUDIENS</span>
+            <div class="audience-title title-green">DEWAN JURI NON-TEKNIS &amp; PIMPINAN</div>
+            <div class="audience-sub">Perwira Tinggi, Komandan Satuan, &amp; Penilai Eksekutif</div>
           </div>
-          <div class="card-icon-title">
-            <div class="card-icon">🛡️</div>
-            <div>
-              <h2 class="card-title">Doktrin &amp; Alur Cerita Awam</h2>
-              <div class="card-subtitle">Untuk Pimpinan, Komandan, &amp; Juri Non-Teknis</div>
+
+          <div class="card-divider"></div>
+
+          <!-- Format Spec -->
+          <div class="format-header">
+            <div class="format-badge-row">
+              <span class="format-code">OPSI 01 // FORMAT AWAM</span>
+              <span class="card-key-shortcut">[1] AWAM</span>
             </div>
+            <h2 class="format-title">Doktrin &amp; Alur Cerita Asimetris</h2>
           </div>
-          <p class="card-desc">
-            Penyampaian doktrin pertahanan aktif dengan analogi taktis dunia nyata tanpa istilah teknis rumit.
-            Membalikkan anggapan bahwa pertahanan siber harus pasif menunggu diserang.
+
+          <p class="format-desc">
+            Penyampaian doktrin pertahanan aktif asimetris menggunakan <strong>analogi taktis dunia nyata</strong> (Tank Kayu, Lem Tikus, &amp; Koper Berpelacak) tanpa istilah teknis rumit. Membalikkan persepsi bahwa pertahanan siber harus pasif menunggu diserang.
           </p>
-          <ul class="card-points">
-            <li><span class="bullet" style="color: #10b981;">✓</span> Analogi Umpan Tank Kayu, Lem Tikus Digital, &amp; Koper Ber-GPS</li>
-            <li><span class="bullet" style="color: #10b981;">✓</span> Doktrin 36 Stratagem Sun Tzu (Stratagem 33 &amp; 25 Terbukti)</li>
-            <li><span class="bullet" style="color: #10b981;">✓</span> Peta Alur Operasi 5 Tahap dari Masuk hingga Pelumpuhan 1-Klik</li>
-            <li><span class="bullet" style="color: #10b981;">✓</span> Logika Perlindungan Markas Sendiri (Anti-Friendly-Fire)</li>
-          </ul>
+
+          <!-- Highlights / Metrics -->
+          <div class="format-pills">
+            <span class="format-pill pill-green">✓ 11 Slide Naratif</span>
+            <span class="format-pill pill-green">✓ Bahasa Awam &amp; Bebas Jargon</span>
+            <span class="format-pill pill-green">✓ Efisiensi Biaya Rp 0,-</span>
+          </div>
+
+          <!-- Action Button -->
+          <button class="btn-card-launch btn-green" style="margin-top: auto;">
+            <span>PILIH FORMAT NON-TEKNIS</span>
+            <span style="font-family: var(--master-mono); font-size: 11px; opacity: 0.85;">[TEKAN 1] →</span>
+          </button>
         </div>
-        <button class="btn-card-launch btn-green">
-          <span>Buka Presentasi Awam (Non-Tech)</span>
-          <span>→</span>
-        </button>
       </div>
 
-      <!-- Card 2: Tech (Teknis) -->
+      <!-- Card 2: Deep-Dive Teknis -->
       <div class="home-card card-teknis" onclick="switchMode('teknis')">
-        <div>
-          <div class="card-top">
-            <span class="card-badge badge-cyan">11 SLIDE // DEEP-DIVE TEKNIS</span>
-            <span class="card-key-shortcut">[2] TEKNIS</span>
+        <div style="display: flex; flex-direction: column; height: 100%;">
+          
+          <!-- Audience Hero Header -->
+          <div class="target-audience-box">
+            <span class="audience-label tag-cyan">TARGET AUDIENS</span>
+            <div class="audience-title title-cyan">DEWAN JURI TEKNIS &amp; RED TEAM</div>
+            <div class="audience-sub">Cyber Security Engineers, Praktisi Forensik, &amp; Pentester</div>
           </div>
-          <div class="card-icon-title">
-            <div class="card-icon">⚡</div>
-            <div>
-              <h2 class="card-title">Arsitektur &amp; Rekayasa Sistem</h2>
-              <div class="card-subtitle">Untuk Tim Juri Teknis, Red Team &amp; Cyber Engineers</div>
+
+          <div class="card-divider"></div>
+
+          <!-- Format Spec -->
+          <div class="format-header">
+            <div class="format-badge-row">
+              <span class="format-code">OPSI 02 // DEEP-DIVE TEKNIS</span>
+              <span class="card-key-shortcut">[2] TEKNIS</span>
             </div>
+            <h2 class="format-title">Arsitektur &amp; Rekayasa Sistem</h2>
           </div>
-          <p class="card-desc">
-            Spesifikasi rekayasa mendalam: integrasi 3-subnet terisolasi, emulasi SCADA OT Modbus port 502,
-            penjeratan scanner Tarpit berkecepatan 0 req/s, dan suar DNS klandestin UDP 5053.
+
+          <p class="format-desc">
+            Bedah rekayasa mendalam: spesifikasi <strong>emulasi SCADA OT Modbus 502</strong>, algoritma <em>slow-drip</em> Sticky Tarpit (0 req/s), suar klandestin DNS UDP 5053 tembus isolasi VM, dan rantai integritas HMAC-SHA256 untuk barang bukti POMAD.
           </p>
-          <ul class="card-points">
-            <li><span class="bullet" style="color: #06b6d4;">✓</span> Topologi 3 Subnet (VLAN 10 Pangkalan, 20 Trap, 30 Komando)</li>
-            <li><span class="bullet" style="color: #06b6d4;">✓</span> Modbus/TCP 502 Holding Register Genset Pangkalan Asli</li>
-            <li><span class="bullet" style="color: #06b6d4;">✓</span> Tarpit Choker RFC 9309 FCrDNS Anti-Bot Discrimination</li>
-            <li><span class="bullet" style="color: #06b6d4;">✓</span> Rantai Integritas HMAC-SHA256 &amp; Ekspor Multi-Firewall L3</li>
-          </ul>
+
+          <!-- Highlights / Metrics -->
+          <div class="format-pills">
+            <span class="format-pill pill-cyan">✓ 11 Slide Spesifikasi</span>
+            <span class="format-pill pill-cyan">✓ RFC 9309 &amp; FCrDNS Verification</span>
+            <span class="format-pill pill-cyan">✓ SQLite HMAC-SHA256 Seal</span>
+          </div>
+
+          <!-- Action Button -->
+          <button class="btn-card-launch btn-cyan" style="margin-top: auto;">
+            <span>PILIH FORMAT TEKNIS</span>
+            <span style="font-family: var(--master-mono); font-size: 11px; opacity: 0.85;">[TEKAN 2] →</span>
+          </button>
         </div>
-        <button class="btn-card-launch btn-cyan">
-          <span>Buka Presentasi Teknis (Tech)</span>
-          <span>→</span>
-        </button>
       </div>
 
       <!-- Card 3: Stage Pitch Deck (16:9) -->
       <div class="home-card card-deck" onclick="switchMode('deck')">
-        <div>
-          <div class="card-top">
-            <span class="card-badge badge-purple">7 SLIDE // 16:9 PITCH DECK</span>
-            <span class="card-key-shortcut">[3] STAGE DECK</span>
+        <div style="display: flex; flex-direction: column; height: 100%;">
+          
+          <!-- Audience Hero Header -->
+          <div class="target-audience-box">
+            <span class="audience-label tag-purple">TARGET AUDIENS</span>
+            <div class="audience-title title-purple">SESI PANGGUNG &amp; LIVE DEMO</div>
+            <div class="audience-sub">Presentasi Proyektor 16:9, Dewan Juri Utama, &amp; Penonton</div>
           </div>
-          <div class="card-icon-title">
-            <div class="card-icon">🖥️</div>
-            <div>
-              <h2 class="card-title">Executive Stage Pitch Deck</h2>
-              <div class="card-subtitle">Untuk Sesi Panggung Proyektor &amp; Live Demo 10 Menit</div>
+
+          <div class="card-divider"></div>
+
+          <!-- Format Spec -->
+          <div class="format-header">
+            <div class="format-badge-row">
+              <span class="format-code">OPSI 03 // MASTER STAGE DECK</span>
+              <span class="card-key-shortcut">[3] STAGE DECK</span>
             </div>
+            <h2 class="format-title">Executive Stage Pitch Deck (16:9)</h2>
           </div>
-          <p class="card-desc">
-            Format visual 16:9 responsive widescreen definisi tinggi tanpa blok teks padat.
-            Dirancang presisi untuk presentasi panggung berkecepatan tinggi dengan navigasi thumbnail instan.
+
+          <p class="format-desc">
+            Format sinematik 16:9 widescreen <em>zero-scroll</em> yang dirancang khusus untuk <strong>evaluasi panggung berdurasi 10 menit</strong>. Dilengkapi koreografi insiden panggung, wireframe GUI C4ISR, dan <strong>widget QR interaktif</strong> yang dapat diuji langsung oleh juri.
           </p>
-          <ul class="card-points">
-            <li><span class="bullet" style="color: #a855f7;">✓</span> Tampilan Vektor 16:9 Zero-Scroll Definisi Tinggi</li>
-            <li><span class="bullet" style="color: #a855f7;">✓</span> Panduan Koreografi Live Demo 10 Menit di Layar Kaca</li>
-            <li><span class="bullet" style="color: #a855f7;">✓</span> Naskah Dinas SITREP Resmi SHA-256 PUSSIBERAD</li>
-            <li><span class="bullet" style="color: #a855f7;">✓</span> Laci Visual Thumbnail Cepat Navigasi Lintas Bab</li>
-          </ul>
+
+          <!-- Highlights / Metrics -->
+          <div class="format-pills">
+            <span class="format-pill pill-purple">✓ 7 Slide Sinematik 16:9</span>
+            <span class="format-pill pill-purple">✓ Live Audience QR Detonation</span>
+            <span class="format-pill pill-purple">✓ Naskah Dinas SITREP Kasad</span>
+          </div>
+
+          <!-- Action Button -->
+          <button class="btn-card-launch btn-purple" style="margin-top: auto;">
+            <span>PILIH STAGE DECK (16:9)</span>
+            <span style="font-family: var(--master-mono); font-size: 11px; opacity: 0.85;">[TEKAN 3] →</span>
+          </button>
         </div>
-        <button class="btn-card-launch btn-purple">
-          <span>Buka Stage Pitch Deck (16:9)</span>
-          <span>→</span>
-        </button>
       </div>
 
     </div>
