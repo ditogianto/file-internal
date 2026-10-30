@@ -26,12 +26,10 @@ if hasattr(sys.stdout, "reconfigure"):
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 PRESENTATION_FILES = [
-    BASE_DIR / "presentasi_awam.html",
-    BASE_DIR / "presentasi_teknis.html",
-    BASE_DIR / "presentation_deck.html",
+    BASE_DIR / "presentasi.html",
 ]
 
 def print_header(title):
@@ -115,7 +113,7 @@ def scan_mark_registry():
 
 def verify_backend_tests():
     print_header("3. Eksekusi Test Suite QC/QA Backend & Kriptografi")
-    test_script = BASE_DIR / "test_full_qc_qa.py"
+    test_script = Path(__file__).resolve().parent / "test_full_qc_qa.py"
     if not test_script.exists():
         print("  [ERROR] Script test_full_qc_qa.py tidak ditemukan.")
         return False

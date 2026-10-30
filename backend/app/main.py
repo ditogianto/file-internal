@@ -1076,3 +1076,14 @@ async def canary_qr_portal(request: Request):
 </body>
 </html>"""
     return HTMLResponse(content=html)
+
+@app.get("/presentasi", response_class=HTMLResponse)
+@app.get("/presentation", response_class=HTMLResponse)
+@app.get("/deck", response_class=HTMLResponse)
+async def serve_master_presentation():
+    """Serves the master unified presentation portal containing Non-Tech, Tech, and Stage Deck."""
+    from pathlib import Path
+    pres_path = Path(__file__).resolve().parent.parent.parent / "presentasi.html"
+    if pres_path.exists():
+        return HTMLResponse(content=pres_path.read_text(encoding="utf-8"))
+    raise HTTPException(status_code=404, detail="Master Presentation not found")

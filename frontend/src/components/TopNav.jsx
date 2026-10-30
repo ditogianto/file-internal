@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Radio, Activity, Clock, QrCode } from 'lucide-react';
+import { Shield, Radio, Activity, Clock, QrCode, Monitor } from 'lucide-react';
 
 export default function TopNav({ systemStatus, wsConnected }) {
   const [currentTime, setCurrentTime] = useState('');
@@ -63,6 +63,17 @@ export default function TopNav({ systemStatus, wsConnected }) {
 
       {/* Military Time, QR Demo & Telemetry Status */}
       <div className="flex items-center gap-3 text-xs">
+        <a
+          href={`http://${typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : '127.0.0.1'}:8000/presentasi`}
+          target="_blank"
+          rel="noreferrer"
+          title="Buka Portal Presentasi Resmi NEXUS-TRAP (Non-Tech, Tech, Stage Deck)"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/40 text-emerald-300 text-[11px] font-semibold hover:bg-emerald-500/20 transition-all cursor-pointer"
+        >
+          <Monitor className="w-3.5 h-3.5" />
+          <span>PORTAL PRESENTASI</span>
+        </a>
+
         <a
           href={`http://${typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : '127.0.0.1'}:8000/canary-qr`}
           target="_blank"
