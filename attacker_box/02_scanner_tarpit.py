@@ -3,7 +3,7 @@ import urllib.request
 import threading
 import sys
 
-TARGET_URL = "http://127.0.0.1:8000/decoy-portal/api/"
+TARGET_URL = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:8000/decoy-portal/api/"
 WORDLIST = [
     "admin", "login", "config", "backup", "db", "scada", 
     "genset", "radar", "sisfopers", "telemetry", "firmware",

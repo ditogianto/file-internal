@@ -985,6 +985,25 @@ async def http_canary_beacon(request: Request, token: str = "DOC-991A"):
     headers = {"X-Beacon-Rate-Limited": "true" if is_flood else "false"}
     return Response(content=gif_1x1, media_type="image/gif", headers=headers)
 
+@app.get("/api/canary/qr.svg")
+async def canary_qr_svg(request: Request):
+    """Returns pure SVG QR code image for embedding in presentation slides or external dashboards."""
+    host_header = request.headers.get("host")
+    if host_header and ":" in host_header:
+        server_host = host_header.split(":")[0]
+    else:
+        server_host = get_server_lan_ip()
+    port = settings.PORT
+    download_url = f"http://{server_host}:{port}/download/dokumen-rahasia"
+    
+    if QR_AVAILABLE:
+        factory = qrcode.image.svg.SvgPathImage
+        img = qrcode.make(download_url, image_factory=factory)
+        buf = io.BytesIO()
+        img.save(buf)
+        return Response(content=buf.getvalue(), media_type="image/svg+xml")
+    return Response(content="<svg></svg>", media_type="image/svg+xml")
+
 @app.get("/canary-qr")
 async def canary_qr_portal(request: Request):
     """Presents a tactical dark-mode QR code & download button for the jury / audience live demo."""

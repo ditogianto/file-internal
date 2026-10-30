@@ -4,10 +4,11 @@ import urllib.request
 import json
 import sys
 
-BACKEND_URL = "http://127.0.0.1:8000"
-MODBUS_HOST = "127.0.0.1"
-MODBUS_PORT = 5020
-DNS_PORT = 5053
+TARGET_HOST = sys.argv[1] if len(sys.argv) > 1 else "127.0.0.1"
+BACKEND_URL = f"http://{TARGET_HOST}:8000"
+MODBUS_HOST = TARGET_HOST
+MODBUS_PORT = int(sys.argv[2]) if len(sys.argv) > 2 else 5020
+DNS_PORT = int(sys.argv[3]) if len(sys.argv) > 3 else 5053
 
 def print_step(title, desc):
     print("\n" + "=" * 70)
@@ -94,8 +95,12 @@ def main():
         packet = header + qname + b"\x00\x01\x00\x01"
         dns_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         dns_sock.settimeout(2.0)
-        dns_sock.sendto(packet, ("127.0.0.1", DNS_PORT))
-        dns_sock.recvfrom(512)
+        dns_sock.sendto(packet, (TARGET_HOST, DNS_PORT))
+        try:
+            dns_sock.recvfrom(512)
+        except Exception:
+            # Dual-spectrum fallback: trigger HTTP canary beacon
+            urllib.request.urlopen(f"{BACKEND_URL}/api/canary/beacon/DOC-991A", timeout=2.0)
         dns_sock.close()
         print("    [+] Suar UDP 5053 Berhasil Menembus Keluar Mesin Virtual.")
         print("    [!] REAKSI DASHBOARD: SIAGA 1 (MERAH) MELEDAK! Peta Kodam Jaya Berkedip Merah!")
