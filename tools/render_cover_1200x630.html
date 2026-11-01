@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>COVER KARYA NEXUS-TRAP // 1200x630</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      background: #040812;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 38px 46px;
+    }
+
+    .bg-gradient {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 18% 25%, rgba(16, 185, 129, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 82% 65%, rgba(6, 182, 212, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, #03060d 100%);
+      z-index: 1;
+    }
+
+    .tactical-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hud-bracket {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(16, 185, 129, 0.5);
+      z-index: 10;
+      pointer-events: none;
+    }
+    .bracket-tl { top: 16px; left: 16px; border-right: none; border-bottom: none; }
+    .bracket-tr { top: 16px; right: 16px; border-left: none; border-bottom: none; }
+    .bracket-bl { bottom: 16px; left: 16px; border-right: none; border-top: none; }
+    .bracket-br { bottom: 16px; right: 16px; border-left: none; border-top: none; }
+
+    .radar-vector {
+      position: absolute;
+      right: -70px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      z-index: 3;
+      pointer-events: none;
+    }
+    .radar-vector::before {
+      content: "";
+      position: absolute;
+      inset: 80px;
+      border-radius: 50%;
+      border: 1px dashed rgba(6, 182, 212, 0.28);
+    }
+    .radar-vector::after {
+      content: "";
+      position: absolute;
+      inset: 170px;
+      border-radius: 50%;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    /* Top Header */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 14px;
+    }
+
+    .org-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 5px 14px;
+      border-radius: 999px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    .category-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 800;
+      color: #94a3b8;
+      letter-spacing: 1.2px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 12px;
+      border-radius: 6px;
+    }
+    .category-badge strong { color: #fbbf24; }
+
+    .meta-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 0.8px;
+    }
+
+    /* Hero Center */
+    .hero-center {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+      margin: auto 0;
+      padding: 10px 0;
+    }
+
+    .emblem-title-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 10px;
+    }
+
+    .emblem-box {
+      width: 68px;
+      height: 68px;
+      background: #091224;
+      border: 1.5px solid #10b981;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+      flex-shrink: 0;
+    }
+
+    .main-title {
+      font-size: 54px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      color: #ffffff;
+    }
+    .title-accent {
+      background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .version-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #38bdf8;
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-left: 8px;
+    }
+
+    .subtitle-tagline {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #e2e8f0;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .desc-text {
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: #94a3b8;
+      margin-bottom: 16px;
+      max-width: 620px;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      max-width: 640px;
+    }
+
+    .pillar-card {
+      background: rgba(9, 15, 27, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar-card::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0; width: 3px;
+    }
+    .pillar-green::before { background: #10b981; }
+    .pillar-cyan::before { background: #06b6d4; }
+    .pillar-amber::before { background: #f59e0b; }
+    .pillar-purple::before { background: #a855f7; }
+
+    .pillar-icon {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 900;
+      color: #34d399;
+      line-height: 1.2;
+    }
+    .pillar-cyan .pillar-icon { color: #38bdf8; }
+    .pillar-amber .pillar-icon { color: #fbbf24; }
+    .pillar-purple .pillar-icon { color: #c084fc; }
+
+    .pillar-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+    .pillar-sub {
+      font-size: 10px;
+      color: #94a3b8;
+      line-height: 1.35;
+    }
+
+    /* Right Telemetry Box */
+    .tactical-display-box {
+      background: rgba(7, 12, 22, 0.9);
+      border: 1px solid #1e3352;
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .display-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 8px;
+    }
+    .display-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #38bdf8;
+    }
+    .status-active {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .metrics-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .metric-item {
+      background: #0b1424;
+      border: 1px solid #182840;
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .metric-item .val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    .metric-item .lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .sitrep-stamp-box {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px dashed #334155;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+    .sitrep-stamp-box strong { color: #34d399; }
+
+    /* Footer */
+    .bottom-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 14px;
+    }
+
+    .author-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 5px 14px;
+      border-radius: 6px;
+    }
+    .author-avatar {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #10b981;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 10.5px;
+    }
+
+    .role-text {
+      font-size: 11px;
+      color: #94a3b8;
+      font-family: 'JetBrains Mono', monospace;
+      margin-left: 14px;
+    }
+
+    .tech-stack-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+    }
+    .tech-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid #1e293b;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="tactical-grid"></div>
+
+  <div class="radar-vector"></div>
+
+  <div class="hud-bracket bracket-tl"></div>
+  <div class="hud-bracket bracket-tr"></div>
+  <div class="hud-bracket bracket-bl"></div>
+  <div class="hud-bracket bracket-br"></div>
+
+  <div class="cover-content">
+    <header class="top-header">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div class="org-badge">
+          <div class="pulse-dot"></div>
+          PUSSIBERAD TNI AD &times; KARTIKA CYBER HACKATHON 2026
+        </div>
+        <div class="category-badge">
+          KATEGORI: <strong>PENANGKALAN</strong>
+        </div>
+      </div>
+      <div class="meta-code">
+        DOKTRIN PERTAHANAN SIBER SEMESTA // MIL-SPEC v2.0
+      </div>
+    </header>
+
+    <main class="hero-center">
+      <div>
+        <div class="emblem-title-row">
+          <div class="emblem-box">
+            <svg viewBox="0 0 512 512" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="256,16 480,132 480,380 256,496 32,380 32,132" fill="#0b132b" stroke="#10b981" stroke-width="14"/>
+              <polygon points="256,44 452,146 452,366 256,468 60,366 60,146" fill="none" stroke="#1e293b" stroke-width="6" stroke-dasharray="14 10"/>
+              <circle cx="256" cy="256" r="150" fill="none" stroke="#0e2238" stroke-width="6"/>
+              <circle cx="256" cy="256" r="95" fill="none" stroke="#10b981" stroke-width="5" stroke-opacity="0.6"/>
+              <line x1="256" y1="60" x2="256" y2="452" stroke="#06b6d4" stroke-width="5" stroke-opacity="0.6"/>
+              <line x1="60" y1="256" x2="452" y2="256" stroke="#06b6d4" stroke-width="5" stroke-opacity="0.6"/>
+              <polygon points="256,186 316,256 256,326 196,256" fill="#10b981"/>
+              <polygon points="256,216 286,256 256,296 226,256" fill="#ffffff"/>
+              <circle cx="256" cy="74" r="22" fill="#ef4444"/>
+              <circle cx="256" cy="74" r="8" fill="#ffffff"/>
+            </svg>
+          </div>
+          <div style="display: flex; align-items: baseline;">
+            <h1 class="main-title">NEXUS<span class="title-accent">-TRAP</span></h1>
+            <span class="version-tag">v2.0-MIL SPEC</span>
+          </div>
+        </div>
+
+        <h2 class="subtitle-tagline">
+          Platform Pertahanan Siber Aktif Asimetris, Kontra-Spionase Internal Mandiri, &amp; Live Interdiction IT/OT Satuan Teritorial TNI AD
+        </h2>
+
+        <p class="desc-text">
+          Memasang ranjau siber deterministik di dalam pangkalan. Melumpuhkan infiltrasi berbasis kredensial sah prajurit (Living off the Land), membekukan pemindai musuh, dan menghasilkan barang bukti sah untuk POMAD secara air-gapped tanpa vendor asing.
+        </p>
+
+        <div class="pillars-grid">
+          <div class="pillar-card pillar-green">
+            <div class="pillar-icon">01</div>
+            <div>
+              <div class="pillar-title">100% Akurasi Deterministik</div>
+              <div class="pillar-sub">0% False-Positive Rate melenyapkan alarm palsu piket.</div>
+            </div>
+          </div>
+
+          <div class="pillar-card pillar-cyan">
+            <div class="pillar-icon">02</div>
+            <div>
+              <div class="pillar-title">SCADA OT &amp; Sticky Tarpit</div>
+              <div class="pillar-sub">Modbus 502 genset markas &amp; pembekuan scanner 0 req/s.</div>
+            </div>
+          </div>
+
+          <div class="pillar-card pillar-amber">
+            <div class="pillar-icon">03</div>
+            <div>
+              <div class="pillar-title">Canary Suar Tembus VM</div>
+              <div class="pillar-sub">Suar DNS UDP 5053 meledak saat dokumen dibuka di sandbox.</div>
+            </div>
+          </div>
+
+          <div class="pillar-card pillar-purple">
+            <div class="pillar-icon">04</div>
+            <div>
+              <div class="pillar-title">1-Klik &amp; SITREP SHA-256</div>
+              <div class="pillar-sub">Multi-firewall L3 &amp; naskah dinas resmi siap POMAD.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tactical-display-box">
+        <div class="display-header">
+          <div class="display-title">&#9670; C4ISR PUSAT KOMANDO TAKTIS</div>
+          <div class="status-active">SIAGA 3 HIJAU</div>
+        </div>
+
+        <div class="metrics-2x2">
+          <div class="metric-item">
+            <div class="val" style="color: #34d399;">100.0%</div>
+            <div class="lbl">TINGKAT AKURASI</div>
+          </div>
+          <div class="metric-item">
+            <div class="val" style="color: #38bdf8;">0.0%</div>
+            <div class="lbl">FALSE POSITIVE</div>
+          </div>
+          <div class="metric-item">
+            <div class="val" style="color: #fbbf24;">64</div>
+            <div class="lbl">NODE UMPAN SE-KODAM</div>
+          </div>
+          <div class="metric-item">
+            <div class="val" style="color: #c084fc;">Rp 0,-</div>
+            <div class="lbl">BIAYA OPERASIONAL</div>
+          </div>
+        </div>
+
+        <div class="sitrep-stamp-box">
+          <div><strong>OTENTIKASI :</strong> RESMI TNI AD [NASKAH DINAS]</div>
+          <div><strong>INTEGRITAS :</strong> SHA256 SEALED [SAH POMAD]</div>
+          <div><strong>PENYEBARAN :</strong> 100% STANDALONE AIR-GAPPED</div>
+          <div><strong>DOKTRIN    :</strong> SUN TZU STRATAGEM #33 &amp; #25</div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bottom-footer">
+      <div style="display: flex; align-items: center;">
+        <div class="author-pill">
+          <div class="author-avatar">D</div>
+          <span>PENGEMBANG: DITOGIANTO</span>
+        </div>
+        <div class="role-text">
+          KARTIKA CYBER HACKATHON 2026 &bull; PUSSIBERAD TNI AD
+        </div>
+      </div>
+
+      <div class="tech-stack-strip">
+        <div class="tech-pill">MODBUS 502</div>
+        <div class="tech-pill">STICKY TARPIT</div>
+        <div class="tech-pill">CANARY UDP 5053</div>
+        <div class="tech-pill">FIREWALL L3</div>
+        <div class="tech-pill">HMAC-SHA256</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
